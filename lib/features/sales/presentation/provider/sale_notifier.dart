@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../shared/domain/models/open_house/open_house_model.dart';
+import '../../../../shared/domain/models/open_house/open_house.dart';
 import '../../../../../shared/domain/models/paginated_response.dart';
 import '../../../../../shared/exceptions/http_exception.dart';
 import '../../../explore/presentation/providers/state/explore_state.dart';

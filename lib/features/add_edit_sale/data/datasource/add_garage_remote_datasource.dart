@@ -11,11 +11,11 @@ abstract class AddGarageDatasource {
   });
   Future<Either<AppException, ResponseData>> editPost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   });
   Future<Either<AppException, ResponseData>> payementForGaragePost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   });
   Future<Either<AppException, PaginatedResponse>> getCategory();
   Future<Either<AppException, ResponseData>> postCategory(String catName);
@@ -56,7 +56,7 @@ class AddGarageRemoteDatasource extends AddGarageDatasource {
   @override
   Future<Either<AppException, ResponseData>> editPost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   }) async {
     final response = await networkService.put(
       '${AppConfigs.createSales}$id/',
@@ -82,7 +82,7 @@ class AddGarageRemoteDatasource extends AddGarageDatasource {
   @override
   Future<Either<AppException, ResponseData>> payementForGaragePost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   }) async {
     final response = await networkService.put(
       '${AppConfigs.payementSales}$id/',

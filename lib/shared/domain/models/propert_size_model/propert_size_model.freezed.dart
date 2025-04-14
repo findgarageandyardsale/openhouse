@@ -25,8 +25,8 @@ mixin _$PropertSizeModel {
   double? get coveredArea => throw _privateConstructorUsedError;
   @JsonKey(name: 'lot_size')
   double? get lotSize => throw _privateConstructorUsedError;
-  int? get bedrooms => throw _privateConstructorUsedError;
-  int? get bathrooms => throw _privateConstructorUsedError;
+  String? get bedrooms => throw _privateConstructorUsedError;
+  String? get bathrooms => throw _privateConstructorUsedError;
 
   /// Serializes this PropertSizeModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,8 +48,8 @@ abstract class $PropertSizeModelCopyWith<$Res> {
   $Res call({
     @JsonKey(name: 'covered_area') double? coveredArea,
     @JsonKey(name: 'lot_size') double? lotSize,
-    int? bedrooms,
-    int? bathrooms,
+    String? bedrooms,
+    String? bathrooms,
   });
 }
 
@@ -89,12 +89,12 @@ class _$PropertSizeModelCopyWithImpl<$Res, $Val extends PropertSizeModel>
                 freezed == bedrooms
                     ? _value.bedrooms
                     : bedrooms // ignore: cast_nullable_to_non_nullable
-                        as int?,
+                        as String?,
             bathrooms:
                 freezed == bathrooms
                     ? _value.bathrooms
                     : bathrooms // ignore: cast_nullable_to_non_nullable
-                        as int?,
+                        as String?,
           )
           as $Val,
     );
@@ -113,8 +113,8 @@ abstract class _$$PropertSizeModelImplCopyWith<$Res>
   $Res call({
     @JsonKey(name: 'covered_area') double? coveredArea,
     @JsonKey(name: 'lot_size') double? lotSize,
-    int? bedrooms,
-    int? bathrooms,
+    String? bedrooms,
+    String? bathrooms,
   });
 }
 
@@ -153,12 +153,12 @@ class __$$PropertSizeModelImplCopyWithImpl<$Res>
             freezed == bedrooms
                 ? _value.bedrooms
                 : bedrooms // ignore: cast_nullable_to_non_nullable
-                    as int?,
+                    as String?,
         bathrooms:
             freezed == bathrooms
                 ? _value.bathrooms
                 : bathrooms // ignore: cast_nullable_to_non_nullable
-                    as int?,
+                    as String?,
       ),
     );
   }
@@ -184,9 +184,9 @@ class _$PropertSizeModelImpl implements _PropertSizeModel {
   @JsonKey(name: 'lot_size')
   final double? lotSize;
   @override
-  final int? bedrooms;
+  final String? bedrooms;
   @override
-  final int? bathrooms;
+  final String? bathrooms;
 
   @override
   String toString() {
@@ -233,8 +233,8 @@ abstract class _PropertSizeModel implements PropertSizeModel {
   factory _PropertSizeModel({
     @JsonKey(name: 'covered_area') final double? coveredArea,
     @JsonKey(name: 'lot_size') final double? lotSize,
-    final int? bedrooms,
-    final int? bathrooms,
+    final String? bedrooms,
+    final String? bathrooms,
   }) = _$PropertSizeModelImpl;
 
   factory _PropertSizeModel.fromJson(Map<String, dynamic> json) =
@@ -247,9 +247,9 @@ abstract class _PropertSizeModel implements PropertSizeModel {
   @JsonKey(name: 'lot_size')
   double? get lotSize;
   @override
-  int? get bedrooms;
+  String? get bedrooms;
   @override
-  int? get bathrooms;
+  String? get bathrooms;
 
   /// Create a copy of PropertSizeModel
   /// with the given fields replaced by the non-null parameter values.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
 import 'package:open_house/shared/utils/print_utils.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
@@ -15,17 +15,17 @@ class SaleTiming extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final availableSlot =
-        ref.watch(addDataNotifierProvider)?.availableTimeSlots ?? [];
+        ref.watch(addDataNotifierProvider)?.propertySize?.availableTimeSlots ?? [];
 
     final garageayard = ref.watch(addDataNotifierProvider);
     final showMoney =
-        garageayard?.status == StatusEnum.expired || garageayard?.id == null;
+        garageayard?.status == StatusEnum.expired || garageayard?.propertyId == null;
 
     bool? isDateWithinAvailableSlots(DateTime? dateToCheck) {
       try {
         if (dateToCheck == null) return null;
         final availableSlot =
-            (ref.read(addDataNotifierProvider)?.availableTimeSlots ?? []);
+            (ref.read(addDataNotifierProvider)?.propertySize?.availableTimeSlots ?? []);
         // Filter out slots with null dates
         final slotsWithDates =
             availableSlot.where((slot) => slot.date != null).toList();
@@ -67,14 +67,14 @@ class SaleTiming extends ConsumerWidget {
         ),
         // if (!(availableSlot.length >= 7))
         if (showMoney ||
-            (garageayard?.id != null &&
-                (garageayard?.availableTimeSlots ?? []).length < totalSlot!))
+            (garageayard?.propertyId != null &&
+                (garageayard?.propertySize?.availableTimeSlots ?? []).length < totalSlot!))
           ActionButton(
             label: 'Add Another Sale Date',
             onPressed: () {
               try {
                 final slot =
-                    (ref.read(addDataNotifierProvider)?.availableTimeSlots ??
+                    (ref.read(addDataNotifierProvider)?.propertySize?.availableTimeSlots ??
                         []);
                 final lastAvailableSlot = slot.isEmpty ? null : slot.last.date;
                 //check if lastAvailableSlot is between 1st and last day of the month

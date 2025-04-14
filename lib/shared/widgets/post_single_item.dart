@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:open_house/features/post_detail/presentation/widgets/custom_carousel.dart';
 import 'package:open_house/routes/app_route.gr.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/theme/test_styles.dart';
 import 'package:open_house/shared/utils/cusotm_date_utils.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
@@ -37,7 +37,10 @@ class PostSingleItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomCarousel(attachments: singlePost?.attachments ?? [], radius: 12),
+        CustomCarousel(
+          attachments: singlePost?.openHouseProperty?.attachments ?? [],
+          radius: 12,
+        ),
         Spacing.sizedBoxW_16(),
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -46,37 +49,40 @@ class PostSingleItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '\$${singlePost?.price?.toStringAsFixed(0) ?? '0'}',
+                '\$${singlePost?.openHouseProperty?.price?.toStringAsFixed(0) ?? '0'}',
                 style: AppTextStyles.titleLarge.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
               ),
               Text(
-                singlePost?.title ?? '',
+                singlePost?.openHouseProperty?.name ?? '',
                 style: AppTextStyles.bodyMedium.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
               ),
               locationWidget(),
               AmenitiesLine(
-                bedroom: singlePost?.propertyModel?.bedrooms?.toString() ?? '0',
+                bedroom: singlePost?.propertySize?.bedrooms?.toString() ?? '0',
                 bathroom:
-                    singlePost?.propertyModel?.bathrooms?.toString() ?? '0',
+                    singlePost?.propertySize?.bathrooms?.toString() ?? '0',
                 size:
-                    '${singlePost?.propertyModel?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
+                    '${singlePost?.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
                 lotSize:
-                    '${singlePost?.propertyModel?.lotSize?.toStringAsFixed(0) ?? '0'} sf min.',
+                    '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sf min.',
               ),
               Divider(color: AppColors.extraLightGrey),
               TimerText(
                 fromDetail: false,
                 date: CustomDateUtils.formatDate(
-                  singlePost?.availableTimeSlots?[0].date ?? DateTime.now(),
+                  singlePost?.propertySize?.availableTimeSlots?[0].date ??
+                      DateTime.now(),
                 ),
                 time:
-                    '${CustomDateUtils.convertTo12HourFormat(singlePost?.availableTimeSlots?[0].startTime)} - ${CustomDateUtils.convertTo12HourFormat(singlePost?.availableTimeSlots?[0].endTime)}',
+                    '${CustomDateUtils.convertTo12HourFormat(singlePost?.propertySize?.availableTimeSlots?[0].startTime)} - ${CustomDateUtils.convertTo12HourFormat(singlePost?.propertySize?.availableTimeSlots?[0].endTime)}',
                 days:
-                    ((singlePost?.availableTimeSlots ?? []).length - 1)
+                    ((singlePost?.propertySize?.availableTimeSlots ?? [])
+                                .length -
+                            1)
                         .toString(),
               ),
               Spacing.sizedBoxH_08(),

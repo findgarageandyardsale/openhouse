@@ -5,61 +5,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:open_house/shared/domain/models/attachment_file/attachment_model.dart';
-import 'package:open_house/shared/domain/models/propert_size_model/propert_size_model.dart';
 import 'package:open_house/shared/domain/models/property_type_model/property_type_model.dart';
 
-part 'open_house_model.freezed.dart';
-part 'open_house_model.g.dart';
-
-@freezed
-class OpenHouse with _$OpenHouse {
-  const factory OpenHouse({
-    int? id,
-    String? title,
-    String? description,
-    int? price,
-    @JsonKey(name: 'furnish_status') FurnishingEnum? furnishingStatus,
-    StatusEnum? status,
-    LocationModel? location,
-    @JsonKey(name: 'transaction_id') String? transactionId,
-    @JsonKey(name: 'available_time_slots')
-    List<AvailableTimeSlot>? availableTimeSlots,
-    List<Category>? category,
-    @JsonKey(name: 'images') List<AttachmentModel>? attachments,
-    @JsonKey(name: 'amenities') List<String>? amenities,
-    @JsonKey(name: 'property_size') PropertSizeModel? propertyModel,
-
-    @JsonKey(name: 'property_type') PropertyTypeModel? propertyType,
-    @JsonKey(name: 'year_built') DateTime? yearBuilt,
-    @JsonKey(name: 'is_pet_friendly') bool? isPetFriendly,
-    @JsonKey(name: 'is_utility_include') bool? isUtilityInclude,
-    @JsonKey(name: 'distance_from_location')
-    double? distanceFromLocation, // in miles
-  }) = _OpenHouse;
-
-  factory OpenHouse.fromJson(Map<String, dynamic> json) =>
-      _$OpenHouseFromJson(json);
-}
-
-// Enum for Garage
-enum StatusEnum {
-  @JsonValue('active')
-  active,
-  @JsonValue('expired')
-  expired,
-}
-
-// Enum for Garage
-enum FurnishingEnum {
-  @JsonValue('Fully Furnished')
-  fullyFurnished,
-  @JsonValue('Semi-Furnished')
-  semiFurnished,
-  @JsonValue('Unfurnished')
-  unfurnished,
-  @JsonValue('Under Construction')
-  underConstruction,
-}
+part 'open_house.freezed.dart';
+part 'open_house.g.dart';
 
 @freezed
 class AvailableTimeSlot with _$AvailableTimeSlot {
@@ -135,4 +84,58 @@ class LocationModel with _$LocationModel {
 */
   factory LocationModel.fromJson(Map<String, dynamic> json) =>
       _$LocationModelFromJson(json);
+}
+
+@freezed
+class OpenHouse with _$OpenHouse {
+  const factory OpenHouse({
+    LocationModel? location,
+    @JsonKey(name: 'property_id') String? propertyId,
+    @JsonKey(name: 'transaction_id') String? transactionId,
+    @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
+    @JsonKey(name: 'size') PropertySize? propertySize,
+    StatusEnum? status,
+  }) = _OpenHouse;
+
+  factory OpenHouse.fromJson(Map<String, dynamic> json) =>
+      _$OpenHouseFromJson(json);
+}
+
+// Enum for Garage
+enum StatusEnum {
+  @JsonValue('active')
+  active,
+  @JsonValue('expired')
+  expired,
+}
+
+@freezed
+class OpenHouseProperty with _$OpenHouseProperty {
+  const factory OpenHouseProperty({
+    String? name,
+    String? description,
+    double? price,
+    @JsonKey(name: 'images') List<AttachmentModel>? attachments,
+    List<Category>? category,
+    @JsonKey(name: 'type') PropertyTypeModel? propertyType,
+  }) = _OpenHouseProperty;
+
+  factory OpenHouseProperty.fromJson(Map<String, dynamic> json) =>
+      _$OpenHousePropertyFromJson(json);
+}
+
+@freezed
+class PropertySize with _$PropertySize {
+  const factory PropertySize({
+    @JsonKey(name: 'covered_area') double? coveredArea,
+    @JsonKey(name: 'lot_size') double? lotSize,
+    @JsonKey(name: 'bedrooms') String? bedrooms,
+    @JsonKey(name: 'bathrooms') String? bathrooms,
+    @JsonKey(name: 'year_built') DateTime? yearBuilt,
+    @JsonKey(name: 'available_time_slots')
+    List<AvailableTimeSlot>? availableTimeSlots,
+  }) = _PropertySize;
+
+  factory PropertySize.fromJson(Map<String, dynamic> json) =>
+      _$PropertySizeFromJson(json);
 }

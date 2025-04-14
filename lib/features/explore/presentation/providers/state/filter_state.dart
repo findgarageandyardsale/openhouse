@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/utils/cusotm_date_utils.dart';
 import 'package:open_house/shared/utils/print_utils.dart';
 

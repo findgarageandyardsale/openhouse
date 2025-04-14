@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/explore/domain/repositories/explore_repository.dart';
 import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
 import '../../../../../services/location_service/presentation/state/location_state.dart';
-import '../../../../../shared/domain/models/open_house/open_house_model.dart';
+import '../../../../../shared/domain/models/open_house/open_house.dart';
 import '../../../../../shared/domain/models/paginated_response.dart';
 import '../../../../../shared/exceptions/http_exception.dart';
 import 'explore_state.dart';

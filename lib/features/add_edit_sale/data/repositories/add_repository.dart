@@ -10,11 +10,11 @@ abstract class AddRepository {
   });
   Future<Either<AppException, ResponseData>> editPost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   });
   Future<Either<AppException, ResponseData>> payementForPost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   });
 }
 
@@ -32,7 +32,7 @@ class AddRepositoryImpl extends AddRepository {
   @override
   Future<Either<AppException, ResponseData>> editPost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   }) {
     return addDatasource.editPost(singleItem: singleItem, id: id);
   }
@@ -40,7 +40,7 @@ class AddRepositoryImpl extends AddRepository {
   @override
   Future<Either<AppException, ResponseData>> payementForPost({
     required Map<String, dynamic> singleItem,
-    required int id,
+    required String id,
   }) {
     return addDatasource.payementForGaragePost(singleItem: singleItem, id: id);
   }

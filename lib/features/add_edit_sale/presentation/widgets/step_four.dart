@@ -7,7 +7,7 @@ import 'package:open_house/features/add_edit_sale/presentation/widgets/category_
 import 'package:open_house/features/add_edit_sale/presentation/widgets/title_head.dart';
 import 'package:open_house/features/explore/presentation/widgets/custom_choice_chip.dart';
 import 'package:open_house/shared/constants/spacing.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 
 class StepFour extends ConsumerWidget {
   const StepFour({super.key});
@@ -44,9 +44,9 @@ class StepFour extends ConsumerWidget {
                           style: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(fontWeight: FontWeight.w700),
                         ),
-                        if ((addCatdata?.category ?? []).isNotEmpty)
+                        if ((addCatdata?.openHouseProperty?.category ?? []).isNotEmpty)
                           Text(
-                            '${(addCatdata?.category ?? []).length} Selected',
+                            '${(addCatdata?.openHouseProperty?.category ?? []).length} Selected',
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                       ],

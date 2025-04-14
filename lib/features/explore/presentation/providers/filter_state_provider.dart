@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/explore/presentation/providers/state/filter_notifier.dart';
 import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 
 final filterNotifierProvider =
     StateNotifierProvider<FilterNotifier, FilterState>((ref) {

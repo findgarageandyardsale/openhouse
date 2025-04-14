@@ -67,7 +67,7 @@ class StepOne extends ConsumerWidget {
             // Update the state with the new value
             ref
                 .read(addDataNotifierProvider.notifier)
-                .setPrice(int.tryParse(value ?? ''));
+                .setPrice(double.tryParse(value ?? ''));
           },
         ),
         Spacing.sizedBoxH_16(),

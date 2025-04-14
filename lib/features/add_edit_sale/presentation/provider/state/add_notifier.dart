@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/exceptions/http_exception.dart';
 import 'package:open_house/shared/presentation/formz_state.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';
@@ -44,12 +44,16 @@ class AddNotifier extends StateNotifier<FormzState> {
       // for (var element in (postData!.category ?? [])) {
       //   categories.add(element.id!);
       // }
-      // final postPrice =
-      //     (HelperConstant.priceForEach *
-      //         (postData?.availableTimeSlots ?? []).length);
 
-      // HelperConstant.postPrice =
-      //     (postPrice == 0 ? (postData?.price ?? '10') : postPrice).toString();
+      final postPrice =
+          (HelperConstant.priceForEach *
+              (postData?.propertySize?.availableTimeSlots ?? []).length);
+
+      HelperConstant.postPrice =
+          (postPrice == 0
+                  ? (postData?.openHouseProperty?.price ?? '10')
+                  : postPrice)
+              .toString();
 
       // Map<String, dynamic> data = postData!.toJson();
       // data['category'] = categories;
@@ -65,6 +69,8 @@ class AddNotifier extends StateNotifier<FormzState> {
       final value = postData?.copyWith(
         transactionId: (transactionId != null) ? transactionId : null,
       );
+      PrintUtils.customLog(jsonEncode(value?.toJson()));
+
       // data['images'] = postData?.attachments?.map((e) => e.id).toList();
       final data = ref.read(addDataNotifierProvider.notifier).toAddJson(value!);
       PrintUtils.customLog(jsonEncode(data));
@@ -92,23 +98,26 @@ class AddNotifier extends StateNotifier<FormzState> {
     try {
       state = const FormzState.loading();
       List<AvailableTimeSlot> timeSlots = [];
-      timeSlots.addAll(postData?.availableTimeSlots ?? []);
+      timeSlots.addAll(postData?.propertySize?.availableTimeSlots ?? []);
 
       List<Map<String, dynamic>> availableTimeSlots =
           convertAvailableTimeSlotListToJson(timeSlots);
 
       // state = const FormzState.loading();
       List<int> categories = [];
-      for (var element in (postData!.category ?? [])) {
+      for (var element in (postData?.openHouseProperty?.category ?? [])) {
         categories.add(element.id!);
       }
       Map<String, dynamic> data = postData!.toJson();
       final postPrice =
           (HelperConstant.priceForEach *
-              (postData?.availableTimeSlots ?? []).length);
+              (postData?.propertySize?.availableTimeSlots ?? []).length);
 
       HelperConstant.postPrice =
-          (postPrice == 0 ? (postData?.price ?? '10') : postPrice).toString();
+          (postPrice == 0
+                  ? (postData?.openHouseProperty?.price ?? '10')
+                  : postPrice)
+              .toString();
       data['category'] = categories;
       data['price'] = postPrice;
       if (transactionId != null) {
@@ -120,11 +129,12 @@ class AddNotifier extends StateNotifier<FormzState> {
       // data['status'] = 'Expired';
       data['status'] = 'Active';
       data['available_time_slots'] = availableTimeSlots;
-      data['images'] = postData?.attachments?.map((e) => e.id).toList();
+      data['images'] =
+          postData?.openHouseProperty?.attachments?.map((e) => e.id).toList();
       PrintUtils.customLog(jsonEncode(data));
       final response = await addRepository.editPost(
         singleItem: data,
-        id: postData!.id!,
+        id: postData!.propertyId!,
       );
 
       state = await response.fold((failure) => FormzState.failure(failure), (

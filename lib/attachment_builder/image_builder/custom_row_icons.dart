@@ -40,7 +40,11 @@ class CustomRowIcons extends ConsumerWidget {
               title: 'Camera',
               iconData: Icons.camera_alt_outlined,
               onTap: () async {
-                if ((ref.read(addDataNotifierProvider)?.attachments ?? [])
+                if ((ref
+                                .read(addDataNotifierProvider)
+                                ?.openHouseProperty
+                                ?.attachments ??
+                            [])
                         .length >
                     3) {
                   CustomToast.showToast(
@@ -62,7 +66,11 @@ class CustomRowIcons extends ConsumerWidget {
               title: 'Library',
               iconData: Icons.image_outlined,
               onTap: () async {
-                if ((ref.read(addDataNotifierProvider)?.attachments ?? [])
+                if ((ref
+                                .read(addDataNotifierProvider)
+                                ?.openHouseProperty
+                                ?.attachments ??
+                            [])
                         .length >
                     3) {
                   CustomToast.showToast(

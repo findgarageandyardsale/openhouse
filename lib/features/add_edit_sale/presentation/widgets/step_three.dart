@@ -96,6 +96,7 @@ class StepThree extends ConsumerWidget {
                     child: ListBottomSheet(
                       onTap: (value) {
                         bedroomsController.text = value;
+                    
                       },
                       items: FilterConstants.bedrooms,
                       title: 'No. of Bedrooms',

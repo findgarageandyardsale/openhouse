@@ -1,4 +1,4 @@
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'filter_state.dart';
 

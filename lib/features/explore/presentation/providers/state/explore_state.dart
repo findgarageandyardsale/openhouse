@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
-import '../../../../../shared/domain/models/open_house/open_house_model.dart';
+import '../../../../../shared/domain/models/open_house/open_house.dart';
 
 enum ExploreConcreteState {
   initial,

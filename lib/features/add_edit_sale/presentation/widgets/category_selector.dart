@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
 import 'package:open_house/shared/widgets/custom_filter_chip.dart';
 

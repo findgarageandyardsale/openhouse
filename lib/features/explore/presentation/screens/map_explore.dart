@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/utils/print_utils.dart';
 import 'package:open_house/shared/widgets/post_single_item.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -86,7 +86,7 @@ class _MapExploreState extends ConsumerState<MapExplore> {
 
           markers.add(
             Marker(
-              markerId: MarkerId('${element.id}'),
+              markerId: MarkerId('${element.propertyId}'),
               position: LatLng(
                 element.location!.latitude!,
                 element.location!.longitude!,

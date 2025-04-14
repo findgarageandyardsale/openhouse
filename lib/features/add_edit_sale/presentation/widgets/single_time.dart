@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import '../../../../shared/constants/spacing.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_theme.dart';
@@ -49,7 +49,7 @@ class _SingleTimeState extends ConsumerState<SingleTime> {
   void getEarlyDate() {
     try {
       final availableSlot =
-          (ref.read(addDataNotifierProvider)?.availableTimeSlots ?? []);
+          (ref.read(addDataNotifierProvider)?.propertySize?.availableTimeSlots ?? []);
       // Filter out slots with null dates
       final slotsWithDates =
           availableSlot.where((slot) => slot.date != null).toList();

@@ -6,7 +6,7 @@ import 'package:open_house/features/add_edit_sale/presentation/widgets/title_hea
 import 'package:open_house/features/explore/presentation/providers/filter_state_provider.dart';
 import 'package:open_house/features/explore/presentation/screens/explore_screen.dart';
 import 'package:open_house/shared/constants/spacing.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
 import 'package:open_house/shared/widgets/custom_filter_chip.dart';

@@ -60,7 +60,7 @@ import 'package:open_house/features/splash/presentation/screens/previous_custom_
     as _i18;
 import 'package:open_house/features/splash/presentation/screens/splash_screen.dart'
     as _i22;
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart'
+import 'package:open_house/shared/domain/models/open_house/open_house.dart'
     as _i28;
 import 'package:open_house/shared/widgets/webview_widget_screen.dart' as _i25;
 

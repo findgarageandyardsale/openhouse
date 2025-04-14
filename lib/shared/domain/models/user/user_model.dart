@@ -2,7 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:open_house/shared/domain/models/attachment_file/attachment_model.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';

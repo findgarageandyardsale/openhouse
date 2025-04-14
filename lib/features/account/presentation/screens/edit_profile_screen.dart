@@ -14,7 +14,7 @@ import 'package:open_house/features/authentication/presentation/widgets/address_
 import 'package:open_house/services/capitalize_word_formatter_service.dart';
 import 'package:open_house/services/user_cache_service/domain/providers/current_user_provider.dart';
 import 'package:open_house/shared/constants/spacing.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/domain/providers/attachment_file_mixin_action_provider.dart';
 import 'package:open_house/shared/presentation/formz_state.dart';
 import 'package:open_house/shared/theme/app_colors.dart';

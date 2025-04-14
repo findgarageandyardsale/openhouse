@@ -15,7 +15,7 @@ import 'package:open_house/shared/widgets/custom_toast.dart';
 import 'package:open_house/shared/widgets/timer_text.dart';
 import '../../../../services/user_cache_service/domain/providers/current_user_provider.dart';
 import '../../../../shared/constants/spacing.dart';
-import '../../../../shared/domain/models/open_house/open_house_model.dart';
+import '../../../../shared/domain/models/open_house/open_house.dart';
 import '../../../../shared/domain/models/user/user_model.dart';
 import '../../../../shared/utils/app_utils.dart';
 import '../../../../shared/widgets/decription_chip.dart';
@@ -86,7 +86,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
     final currentUserAsyncValue = ref.watch(currentUserProvider);
 
     return context.doublePos(
-      appbar: AppBar(title: Text(widget.garageayard.title ?? '')),
+      appbar: AppBar(title: Text(widget.garageayard.openHouseProperty?.name ?? '')),
       isActive: widget.isActive,
       actions: currentUserAsyncValue.when(
         data: (User? data) {
@@ -134,7 +134,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomCarousel(attachments: widget.garageayard.attachments ?? []),
+            CustomCarousel(
+              attachments:
+                  widget.garageayard.openHouseProperty?.attachments ?? [],
+            ),
             Column(
               spacing: 4,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +185,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                         runSpacing: 12.0,
                         spacing: 6.0,
                         children:
-                            widget.garageayard.category
+                            widget.garageayard.openHouseProperty?.category
                                 ?.map(
                                   (e) => DescriptionChip(text: e.name ?? ''),
                                 )
@@ -240,42 +243,42 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
                   child: Divider(color: Colors.grey.shade300, thickness: 4),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    spacing: 8,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Features and Amenities',
-                        style: AppTextStyles.bodyMedium.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.textPrimaryColor,
-                        ),
-                      ),
+                // Padding(
+                //   padding: const EdgeInsets.all(16),
+                //   child: Column(
+                //     spacing: 8,
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: [
+                //       Text(
+                //         'Features and Amenities',
+                //         style: AppTextStyles.bodyMedium.copyWith(
+                //           fontWeight: FontWeight.w500,
+                //           color: AppColors.textPrimaryColor,
+                //         ),
+                //       ),
 
-                      RowTitleValuwWidget(
-                        title: 'Furnished',
-                        value: 'Fully Furnished',
-                      ),
-                      RowTitleValuwWidget(
-                        title: 'Amenities',
-                        childWidget: Wrap(
-                          spacing: 4,
-                          runSpacing: 4,
-                          children:
-                              widget.garageayard.amenities
-                                  ?.map((e) => DescriptionChip(text: e))
-                                  .toList() ??
-                              [],
-                        ),
-                      ),
-                      RowTitleValuwWidget(title: 'Pet Friendly', value: 'Yes'),
+                //       RowTitleValuwWidget(
+                //         title: 'Furnished',
+                //         value: 'Fully Furnished',
+                //       ),
+                //       RowTitleValuwWidget(
+                //         title: 'Amenities',
+                //         childWidget: Wrap(
+                //           spacing: 4,
+                //           runSpacing: 4,
+                //           children:
+                //               widget.garageayard.amenities
+                //                   ?.map((e) => DescriptionChip(text: e))
+                //                   .toList() ??
+                //               [],
+                //         ),
+                //       ),
+                //       RowTitleValuwWidget(title: 'Pet Friendly', value: 'Yes'),
 
-                      RowTitleValuwWidget(title: 'Utility', value: 'Included'),
-                    ],
-                  ),
-                ),
+                //       RowTitleValuwWidget(title: 'Utility', value: 'Included'),
+                //     ],
+                //   ),
+                // ),
 
                 SizedBox(
                   height: 8,

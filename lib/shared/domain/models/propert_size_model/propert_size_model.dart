@@ -8,8 +8,8 @@ class PropertSizeModel with _$PropertSizeModel {
   factory PropertSizeModel({
     @JsonKey(name: 'covered_area') double? coveredArea,
     @JsonKey(name: 'lot_size') double? lotSize,
-    int? bedrooms,
-    int? bathrooms,
+    String? bedrooms,
+    String? bathrooms,
   }) = _PropertSizeModel;
 
   factory PropertSizeModel.fromJson(Map<String, dynamic> json) =>

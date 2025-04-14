@@ -11,8 +11,8 @@ _$PropertSizeModelImpl _$$PropertSizeModelImplFromJson(
 ) => _$PropertSizeModelImpl(
   coveredArea: (json['covered_area'] as num?)?.toDouble(),
   lotSize: (json['lot_size'] as num?)?.toDouble(),
-  bedrooms: (json['bedrooms'] as num?)?.toInt(),
-  bathrooms: (json['bathrooms'] as num?)?.toInt(),
+  bedrooms: json['bedrooms'] as String?,
+  bathrooms: json['bathrooms'] as String?,
 );
 
 Map<String, dynamic> _$$PropertSizeModelImplToJson(

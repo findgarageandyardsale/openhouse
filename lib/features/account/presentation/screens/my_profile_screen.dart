@@ -5,7 +5,7 @@ import 'package:open_house/features/account/presentation/widgets/circular_user_i
 import 'package:open_house/routes/app_route.gr.dart';
 import 'package:open_house/services/user_cache_service/domain/providers/current_user_provider.dart';
 import 'package:open_house/shared/constants/spacing.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
 

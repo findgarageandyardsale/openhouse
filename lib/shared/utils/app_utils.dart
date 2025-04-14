@@ -1,4 +1,4 @@
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/widgets/custom_toast.dart';
 import 'package:map_launcher/map_launcher.dart';
 

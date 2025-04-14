@@ -8,11 +8,10 @@ import 'package:open_house/features/add_edit_sale/presentation/provider/property
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_five.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_four.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_one.dart';
-import 'package:open_house/features/add_edit_sale/presentation/widgets/step_six.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_three.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_two.dart';
 import 'package:open_house/shared/constants/spacing.dart';
-import 'package:open_house/shared/domain/models/open_house/open_house_model.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/domain/models/response_data.dart';
 import 'package:open_house/shared/extension/context.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';
@@ -60,55 +59,6 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
   @override
   void initState() {
     super.initState();
-    // titleController.text = widget.garageayard?.title ?? '';
-    // descController.text = widget.garageayard?.description ?? '';
-    // streetNumberController.text =
-    //     widget.garageayard?.location?.throughfare ??
-    //     widget.garageayard?.location?.subThoroughfare ??
-    //     '';
-    // suiteController.text = widget.garageayard?.location?.subLocality ?? '';
-    // cityController.text = widget.garageayard?.location?.locality ?? '';
-    // stateController.text = widget.garageayard?.location?.adminArea ?? '';
-    // zipCodeController.text = widget.garageayard?.location?.zipCode ?? '';
-
-    // // Add listeners to the controllers to clear validation errors
-
-    // titleController.addListener(() {
-    //   if (formKey.currentState?.fields['title']?.hasError ?? false) {
-    //     formKey.currentState?.fields['title']?.validate();
-    //   }
-    // });
-    // descController.addListener(() {
-    //   if (formKey.currentState?.fields['description']?.hasError ?? false) {
-    //     formKey.currentState?.fields['description']?.validate();
-    //   }
-    // });
-    // streetNumberController.addListener(() {
-    //   if (formKey.currentState?.fields['street_number']?.hasError ?? false) {
-    //     formKey.currentState?.fields['street_number']?.validate();
-    //   }
-    // });
-
-    // suiteController.addListener(() {
-    //   if (formKey.currentState?.fields['suite_apt']?.hasError ?? false) {
-    //     formKey.currentState?.fields['suite_apt']?.validate();
-    //   }
-    // });
-    // cityController.addListener(() {
-    //   if (formKey.currentState?.fields['city']?.hasError ?? false) {
-    //     formKey.currentState?.fields['city']?.validate();
-    //   }
-    // });
-    // stateController.addListener(() {
-    //   if (formKey.currentState?.fields['state']?.hasError ?? false) {
-    //     formKey.currentState?.fields['state']?.validate();
-    //   }
-    // });
-    // zipCodeController.addListener(() {
-    //   if (formKey.currentState?.fields['zip_code']?.hasError ?? false) {
-    //     formKey.currentState?.fields['zip_code']?.validate();
-    //   }
-    // });
     Future.microtask(() {
       ref.invalidate(addDataNotifierProvider);
 
@@ -119,7 +69,9 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
 
         ref
             .read(customAttachmentProvider('image').notifier)
-            .addAttachmentofServer(widget.garageayard?.attachments);
+            .addAttachmentofServer(
+              widget.garageayard?.openHouseProperty?.attachments,
+            );
       }
     });
   }
@@ -140,9 +92,12 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
 
         final postPrice =
             (HelperConstant.priceForEach *
-                (model?.availableTimeSlots ?? []).length);
+                (model?.propertySize?.availableTimeSlots ?? []).length);
         HelperConstant.postPrice =
-            (postPrice == 0 ? (model?.price ?? '10') : postPrice).toString();
+            (postPrice == 0
+                    ? (model?.openHouseProperty?.price ?? '10')
+                    : postPrice)
+                .toString();
 
         String? transactionId = await StripeService.instance.makePayment();
         Navigator.pop(context);
@@ -291,30 +246,6 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
       }
     }));
 
-    // ref.listen(addCatNotifierProvider.select((value) => value), ((
-    //   previous,
-    //   next,
-    // ) {
-    //   //show Snackbar on failure
-    //   if (next is Failure) {
-    //     CustomToast.showToast(
-    //       next.exception.message.toString(),
-    //       status: ToastStatus.error,
-    //     );
-    //   } else if (next is Success) {
-    //     ref.read(catNotifierProvider.notifier).fetchAllCatList();
-
-    //     // change the next into Category object
-    //     Category item = Category.fromJson(next.data);
-    //     ref.read(addDataNotifierProvider.notifier).updateCat(item);
-
-    //     CustomToast.showToast(
-    //       'Category Added Successfully',
-    //       status: ToastStatus.success,
-    //     );
-    //   }
-    // }));
-
     String title = widget.garageayard != null ? 'Update' : 'Add';
 
     void editFunction() {
@@ -335,7 +266,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
     void addFunction() async {
       try {
         FocusScope.of(context).unfocus();
-        if (formKey.currentState?.saveAndValidate() ?? false) {
+        if (true) {
+          // if (formKey.currentState?.saveAndValidate() ?? false) {
           // if ((ref.read(addDataNotifierProvider)?.attachments ?? []).isEmpty) {
           //   CustomToast.showToast(
           //     'Please add atleast one image',
@@ -468,11 +400,6 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                   // StepSix(),
                 ],
               ),
-              // PropertyStepper(
-              //   onLastStepTap: () {
-              //     addFunction();
-              //   },
-              // ),
             ),
           ),
         ),
