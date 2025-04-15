@@ -44,7 +44,8 @@ class StepFour extends ConsumerWidget {
                           style: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(fontWeight: FontWeight.w700),
                         ),
-                        if ((addCatdata?.openHouseProperty?.category ?? []).isNotEmpty)
+                        if ((addCatdata?.openHouseProperty?.category ?? [])
+                            .isNotEmpty)
                           Text(
                             '${(addCatdata?.openHouseProperty?.category ?? []).length} Selected',
                             style: Theme.of(context).textTheme.bodyMedium,
@@ -96,16 +97,16 @@ class StepFour extends ConsumerWidget {
     );
   }
 
-  Widget _buildMultiChoiceChip(
-    String label,
-    List<String> selectedValues,
-    Function(bool) onSelected,
-    BuildContext context,
-  ) {
-    return CustomChoiceChip(
-      label: label,
-      isSelected: selectedValues.contains(label),
-      onSelected: () => onSelected(!selectedValues.contains(label)),
-    );
-  }
+  // Widget _buildMultiChoiceChip(
+  //   String label,
+  //   List<String> selectedValues,
+  //   Function(bool) onSelected,
+  //   BuildContext context,
+  // ) {
+  //   return CustomChoiceChip(
+  //     label: label,
+  //     isSelected: selectedValues.contains(label),
+  //     onSelected: () => onSelected(!selectedValues.contains(label)),
+  //   );
+  // }
 }

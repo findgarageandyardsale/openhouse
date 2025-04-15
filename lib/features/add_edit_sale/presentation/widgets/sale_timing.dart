@@ -15,17 +15,23 @@ class SaleTiming extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final availableSlot =
-        ref.watch(addDataNotifierProvider)?.propertySize?.availableTimeSlots ?? [];
+        ref.watch(addDataNotifierProvider)?.propertySize?.availableTimeSlots ??
+        [];
 
     final garageayard = ref.watch(addDataNotifierProvider);
     final showMoney =
-        garageayard?.status == StatusEnum.expired || garageayard?.propertyId == null;
+        garageayard?.status == StatusEnum.expired ||
+        garageayard?.propertyId == null;
 
     bool? isDateWithinAvailableSlots(DateTime? dateToCheck) {
       try {
         if (dateToCheck == null) return null;
         final availableSlot =
-            (ref.read(addDataNotifierProvider)?.propertySize?.availableTimeSlots ?? []);
+            (ref
+                    .read(addDataNotifierProvider)
+                    ?.propertySize
+                    ?.availableTimeSlots ??
+                []);
         // Filter out slots with null dates
         final slotsWithDates =
             availableSlot.where((slot) => slot.date != null).toList();
@@ -68,13 +74,17 @@ class SaleTiming extends ConsumerWidget {
         // if (!(availableSlot.length >= 7))
         if (showMoney ||
             (garageayard?.propertyId != null &&
-                (garageayard?.propertySize?.availableTimeSlots ?? []).length < totalSlot!))
+                (garageayard?.propertySize?.availableTimeSlots ?? []).length <
+                    totalSlot!))
           ActionButton(
             label: 'Add Another Sale Date',
             onPressed: () {
               try {
                 final slot =
-                    (ref.read(addDataNotifierProvider)?.propertySize?.availableTimeSlots ??
+                    (ref
+                            .read(addDataNotifierProvider)
+                            ?.propertySize
+                            ?.availableTimeSlots ??
                         []);
                 final lastAvailableSlot = slot.isEmpty ? null : slot.last.date;
                 //check if lastAvailableSlot is between 1st and last day of the month

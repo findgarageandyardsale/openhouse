@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
-import 'package:open_house/features/add_edit_sale/presentation/widgets/title_head.dart';
 import 'package:open_house/features/authentication/presentation/widgets/auth_field.dart';
 import 'package:open_house/features/explore/presentation/constants/filter_constants.dart';
 import 'package:open_house/services/capitalize_word_formatter_service.dart';

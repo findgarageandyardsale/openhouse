@@ -14,7 +14,7 @@ _$AvailableTimeSlotImpl _$$AvailableTimeSlotImplFromJson(
   isEditable: json['isEditable'] as bool?,
   startTime: json['start_time'] as String?,
   endTime: json['end_time'] as String?,
-  garageYardId: (json['garage_yard_id'] as num?)?.toInt(),
+  garageYardId: json['property_id'] as String?,
 );
 
 Map<String, dynamic> _$$AvailableTimeSlotImplToJson(
@@ -25,24 +25,17 @@ Map<String, dynamic> _$$AvailableTimeSlotImplToJson(
   'isEditable': instance.isEditable,
   'start_time': instance.startTime,
   'end_time': instance.endTime,
-  'garage_yard_id': instance.garageYardId,
+  'property_id': instance.garageYardId,
 };
 
 _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
     _$CategoryImpl(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
-      propertyCategory: json['property_category'] as String?,
-      propertyType: json['property_type'] as String?,
     );
 
 Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'property_category': instance.propertyCategory,
-      'property_type': instance.propertyType,
-    };
+    <String, dynamic>{'id': instance.id, 'name': instance.name};
 
 _$LocationModelImpl _$$LocationModelImplFromJson(Map<String, dynamic> json) =>
     _$LocationModelImpl(

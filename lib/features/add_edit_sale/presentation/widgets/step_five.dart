@@ -67,11 +67,11 @@ class StepFive extends ConsumerWidget {
             }
           },
           name: 'date_year',
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(
-              errorText: 'Year Built cannot be empty.',
-            ),
-          ]),
+          // validator: FormBuilderValidators.compose([
+          //   FormBuilderValidators.required(
+          //     errorText: 'Year Built cannot be empty.',
+          //   ),
+          // ]),
           readOnly: true,
           suffixIcon: const Icon(Icons.calendar_today),
           labelText: 'Year Built',

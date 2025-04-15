@@ -18,7 +18,7 @@ class AvailableTimeSlot with _$AvailableTimeSlot {
     bool? isEditable,
     @JsonKey(name: 'start_time') String? startTime,
     @JsonKey(name: 'end_time') String? endTime,
-    @JsonKey(name: 'garage_yard_id') int? garageYardId,
+    @JsonKey(name: 'property_id') String? garageYardId,
   }) = _AvailableTimeSlot;
 
   factory AvailableTimeSlot.fromJson(Map<String, dynamic> json) =>
@@ -27,12 +27,7 @@ class AvailableTimeSlot with _$AvailableTimeSlot {
 
 @freezed
 class Category with _$Category {
-  const factory Category({
-    int? id,
-    String? name,
-    @JsonKey(name: 'property_category') String? propertyCategory,
-    @JsonKey(name: 'property_type') String? propertyType,
-  }) = _Category;
+  const factory Category({int? id, String? name}) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);

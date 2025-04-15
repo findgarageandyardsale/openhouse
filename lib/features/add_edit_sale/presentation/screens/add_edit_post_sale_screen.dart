@@ -90,15 +90,6 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
       try {
         final model = ref.read(addNotifierProvider.notifier).postData;
 
-        final postPrice =
-            (HelperConstant.priceForEach *
-                (model?.propertySize?.availableTimeSlots ?? []).length);
-        HelperConstant.postPrice =
-            (postPrice == 0
-                    ? (model?.openHouseProperty?.price ?? '10')
-                    : postPrice)
-                .toString();
-
         String? transactionId = await StripeService.instance.makePayment();
         Navigator.pop(context);
 
@@ -266,15 +257,19 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
     void addFunction() async {
       try {
         FocusScope.of(context).unfocus();
-        if (true) {
-          // if (formKey.currentState?.saveAndValidate() ?? false) {
-          // if ((ref.read(addDataNotifierProvider)?.attachments ?? []).isEmpty) {
-          //   CustomToast.showToast(
-          //     'Please add atleast one image',
-          //     status: ToastStatus.error,
-          //   );
-          //   return;
-          // }
+        if (formKey.currentState?.saveAndValidate() ?? false) {
+          if ((ref
+                      .read(addDataNotifierProvider)
+                      ?.openHouseProperty
+                      ?.attachments ??
+                  [])
+              .isEmpty) {
+            CustomToast.showToast(
+              'Please add atleast one image',
+              status: ToastStatus.error,
+            );
+            return;
+          }
           ref.read(addNotifierProvider.notifier).loadingState();
           Map<String, dynamic> currentData = {};
 
@@ -301,12 +296,9 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
           }
           currentData = convertEmptyStringsToNull(currentData);
 
-          // ref
-          //     .read(addDataNotifierProvider.notifier)
-          //     .manageWholeData(currentData);
-          // PrintUtils.customLog(
-          //     (widget.garageayard?.status == StatusEnum.expired)
-          //         .toString());
+          ref
+              .read(addDataNotifierProvider.notifier)
+              .manageWholeData(currentData);
 
           if (widget.garageayard == null ||
               widget.garageayard?.status == StatusEnum.expired) {

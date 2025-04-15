@@ -84,6 +84,9 @@ class StepOne extends ConsumerWidget {
               child: PropertyTypeWidget(
                 onTap: (value) {
                   propertyTypeController.text = value.name ?? '';
+                  ref
+                      .read(addDataNotifierProvider.notifier)
+                      .setPropertyType(value);
                 },
               ),
             );
@@ -95,8 +98,8 @@ class StepOne extends ConsumerWidget {
 }
 
 class PropertyTypeWidget extends ConsumerWidget {
-  const PropertyTypeWidget({super.key, this.onTap});
-  final Function(PropertyTypeModel)? onTap;
+  const PropertyTypeWidget({super.key, required this.onTap});
+  final Function(PropertyTypeModel) onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -127,8 +130,8 @@ class PropertyTypeWidget extends ConsumerWidget {
                 ...typeList.map(
                   (e) => ListTile(
                     onTap: () {
+                      onTap(e);
                       Navigator.pop(context);
-                      if (onTap != null) onTap!(e);
                     },
                     title: Text(e.name ?? ''),
                   ),

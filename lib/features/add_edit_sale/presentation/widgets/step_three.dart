@@ -96,7 +96,9 @@ class StepThree extends ConsumerWidget {
                     child: ListBottomSheet(
                       onTap: (value) {
                         bedroomsController.text = value;
-                    
+                        ref
+                            .read(addDataNotifierProvider.notifier)
+                            .setBedrooms(value);
                       },
                       items: FilterConstants.bedrooms,
                       title: 'No. of Bedrooms',
@@ -127,6 +129,9 @@ class StepThree extends ConsumerWidget {
                     child: ListBottomSheet(
                       onTap: (value) {
                         bathroomsController.text = value;
+                        ref
+                            .read(addDataNotifierProvider.notifier)
+                            .setBathrooms(value);
                       },
                       items: FilterConstants.bedrooms,
                       title: 'No. of Bedrooms',

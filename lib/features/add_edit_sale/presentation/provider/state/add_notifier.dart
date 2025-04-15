@@ -32,7 +32,7 @@ class AddNotifier extends StateNotifier<FormzState> {
 
   Future<void> addSale({String? transactionId}) async {
     try {
-      state = const FormzState.loading();
+      // state = const FormzState.loading();
 
       // List<AvailableTimeSlot> timeSlots = [];
       // timeSlots.addAll(postData?.availableTimeSlots ?? []);
@@ -45,35 +45,11 @@ class AddNotifier extends StateNotifier<FormzState> {
       //   categories.add(element.id!);
       // }
 
-      final postPrice =
-          (HelperConstant.priceForEach *
-              (postData?.propertySize?.availableTimeSlots ?? []).length);
-
-      HelperConstant.postPrice =
-          (postPrice == 0
-                  ? (postData?.openHouseProperty?.price ?? '10')
-                  : postPrice)
-              .toString();
-
-      // Map<String, dynamic> data = postData!.toJson();
-      // data['category'] = categories;
-      // data['price'] = postPrice;
-      // data['status'] = 'Active';
-      // data['available_time_slots'] = availableTimeSlots;
-      // if (transactionId != null) {
-      //   postData['transaction_id'] = transactionId;
-      // } else {
-      //   data['transaction_id'] = null;
-      // }
 
       final value = postData?.copyWith(
         transactionId: (transactionId != null) ? transactionId : null,
       );
-      PrintUtils.customLog(jsonEncode(value?.toJson()));
-
-      // data['images'] = postData?.attachments?.map((e) => e.id).toList();
       final data = ref.read(addDataNotifierProvider.notifier).toAddJson(value!);
-      PrintUtils.customLog(jsonEncode(data));
 
       final response = await addRepository.addPost(singleItem: data);
 

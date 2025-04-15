@@ -28,8 +28,8 @@ mixin _$AvailableTimeSlot {
   String? get startTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'end_time')
   String? get endTime => throw _privateConstructorUsedError;
-  @JsonKey(name: 'garage_yard_id')
-  int? get garageYardId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'property_id')
+  String? get garageYardId => throw _privateConstructorUsedError;
 
   /// Serializes this AvailableTimeSlot to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ abstract class $AvailableTimeSlotCopyWith<$Res> {
     bool? isEditable,
     @JsonKey(name: 'start_time') String? startTime,
     @JsonKey(name: 'end_time') String? endTime,
-    @JsonKey(name: 'garage_yard_id') int? garageYardId,
+    @JsonKey(name: 'property_id') String? garageYardId,
   });
 }
 
@@ -111,7 +111,7 @@ class _$AvailableTimeSlotCopyWithImpl<$Res, $Val extends AvailableTimeSlot>
                 freezed == garageYardId
                     ? _value.garageYardId
                     : garageYardId // ignore: cast_nullable_to_non_nullable
-                        as int?,
+                        as String?,
           )
           as $Val,
     );
@@ -133,7 +133,7 @@ abstract class _$$AvailableTimeSlotImplCopyWith<$Res>
     bool? isEditable,
     @JsonKey(name: 'start_time') String? startTime,
     @JsonKey(name: 'end_time') String? endTime,
-    @JsonKey(name: 'garage_yard_id') int? garageYardId,
+    @JsonKey(name: 'property_id') String? garageYardId,
   });
 }
 
@@ -189,7 +189,7 @@ class __$$AvailableTimeSlotImplCopyWithImpl<$Res>
             freezed == garageYardId
                 ? _value.garageYardId
                 : garageYardId // ignore: cast_nullable_to_non_nullable
-                    as int?,
+                    as String?,
       ),
     );
   }
@@ -206,7 +206,7 @@ class _$AvailableTimeSlotImpl
     this.isEditable,
     @JsonKey(name: 'start_time') this.startTime,
     @JsonKey(name: 'end_time') this.endTime,
-    @JsonKey(name: 'garage_yard_id') this.garageYardId,
+    @JsonKey(name: 'property_id') this.garageYardId,
   });
 
   factory _$AvailableTimeSlotImpl.fromJson(Map<String, dynamic> json) =>
@@ -225,8 +225,8 @@ class _$AvailableTimeSlotImpl
   @JsonKey(name: 'end_time')
   final String? endTime;
   @override
-  @JsonKey(name: 'garage_yard_id')
-  final int? garageYardId;
+  @JsonKey(name: 'property_id')
+  final String? garageYardId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -298,7 +298,7 @@ abstract class _AvailableTimeSlot implements AvailableTimeSlot {
     final bool? isEditable,
     @JsonKey(name: 'start_time') final String? startTime,
     @JsonKey(name: 'end_time') final String? endTime,
-    @JsonKey(name: 'garage_yard_id') final int? garageYardId,
+    @JsonKey(name: 'property_id') final String? garageYardId,
   }) = _$AvailableTimeSlotImpl;
 
   factory _AvailableTimeSlot.fromJson(Map<String, dynamic> json) =
@@ -317,8 +317,8 @@ abstract class _AvailableTimeSlot implements AvailableTimeSlot {
   @JsonKey(name: 'end_time')
   String? get endTime;
   @override
-  @JsonKey(name: 'garage_yard_id')
-  int? get garageYardId;
+  @JsonKey(name: 'property_id')
+  String? get garageYardId;
 
   /// Create a copy of AvailableTimeSlot
   /// with the given fields replaced by the non-null parameter values.
@@ -336,10 +336,6 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
 mixin _$Category {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'property_category')
-  String? get propertyCategory => throw _privateConstructorUsedError;
-  @JsonKey(name: 'property_type')
-  String? get propertyType => throw _privateConstructorUsedError;
 
   /// Serializes this Category to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -356,12 +352,7 @@ abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
       _$CategoryCopyWithImpl<$Res, Category>;
   @useResult
-  $Res call({
-    int? id,
-    String? name,
-    @JsonKey(name: 'property_category') String? propertyCategory,
-    @JsonKey(name: 'property_type') String? propertyType,
-  });
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -378,12 +369,7 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? propertyCategory = freezed,
-    Object? propertyType = freezed,
-  }) {
+  $Res call({Object? id = freezed, Object? name = freezed}) {
     return _then(
       _value.copyWith(
             id:
@@ -395,16 +381,6 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
                 freezed == name
                     ? _value.name
                     : name // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            propertyCategory:
-                freezed == propertyCategory
-                    ? _value.propertyCategory
-                    : propertyCategory // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            propertyType:
-                freezed == propertyType
-                    ? _value.propertyType
-                    : propertyType // ignore: cast_nullable_to_non_nullable
                         as String?,
           )
           as $Val,
@@ -421,12 +397,7 @@ abstract class _$$CategoryImplCopyWith<$Res>
   ) = __$$CategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int? id,
-    String? name,
-    @JsonKey(name: 'property_category') String? propertyCategory,
-    @JsonKey(name: 'property_type') String? propertyType,
-  });
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -442,12 +413,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? propertyCategory = freezed,
-    Object? propertyType = freezed,
-  }) {
+  $Res call({Object? id = freezed, Object? name = freezed}) {
     return _then(
       _$CategoryImpl(
         id:
@@ -460,16 +426,6 @@ class __$$CategoryImplCopyWithImpl<$Res>
                 ? _value.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String?,
-        propertyCategory:
-            freezed == propertyCategory
-                ? _value.propertyCategory
-                : propertyCategory // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        propertyType:
-            freezed == propertyType
-                ? _value.propertyType
-                : propertyType // ignore: cast_nullable_to_non_nullable
-                    as String?,
       ),
     );
   }
@@ -478,12 +434,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CategoryImpl with DiagnosticableTreeMixin implements _Category {
-  const _$CategoryImpl({
-    this.id,
-    this.name,
-    @JsonKey(name: 'property_category') this.propertyCategory,
-    @JsonKey(name: 'property_type') this.propertyType,
-  });
+  const _$CategoryImpl({this.id, this.name});
 
   factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryImplFromJson(json);
@@ -492,16 +443,10 @@ class _$CategoryImpl with DiagnosticableTreeMixin implements _Category {
   final int? id;
   @override
   final String? name;
-  @override
-  @JsonKey(name: 'property_category')
-  final String? propertyCategory;
-  @override
-  @JsonKey(name: 'property_type')
-  final String? propertyType;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Category(id: $id, name: $name, propertyCategory: $propertyCategory, propertyType: $propertyType)';
+    return 'Category(id: $id, name: $name)';
   }
 
   @override
@@ -510,9 +455,7 @@ class _$CategoryImpl with DiagnosticableTreeMixin implements _Category {
     properties
       ..add(DiagnosticsProperty('type', 'Category'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('propertyCategory', propertyCategory))
-      ..add(DiagnosticsProperty('propertyType', propertyType));
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
@@ -521,17 +464,12 @@ class _$CategoryImpl with DiagnosticableTreeMixin implements _Category {
         (other.runtimeType == runtimeType &&
             other is _$CategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.propertyCategory, propertyCategory) ||
-                other.propertyCategory == propertyCategory) &&
-            (identical(other.propertyType, propertyType) ||
-                other.propertyType == propertyType));
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, propertyCategory, propertyType);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -548,12 +486,7 @@ class _$CategoryImpl with DiagnosticableTreeMixin implements _Category {
 }
 
 abstract class _Category implements Category {
-  const factory _Category({
-    final int? id,
-    final String? name,
-    @JsonKey(name: 'property_category') final String? propertyCategory,
-    @JsonKey(name: 'property_type') final String? propertyType,
-  }) = _$CategoryImpl;
+  const factory _Category({final int? id, final String? name}) = _$CategoryImpl;
 
   factory _Category.fromJson(Map<String, dynamic> json) =
       _$CategoryImpl.fromJson;
@@ -562,12 +495,6 @@ abstract class _Category implements Category {
   int? get id;
   @override
   String? get name;
-  @override
-  @JsonKey(name: 'property_category')
-  String? get propertyCategory;
-  @override
-  @JsonKey(name: 'property_type')
-  String? get propertyType;
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
