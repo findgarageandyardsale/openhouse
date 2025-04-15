@@ -27,7 +27,7 @@ class AddNotifier extends StateNotifier<FormzState> {
   }
 
   void loadingState() {
-    state = const FormzState.initial();
+    state = const FormzState.loading();
   }
 
   Future<void> addSale({String? transactionId}) async {
@@ -44,7 +44,6 @@ class AddNotifier extends StateNotifier<FormzState> {
       // for (var element in (postData!.category ?? [])) {
       //   categories.add(element.id!);
       // }
-
 
       final value = postData?.copyWith(
         transactionId: (transactionId != null) ? transactionId : null,

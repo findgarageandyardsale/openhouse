@@ -5,7 +5,7 @@ import 'package:open_house/features/add_edit_sale/presentation/provider/add_data
 import 'package:open_house/features/add_edit_sale/presentation/provider/cat_provider.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/category_selector.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/title_head.dart';
-import 'package:open_house/features/explore/presentation/widgets/custom_choice_chip.dart';
+
 import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 
@@ -44,12 +44,12 @@ class StepFour extends ConsumerWidget {
                           style: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(fontWeight: FontWeight.w700),
                         ),
-                        if ((addCatdata?.openHouseProperty?.category ?? [])
-                            .isNotEmpty)
-                          Text(
-                            '${(addCatdata?.openHouseProperty?.category ?? []).length} Selected',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
+                        // if ((addCatdata?.openHouseProperty?.category ?? [])
+                        //     .isNotEmpty)
+                        //   Text(
+                        //     '${(addCatdata?.openHouseProperty?.category ?? []).length} Selected',
+                        //     style: Theme.of(context).textTheme.bodyMedium,
+                        //   ),
                       ],
                     ),
                     Spacing.sizedBoxH_08(),

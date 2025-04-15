@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'package:oktoast/oktoast.dart';
 import 'package:open_house/observers.dart';
+import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'routes/app_route.dart';
 import 'shared/theme/app_theme.dart';
@@ -26,9 +28,13 @@ Future<void> main() async {
   FlqutterBranchSdk.setRequestMetadata('key2', 'value2');
   */
 
-  // Stripe.publishableKey = HelperConstant.publishableStripeKey;
-  // Stripe.merchantIdentifier = HelperConstant.merchantIdentifier;
-  // await Stripe.instance.applySettings();
+  try {
+    Stripe.publishableKey = HelperConstant.publishableStripeKey;
+    Stripe.merchantIdentifier = HelperConstant.merchantIdentifier;
+    await Stripe.instance.applySettings();
+  } catch (e) {
+    debugPrint('Stripe Initialization Error: $e');
+  }
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle.light.copyWith(
@@ -37,9 +43,14 @@ Future<void> main() async {
     ),
   );
 
-  runApp(ProviderScope(observers: [
-    // Observers(),
-    ], child: MyApp()));
+  runApp(
+    ProviderScope(
+      observers: [
+        // Observers(),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {

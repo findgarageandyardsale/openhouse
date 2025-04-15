@@ -85,21 +85,21 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   }
 
   void updateCat(Category cat) {
-    // Since category is in OpenHouseProperty, we need to handle it differently
-    // if cat is already in the list, remove it
+    // // Since category is in OpenHouseProperty, we need to handle it differently
+    // // if cat is already in the list, remove it
 
-    List<Category> newCat = [];
-    newCat.addAll(state?.openHouseProperty?.category ?? []);
-    if (newCat.contains(cat)) {
-      newCat.remove(cat);
-    } else {
-      newCat.add(cat);
-    }
+    // List<Category> newCat = [];
+    // newCat.addAll(state?.openHouseProperty?.category ?? []);
+    // if (newCat.contains(cat)) {
+    //   newCat.remove(cat);
+    // } else {
+    //   newCat.add(cat);
+    // }
 
     try {
       state = state?.copyWith(
         openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
-            .copyWith(category: newCat),
+            .copyWith(category: [cat]),
       );
     } catch (e) {
       log('UpdateCat Error: ${e.toString()}');
@@ -485,7 +485,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
         if (model.propertySize?.bathrooms != null)
           "bathrooms": model.propertySize?.bathrooms,
         if (model.propertySize?.yearBuilt != null)
-          "year_built": model.propertySize?.yearBuilt,
+          "year_built": model.propertySize?.yearBuilt?.year.toString(),
         if (model.propertySize?.availableTimeSlots != null)
           "available_time_slots": availableTimeSlots,
       },
