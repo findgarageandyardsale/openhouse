@@ -67,6 +67,8 @@ class _ActiveSalesScreenState extends ConsumerState<ActiveSalesScreen> {
 
     return state.state == ExploreConcreteState.loading
         ? const MainViewShimmer()
+        : state.state == ExploreConcreteState.failure
+        ? const Center(child: Text('Error'))
         : state.garageYardList.isEmpty
         ? RefreshIndicator(
           onRefresh: _refreshPosts,

@@ -62,6 +62,7 @@ class StepOne extends ConsumerWidget {
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(errorText: 'Price cannot be empty.'),
           ]),
+          prefixIcon: const Icon(Icons.attach_money),
           controller: priceController,
           onChanged: (value) {
             // Update the state with the new value

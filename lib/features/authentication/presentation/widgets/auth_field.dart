@@ -14,6 +14,7 @@ class AuthField extends StatefulWidget {
     this.autoFocus = false,
     this.borderRadius = 12.0,
     this.suffixIcon,
+    this.prefixIcon,
     this.keyboardType,
     this.fillColor = AppColors.extraLightGrey,
     this.textInputAction,
@@ -34,6 +35,7 @@ class AuthField extends StatefulWidget {
   final String? labelText;
   final bool obscureText;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final TextCapitalization textCapitalization;
 
   final TextInputAction? textInputAction;
@@ -116,6 +118,7 @@ class _AuthFieldState extends State<AuthField> {
           context,
         ).textTheme.bodyMedium!.copyWith(color: Colors.red),
         filled: widget.fillColor != null ? true : false,
+        prefixIcon: widget.prefixIcon,
         suffixIcon:
             widget.suffixIcon ??
             (widget.obscureText == false

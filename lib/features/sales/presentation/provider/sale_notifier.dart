@@ -18,34 +18,43 @@ class SaleNotifier extends StateNotifier<ExploreState> {
       state.state != ExploreConcreteState.fetchingMore;
 
   Future<void> fetchExplorePosts() async {
-    if (isFetching && state.state != ExploreConcreteState.fetchedAllExplore) {
-      state = state.copyWith(
-        state:
-            state.page > 0
-                ? ExploreConcreteState.fetchingMore
-                : ExploreConcreteState.loading,
-        isLoading: true,
-      );
+    try {
+      if (isFetching && state.state != ExploreConcreteState.fetchedAllExplore) {
+        state = state.copyWith(
+          state:
+              state.page > 0
+                  ? ExploreConcreteState.fetchingMore
+                  : ExploreConcreteState.loading,
+          isLoading: true,
+        );
 
-      final response = await saleRepository.fetchExplorePost(
-        page: state.page + 1,
-        isExpired: isExpired,
-      );
+        final response = await saleRepository.fetchExplorePost(
+          page: state.page + 1,
+          isExpired: isExpired,
+        );
 
-      updateStateFromResponse(response);
-    } else {
+        updateStateFromResponse(response);
+      } else {
+        state = state.copyWith(
+          state: ExploreConcreteState.fetchedAllExplore,
+          message: 'No more products available',
+          isLoading: false,
+        );
+      }
+    } catch (e) {
       state = state.copyWith(
-        state: ExploreConcreteState.fetchedAllExplore,
-        message: 'No more products available',
+        state: ExploreConcreteState.failure,
+        message: e.toString(),
         isLoading: false,
       );
     }
   }
 
   Future<void> searchExplorePosts(String query) async {
-    if (isFetching && state.state != ExploreConcreteState.fetchedAllExplore) {
-      state = state.copyWith(
-        state:
+    try {
+      if (isFetching && state.state != ExploreConcreteState.fetchedAllExplore) {
+        state = state.copyWith(
+          state:
             state.page > 0
                 ? ExploreConcreteState.fetchingMore
                 : ExploreConcreteState.loading,
@@ -61,12 +70,18 @@ class SaleNotifier extends StateNotifier<ExploreState> {
     } else {
       state = state.copyWith(
         state: ExploreConcreteState.fetchedAllExplore,
-        message: 'No more products available',
+          message: 'No more products available',
+          isLoading: false,
+        );
+      }
+    } catch (e) {
+      state = state.copyWith(
+        state: ExploreConcreteState.failure,
+        message: e.toString(),
         isLoading: false,
       );
     }
   }
-
   void updateStateFromResponse(
     Either<AppException, PaginatedResponse> response,
   ) {
@@ -79,8 +94,7 @@ class SaleNotifier extends StateNotifier<ExploreState> {
         );
       },
       (data) {
-        //
-
+        //w
         final garageYardList =
             (data.data ?? []).map((e) => OpenHouse.fromJson(e)).toList();
 

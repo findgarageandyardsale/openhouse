@@ -21,37 +21,45 @@ class ExploreNotifier extends StateNotifier<ExploreState> {
       state.state != ExploreConcreteState.fetchingMore;
 
   Future<void> fetchExplorePosts({String? search}) async {
-    if (isFetching && state.state != ExploreConcreteState.fetchedAllExplore) {
-      if (state.state != ExploreConcreteState.loading &&
-          state.isLoading != true) {
-        state = state.copyWith(
-          state:
-              state.page > 0
-                  ? ExploreConcreteState.fetchingMore
-                  : ExploreConcreteState.loading,
-          isLoading: true,
-        );
+    try {
+      if (isFetching && state.state != ExploreConcreteState.fetchedAllExplore) {
+        if (state.state != ExploreConcreteState.loading &&
+            state.isLoading != true) {
+          state = state.copyWith(
+            state:
+                state.page > 0
+                    ? ExploreConcreteState.fetchingMore
+                    : ExploreConcreteState.loading,
+            isLoading: true,
+          );
 
-        Map<String, dynamic> mapData = {
-          ...filterState.toJson(),
-          if (locationState.currentLatLng != null)
-            'user_lat': locationState.currentLatLng!.latitude,
-          if (locationState.currentLatLng != null)
-            'user_lon': locationState.currentLatLng!.longitude,
-          'q': (search ?? '').isNotEmpty ? search : null,
-        };
-        if (filterState.isGarage != null) {
-          mapData.addAll({
-            'type': filterState.isGarage == true ? 'Garage' : 'Yard',
-          });
+          Map<String, dynamic> mapData = {
+            ...filterState.toJson(),
+            if (locationState.currentLatLng != null)
+              'user_lat': locationState.currentLatLng!.latitude,
+            if (locationState.currentLatLng != null)
+              'user_lon': locationState.currentLatLng!.longitude,
+            'q': (search ?? '').isNotEmpty ? search : null,
+          };
+          if (filterState.isGarage != null) {
+            mapData.addAll({
+              'type': filterState.isGarage == true ? 'Garage' : 'Yard',
+            });
+          }
+          final response = await exploreRepository.fetchExplorePost(
+            page: state.page + 1,
+            filter: mapData,
+          );
+
+          updateStateFromResponse(response);
         }
-        final response = await exploreRepository.fetchExplorePost(
-          page: state.page + 1,
-          filter: mapData,
-        );
-
-        updateStateFromResponse(response);
       }
+    } catch (e) {
+      state = state.copyWith(
+        state: ExploreConcreteState.failure,
+        message: e.toString(),
+        isLoading: false,
+      );
     }
   }
 

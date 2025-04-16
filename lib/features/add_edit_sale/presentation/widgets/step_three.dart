@@ -54,6 +54,13 @@ class StepThree extends ConsumerWidget {
                       .read(addDataNotifierProvider.notifier)
                       .setCoveredArea(double.tryParse(value ?? ''));
                 },
+                suffixIcon: SizedBox(
+                  width: 50,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: const Text('sq. ft ', textAlign: TextAlign.center),
+                  ),
+                ),
                 controller: coveredAreaController,
               ),
             ),
@@ -62,6 +69,13 @@ class StepThree extends ConsumerWidget {
                 name: 'lot_size',
                 hintText: 'Lot Size*',
                 labelText: 'Lot Size*',
+                suffixIcon: SizedBox(
+                  width: 50,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: const Text('sq. ft ', textAlign: TextAlign.center),
+                  ),
+                ),
                 textInputAction: TextInputAction.next,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(

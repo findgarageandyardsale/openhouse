@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,7 +35,7 @@ Future<void> main() async {
     Stripe.merchantIdentifier = HelperConstant.merchantIdentifier;
     await Stripe.instance.applySettings();
   } catch (e) {
-    debugPrint('Stripe Initialization Error: $e');
+    log('Stripe Initialization Error: $e');
   }
 
   SystemChrome.setSystemUIOverlayStyle(

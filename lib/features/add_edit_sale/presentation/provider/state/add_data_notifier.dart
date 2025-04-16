@@ -485,7 +485,9 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
         if (model.propertySize?.bathrooms != null)
           "bathrooms": model.propertySize?.bathrooms,
         if (model.propertySize?.yearBuilt != null)
-          "year_built": model.propertySize?.yearBuilt?.year.toString(),
+          "year_built": CustomDateUtils.formatDateFilter(
+            model.propertySize?.yearBuilt ?? DateTime.now(),
+          ),
         if (model.propertySize?.availableTimeSlots != null)
           "available_time_slots": availableTimeSlots,
       },

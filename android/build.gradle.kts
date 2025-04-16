@@ -1,4 +1,8 @@
-
+buildscript {
+    extra.apply {
+        set("kotlin_version", "1.9.22")
+    }
+}
 
 allprojects {
 
