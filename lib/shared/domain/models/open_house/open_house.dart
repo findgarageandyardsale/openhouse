@@ -102,9 +102,9 @@ class OpenHouse with _$OpenHouse {
 
 // Enum for Garage
 enum StatusEnum {
-  @JsonValue('active')
+  @JsonValue('Active')
   active,
-  @JsonValue('expired')
+  @JsonValue('Expired')
   expired,
 }
 

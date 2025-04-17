@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/account/presentation/screens/my_profile_screen.dart';
+import 'package:open_house/features/explore/presentation/providers/explore_state_provider.dart';
 import 'package:open_house/features/sales/presentation/provider/sale_state_provider.dart';
 import 'package:open_house/routes/app_route.gr.dart';
 import 'package:open_house/shared/extension/context.dart';
@@ -41,6 +42,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   @override
   void initState() {
     super.initState();
+    // Future.microtask(() {
+    //   ref.read(detailPageProvider(widget.garageayard.id));
+    // });
     _loadCustomMarker();
   }
 
@@ -83,59 +87,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final currentUserAsyncValue = ref.watch(currentUserProvider);
-
-    return context.doublePos(
-      appbar:
-          AppBar(title: Text(widget.garageayard.openHouseProperty?.name ?? '')),
-      isActive: widget.isActive,
-      statusText: widget.isActive == null
-          ? 'Get Directions'
-          : widget.isActive == true
-              ? 'Edit Sale'
-              : 'Extend Expiry',
-      actions: currentUserAsyncValue.when(
-        data: (User? data) {
-          if (data == null) {
-            return [const SizedBox.shrink()];
-          } else {
-            return [];
-          }
-        },
-        error: (Object error, StackTrace stackTrace) {
-          return [const SizedBox.shrink()];
-        },
-        loading: () {
-          return [const SizedBox.shrink()];
-        },
-      ),
-      onPosPressed: () async {
-        if (widget.isActive == null) {
-          if (widget.garageayard.location?.latitude == null ||
-              widget.garageayard.location?.longitude == null) {
-            CustomToast.showToast(
-              'Location not available',
-              status: ToastStatus.error,
-            );
-            return;
-          }
-          AppUtils.openAppDirections(
-            widget.garageayard.location?.latitude ?? 0.0,
-            widget.garageayard.location?.longitude ?? 0.0,
-          );
-        } else if (widget.isActive == true || widget.isActive == false) {
-          context.router
-              .push(AddEditPostSaleScreen(garageayard: widget.garageayard))
-              .then((val) {
-            if (val == true) {
-              ref.read(saleNotifierProvider.notifier)
-                ..resetState()
-                ..fetchExplorePosts();
-              Navigator.pop(context);
-            }
-          });
-        }
-      },
-      content: SingleChildScrollView(
+    final detailState = ref.watch(detailPageProvider(widget.garageayard.id));
+    Widget buildcontextWidget() {
+      return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -350,8 +304,82 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
             ),
           ],
         ),
-      ),
-    );
+      );
+    }
+
+    return context.doublePos(
+        appbar: AppBar(
+            title: Text(widget.garageayard.openHouseProperty?.name ?? '')),
+        isActive: widget.isActive,
+        statusText: widget.isActive == null
+            ? 'Get Directions'
+            : widget.isActive == true
+                ? 'Edit Sale'
+                : 'Extend Expiry',
+        actions: currentUserAsyncValue.when(
+          data: (User? data) {
+            if (data == null) {
+              return [const SizedBox.shrink()];
+            } else {
+              return [];
+            }
+          },
+          error: (Object error, StackTrace stackTrace) {
+            return [const SizedBox.shrink()];
+          },
+          loading: () {
+            return [const SizedBox.shrink()];
+          },
+        ),
+        onPosPressed: () async {
+          if (widget.isActive == null) {
+            if (widget.garageayard.location?.latitude == null ||
+                widget.garageayard.location?.longitude == null) {
+              CustomToast.showToast(
+                'Location not available',
+                status: ToastStatus.error,
+              );
+              return;
+            }
+            AppUtils.openAppDirections(
+              widget.garageayard.location?.latitude ?? 0.0,
+              widget.garageayard.location?.longitude ?? 0.0,
+            );
+          } else if (widget.isActive == true || widget.isActive == false) {
+            context.router
+                .push(AddEditPostSaleScreen(garageayard: widget.garageayard))
+                .then((val) {
+              if (val == true) {
+                ref.read(saleNotifierProvider.notifier)
+                  ..resetState()
+                  ..fetchExplorePosts();
+                Navigator.pop(context);
+              }
+            });
+          }
+        },
+        content: buildcontextWidget()
+
+        /* detailState.when(
+          initial: () {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+          loading: () {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+          failure: (error) {
+            return buildcontextWidget();
+          },
+          success: (data) {
+            return buildcontextWidget();
+          },
+        )
+        */
+        );
   }
 }
 

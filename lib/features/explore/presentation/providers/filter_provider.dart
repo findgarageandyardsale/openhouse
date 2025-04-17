@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:open_house/features/explore/presentation/providers/state/filter_notifier.dart';
+import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
+/*
 class FilterState {
   final List<String> selectedCategories;
   final List<String> selectedPropertyTypes;
@@ -107,7 +109,7 @@ class FilterNotifier extends StateNotifier<FilterState> {
   void resetFilters() {
     state = const FilterState();
   }
-}
+}*/
 
 final filterProvider = StateNotifierProvider<FilterNotifier, FilterState>((
   ref,

@@ -1,29 +1,29 @@
 class FilterConstants {
-  static const List<String> propertyCategories = [
-    'ALL',
-    'Residential',
-    'Commercial',
-    'Industrial',
-  ];
-  static const List<String> addPropertyCategories = [
-    'Residential',
-    'Commercial',
-    'Industrial',
-  ];
+  // static const List<String> propertyCategories = [
+  //   'ALL',
+  //   'Residential',
+  //   'Commercial',
+  //   'Industrial',
+  // ];
+  // static const List<String> addPropertyCategories = [
+  //   'Residential',
+  //   'Commercial',
+  //   'Industrial',
+  // ];
 
-  static const List<String> propertyTypes = [
-    'ALL',
-    'Sale',
-    'Rent',
-    'Lease',
-    'Lease to Own',
-  ];
-  static const List<String> addPropertyTypes = [
-    'Sale',
-    'Rent',
-    'Lease',
-    'Lease to Own',
-  ];
+  // static const List<String> propertyTypes = [
+  //   'ALL',
+  //   'Sale',
+  //   'Rent',
+  //   'Lease',
+  //   'Lease to Own',
+  // ];
+  // static const List<String> addPropertyTypes = [
+  //   'Sale',
+  //   'Rent',
+  //   'Lease',
+  //   'Lease to Own',
+  // ];
 
   static const List<Map<String, String>> usStates = [
     {'name': 'Alabama', 'abbreviation': 'AL'},

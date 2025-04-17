@@ -115,8 +115,8 @@ Map<String, dynamic> _$$OpenHouseImplToJson(_$OpenHouseImpl instance) =>
     };
 
 const _$StatusEnumEnumMap = {
-  StatusEnum.active: 'active',
-  StatusEnum.expired: 'expired',
+  StatusEnum.active: 'Active',
+  StatusEnum.expired: 'Expired',
 };
 
 _$OpenHousePropertyImpl _$$OpenHousePropertyImplFromJson(

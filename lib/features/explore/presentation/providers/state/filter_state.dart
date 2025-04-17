@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:open_house/shared/domain/models/open_house/open_house.dart';
+import 'package:open_house/shared/domain/models/property_type_model/property_type_model.dart';
 import 'package:open_house/shared/utils/cusotm_date_utils.dart';
 import 'package:open_house/shared/utils/print_utils.dart';
 
@@ -12,14 +13,37 @@ class FilterState {
   final bool? isGarage;
   final List<Category>? selectedCategories;
 
-  FilterState({
-    this.zipCode,
-    this.radius,
-    this.startDate,
-    this.endDate,
-    this.isGarage,
-    this.selectedCategories,
-  });
+  //  final List<String> selectedCategories;
+  final List<PropertyTypeModel>? selectedPropertyTypes;
+  final double priceMin;
+  final double priceMax;
+  final double distance;
+  final List<String> selectedBedrooms;
+  final List<String> selectedBathrooms;
+  final bool isPetFriendly;
+  final String sortBy;
+  final String? yearBuilt;
+  final String? coveredArea;
+  final String? lotSize;
+
+  FilterState(
+      {this.zipCode,
+      this.radius,
+      this.startDate,
+      this.endDate,
+      this.isGarage,
+      this.selectedCategories,
+      this.priceMin = 10000,
+      this.priceMax = 1000000,
+      this.distance = 0,
+      this.selectedBedrooms = const [],
+      this.selectedBathrooms = const [],
+      this.isPetFriendly = false,
+      this.sortBy = 'Newest Listings',
+      this.yearBuilt,
+      this.coveredArea,
+      this.lotSize,
+      this.selectedPropertyTypes});
 
   FilterState copyWith({
     String? zipCode,
@@ -28,6 +52,17 @@ class FilterState {
     bool? isGarage,
     DateTime? endDate,
     List<Category>? selectedCategories,
+    List<PropertyTypeModel>? selectedPropertyTypes,
+    double? priceMin,
+    double? priceMax,
+    double? distance,
+    List<String>? selectedBedrooms,
+    List<String>? selectedBathrooms,
+    bool? isPetFriendly,
+    String? sortBy,
+    String? yearBuilt,
+    String? coveredArea,
+    String? lotSize,
   }) {
     return FilterState(
       zipCode: zipCode ?? this.zipCode,
@@ -36,6 +71,18 @@ class FilterState {
       endDate: endDate ?? this.endDate,
       isGarage: isGarage ?? this.isGarage,
       selectedCategories: selectedCategories ?? this.selectedCategories,
+      selectedPropertyTypes:
+          selectedPropertyTypes ?? this.selectedPropertyTypes,
+      priceMin: priceMin ?? this.priceMin,
+      priceMax: priceMax ?? this.priceMax,
+      distance: distance ?? this.distance,
+      selectedBedrooms: selectedBedrooms ?? this.selectedBedrooms,
+      selectedBathrooms: selectedBathrooms ?? this.selectedBathrooms,
+      isPetFriendly: isPetFriendly ?? this.isPetFriendly,
+      sortBy: sortBy ?? this.sortBy,
+      yearBuilt: yearBuilt ?? this.yearBuilt,
+      coveredArea: coveredArea ?? this.coveredArea,
+      lotSize: lotSize ?? this.lotSize,
     );
   }
 
@@ -79,9 +126,20 @@ class FilterState {
       ),
       if (endDate != null)
         'end_date': CustomDateUtils.formatDateFilter(endDate!),
-      if (isGarage != null) 'is_garage': isGarage,
       if (selectedCategories != null)
         'category': (selectedCategories ?? []).map((e) => e.id).toList(),
+      if (selectedPropertyTypes != null)
+        'type': (selectedPropertyTypes ?? []).map((e) => e.id).toList(),
+      if (selectedBedrooms.isNotEmpty) 'bedrooms': selectedBedrooms,
+      if (selectedBathrooms.isNotEmpty) 'bathrooms': selectedBathrooms,
+      if (isPetFriendly) 'is_pet_friendly': isPetFriendly,
+      if (yearBuilt != null) 'year_built': yearBuilt,
+      if (coveredArea != null) 'covered_area': coveredArea,
+      if (lotSize != null) 'lot_size': lotSize,
+      'sort_by': sortBy,
+      'order_by': 'asc',
+      if (priceMin != 10000) 'price_min': priceMin,
+      if (priceMax != 1000000) 'price_max': priceMax,
     };
     PrintUtils.customLog('FilterState.toJson: ${jsonEncode(map)}');
     return map;

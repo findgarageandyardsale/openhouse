@@ -11,6 +11,10 @@ abstract class ExploreDatasource {
     required int skip,
     required Map<String, dynamic> queryParam,
   });
+
+  Future<Either<AppException, PaginatedResponse>> fetchDetailPosts({
+    required int? id,
+  });
 }
 
 class ExploreRemoteDatasource extends ExploreDatasource {
@@ -46,6 +50,34 @@ class ExploreRemoteDatasource extends ExploreDatasource {
         );
       }
       final paginatedResponse = PaginatedResponse.fromJson(jsonData);
+      return Right(paginatedResponse);
+    });
+  }
+
+  @override
+  Future<Either<AppException, PaginatedResponse>> fetchDetailPosts({
+    required int? id,
+  }) async {
+    final response = await networkService.get(
+      '${AppConfigs.yardSaleEndpoint}$id/',
+    );
+
+    return response.fold((l) => Left(l), (r) {
+      final jsonData = r.data;
+      if (jsonData == null) {
+        return Left(
+          AppException(
+            identifier: 'fetchDetailPosts',
+            statusCode: 0,
+            message: 'The data is not in the valid format.',
+          ),
+        );
+      }
+
+      final paginatedResponse = (jsonData is! List &&
+              jsonData['pagination'] != null)
+          ? PaginatedResponse.fromJson(jsonData)
+          : PaginatedResponse(data: jsonData is List ? jsonData : [jsonData]);
       return Right(paginatedResponse);
     });
   }

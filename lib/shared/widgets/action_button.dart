@@ -53,12 +53,12 @@ class ActionButton extends StatelessWidget {
             if (icon != null) Icon(icon, color: iconColor),
             Text(
               label,
-              style:
-                  textStyle ??
+              style: textStyle ??
                   Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: textColor ?? Theme.of(context).colorScheme.onPrimary,
-                    fontWeight: FontWeight.w700,
-                  ),
+                        color: textColor ??
+                            Theme.of(context).colorScheme.onPrimary,
+                        fontWeight: FontWeight.w700,
+                      ),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/explore/domain/repositories/explore_repository.dart';
 import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
+import 'package:open_house/shared/presentation/formz_state.dart';
 import '../../../../../services/location_service/presentation/state/location_state.dart';
 import '../../../../../shared/domain/models/open_house/open_house.dart';
 import '../../../../../shared/domain/models/paginated_response.dart';
@@ -14,7 +15,7 @@ class ExploreNotifier extends StateNotifier<ExploreState> {
   final FilterState filterState;
 
   ExploreNotifier(this.exploreRepository, this.filterState, this.locationState)
-    : super(const ExploreState.initial());
+      : super(const ExploreState.initial());
 
   bool get isFetching =>
       state.state != ExploreConcreteState.loading &&
@@ -26,10 +27,9 @@ class ExploreNotifier extends StateNotifier<ExploreState> {
         if (state.state != ExploreConcreteState.loading &&
             state.isLoading != true) {
           state = state.copyWith(
-            state:
-                state.page > 0
-                    ? ExploreConcreteState.fetchingMore
-                    : ExploreConcreteState.loading,
+            state: state.page > 0
+                ? ExploreConcreteState.fetchingMore
+                : ExploreConcreteState.loading,
             isLoading: true,
           );
 
@@ -97,10 +97,9 @@ class ExploreNotifier extends StateNotifier<ExploreState> {
           if (mounted) {
             state = state.copyWith(
               garageYardList: totalList,
-              state:
-                  totalList.length == data.pagination?.total
-                      ? ExploreConcreteState.fetchedAllExplore
-                      : ExploreConcreteState.loaded,
+              state: totalList.length == data.pagination?.total
+                  ? ExploreConcreteState.fetchedAllExplore
+                  : ExploreConcreteState.loaded,
               hasData: true,
               message: totalList.isEmpty ? 'No posts found' : data.message,
               page: (data.pagination?.currentPage ?? 0),
@@ -126,5 +125,31 @@ class ExploreNotifier extends StateNotifier<ExploreState> {
 
   void resetState() {
     if (mounted) state = const ExploreState.initial();
+  }
+}
+
+class DetailPageNotifier extends StateNotifier<FormzState> {
+  final ExploreRepository repository;
+
+  DetailPageNotifier(
+    this.repository,
+  ) : super(FormzState.initial());
+
+  void fetchPostDetails(int? postId) async {
+    try {
+      state = FormzState.loading();
+      final postDetails = await repository.fetchDetailPost(id: postId);
+
+      state = postDetails.fold(
+        (failure) => FormzState.failure(AppException(
+            message: failure.message, statusCode: 0, identifier: '')),
+        (data) {
+          return FormzState.success(data: data.data);
+        },
+      );
+    } catch (e) {
+      state = FormzState.failure(
+          AppException(message: e.toString(), statusCode: 0, identifier: ''));
+    }
   }
 }

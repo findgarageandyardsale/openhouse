@@ -7,4 +7,8 @@ abstract class ExploreRepository {
     required int page,
     required Map<String, dynamic> filter,
   });
+
+  Future<Either<AppException, PaginatedResponse>> fetchDetailPost({
+    required int? id,
+  });
 }

@@ -19,4 +19,13 @@ class ExploreRepositoryImpl extends ExploreRepository {
       queryParam: filter,
     );
   }
+
+  @override
+  Future<Either<AppException, PaginatedResponse>> fetchDetailPost({
+    required int? id,
+  }) {
+    return exploreDatasource.fetchDetailPosts(
+      id: id,
+    );
+  }
 }

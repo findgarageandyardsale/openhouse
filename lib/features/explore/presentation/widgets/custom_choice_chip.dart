@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
 
 class CustomChoiceChip extends StatelessWidget {
-  final String label;
+  final dynamic label;
   final bool isSelected;
   final VoidCallback onSelected;
   final Color? selectedColor;
@@ -25,27 +25,24 @@ class CustomChoiceChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onSelected,
-
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
         margin: const EdgeInsets.only(bottom: 8),
         decoration: BoxDecoration(
-          color:
-              isSelected
-                  ? (selectedColor ?? AppColors.primary)
-                  : (unselectedColor ?? Colors.transparent),
+          color: isSelected
+              ? (selectedColor ?? AppColors.primary)
+              : (unselectedColor ?? Colors.transparent),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: AppColors.primary, width: 1),
         ),
         child: Text(
-          label,
+          label is String ? label : label.name,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color:
-                isSelected
+                color: isSelected
                     ? (selectedTextColor ?? AppColors.white)
                     : (unselectedTextColor ?? AppColors.primary),
-            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-          ),
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+              ),
         ),
       ),
     );
