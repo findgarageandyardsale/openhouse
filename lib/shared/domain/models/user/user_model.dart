@@ -21,6 +21,7 @@ class User with _$User {
     String? token,
     @JsonKey(name: 'location') LocationModel? address,
     @JsonKey(name: 'realty_name') String? realtyName,
+    @JsonKey(name: 'office_address') String? officeAddress,
     @JsonKey(name: 'license_number') String? licenseNumber,
     @JsonKey(name: 'is_owner') bool? isOwner,
     @JsonKey(readValue: readValueForProfileImage) AttachmentModel? profile,

@@ -20,10 +20,7 @@ class LocationText extends StatelessWidget {
         Expanded(
           child: Text(
             location,
-            style:
-                fromDetail
-                    ? Theme.of(context).textTheme.bodyLarge
-                    : Theme.of(context).textTheme.bodySmall,
+            style: Theme.of(context).textTheme.bodyMedium,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
           ),

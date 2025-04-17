@@ -12,8 +12,7 @@ part of 'open_house.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AvailableTimeSlot _$AvailableTimeSlotFromJson(Map<String, dynamic> json) {
   return _AvailableTimeSlot.fromJson(json);
@@ -44,18 +43,16 @@ mixin _$AvailableTimeSlot {
 /// @nodoc
 abstract class $AvailableTimeSlotCopyWith<$Res> {
   factory $AvailableTimeSlotCopyWith(
-    AvailableTimeSlot value,
-    $Res Function(AvailableTimeSlot) then,
-  ) = _$AvailableTimeSlotCopyWithImpl<$Res, AvailableTimeSlot>;
+          AvailableTimeSlot value, $Res Function(AvailableTimeSlot) then) =
+      _$AvailableTimeSlotCopyWithImpl<$Res, AvailableTimeSlot>;
   @useResult
-  $Res call({
-    int? id,
-    DateTime? date,
-    bool? isEditable,
-    @JsonKey(name: 'start_time') String? startTime,
-    @JsonKey(name: 'end_time') String? endTime,
-    @JsonKey(name: 'property_id') String? garageYardId,
-  });
+  $Res call(
+      {int? id,
+      DateTime? date,
+      bool? isEditable,
+      @JsonKey(name: 'start_time') String? startTime,
+      @JsonKey(name: 'end_time') String? endTime,
+      @JsonKey(name: 'property_id') String? garageYardId});
 }
 
 /// @nodoc
@@ -80,71 +77,59 @@ class _$AvailableTimeSlotCopyWithImpl<$Res, $Val extends AvailableTimeSlot>
     Object? endTime = freezed,
     Object? garageYardId = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            date:
-                freezed == date
-                    ? _value.date
-                    : date // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            isEditable:
-                freezed == isEditable
-                    ? _value.isEditable
-                    : isEditable // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            startTime:
-                freezed == startTime
-                    ? _value.startTime
-                    : startTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            endTime:
-                freezed == endTime
-                    ? _value.endTime
-                    : endTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            garageYardId:
-                freezed == garageYardId
-                    ? _value.garageYardId
-                    : garageYardId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      isEditable: freezed == isEditable
+          ? _value.isEditable
+          : isEditable // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      startTime: freezed == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      endTime: freezed == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      garageYardId: freezed == garageYardId
+          ? _value.garageYardId
+          : garageYardId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$AvailableTimeSlotImplCopyWith<$Res>
     implements $AvailableTimeSlotCopyWith<$Res> {
-  factory _$$AvailableTimeSlotImplCopyWith(
-    _$AvailableTimeSlotImpl value,
-    $Res Function(_$AvailableTimeSlotImpl) then,
-  ) = __$$AvailableTimeSlotImplCopyWithImpl<$Res>;
+  factory _$$AvailableTimeSlotImplCopyWith(_$AvailableTimeSlotImpl value,
+          $Res Function(_$AvailableTimeSlotImpl) then) =
+      __$$AvailableTimeSlotImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int? id,
-    DateTime? date,
-    bool? isEditable,
-    @JsonKey(name: 'start_time') String? startTime,
-    @JsonKey(name: 'end_time') String? endTime,
-    @JsonKey(name: 'property_id') String? garageYardId,
-  });
+  $Res call(
+      {int? id,
+      DateTime? date,
+      bool? isEditable,
+      @JsonKey(name: 'start_time') String? startTime,
+      @JsonKey(name: 'end_time') String? endTime,
+      @JsonKey(name: 'property_id') String? garageYardId});
 }
 
 /// @nodoc
 class __$$AvailableTimeSlotImplCopyWithImpl<$Res>
     extends _$AvailableTimeSlotCopyWithImpl<$Res, _$AvailableTimeSlotImpl>
     implements _$$AvailableTimeSlotImplCopyWith<$Res> {
-  __$$AvailableTimeSlotImplCopyWithImpl(
-    _$AvailableTimeSlotImpl _value,
-    $Res Function(_$AvailableTimeSlotImpl) _then,
-  ) : super(_value, _then);
+  __$$AvailableTimeSlotImplCopyWithImpl(_$AvailableTimeSlotImpl _value,
+      $Res Function(_$AvailableTimeSlotImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AvailableTimeSlot
   /// with the given fields replaced by the non-null parameter values.
@@ -158,40 +143,32 @@ class __$$AvailableTimeSlotImplCopyWithImpl<$Res>
     Object? endTime = freezed,
     Object? garageYardId = freezed,
   }) {
-    return _then(
-      _$AvailableTimeSlotImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        date:
-            freezed == date
-                ? _value.date
-                : date // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        isEditable:
-            freezed == isEditable
-                ? _value.isEditable
-                : isEditable // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        startTime:
-            freezed == startTime
-                ? _value.startTime
-                : startTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        endTime:
-            freezed == endTime
-                ? _value.endTime
-                : endTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        garageYardId:
-            freezed == garageYardId
-                ? _value.garageYardId
-                : garageYardId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$AvailableTimeSlotImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      isEditable: freezed == isEditable
+          ? _value.isEditable
+          : isEditable // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      startTime: freezed == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      endTime: freezed == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      garageYardId: freezed == garageYardId
+          ? _value.garageYardId
+          : garageYardId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -200,14 +177,13 @@ class __$$AvailableTimeSlotImplCopyWithImpl<$Res>
 class _$AvailableTimeSlotImpl
     with DiagnosticableTreeMixin
     implements _AvailableTimeSlot {
-  const _$AvailableTimeSlotImpl({
-    this.id,
-    this.date,
-    this.isEditable,
-    @JsonKey(name: 'start_time') this.startTime,
-    @JsonKey(name: 'end_time') this.endTime,
-    @JsonKey(name: 'property_id') this.garageYardId,
-  });
+  const _$AvailableTimeSlotImpl(
+      {this.id,
+      this.date,
+      this.isEditable,
+      @JsonKey(name: 'start_time') this.startTime,
+      @JsonKey(name: 'end_time') this.endTime,
+      @JsonKey(name: 'property_id') this.garageYardId});
 
   factory _$AvailableTimeSlotImpl.fromJson(Map<String, dynamic> json) =>
       _$$AvailableTimeSlotImplFromJson(json);
@@ -265,14 +241,7 @@ class _$AvailableTimeSlotImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    date,
-    isEditable,
-    startTime,
-    endTime,
-    garageYardId,
-  );
+      runtimeType, id, date, isEditable, startTime, endTime, garageYardId);
 
   /// Create a copy of AvailableTimeSlot
   /// with the given fields replaced by the non-null parameter values.
@@ -281,25 +250,25 @@ class _$AvailableTimeSlotImpl
   @pragma('vm:prefer-inline')
   _$$AvailableTimeSlotImplCopyWith<_$AvailableTimeSlotImpl> get copyWith =>
       __$$AvailableTimeSlotImplCopyWithImpl<_$AvailableTimeSlotImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AvailableTimeSlotImplToJson(this);
+    return _$$AvailableTimeSlotImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _AvailableTimeSlot implements AvailableTimeSlot {
-  const factory _AvailableTimeSlot({
-    final int? id,
-    final DateTime? date,
-    final bool? isEditable,
-    @JsonKey(name: 'start_time') final String? startTime,
-    @JsonKey(name: 'end_time') final String? endTime,
-    @JsonKey(name: 'property_id') final String? garageYardId,
-  }) = _$AvailableTimeSlotImpl;
+  const factory _AvailableTimeSlot(
+          {final int? id,
+          final DateTime? date,
+          final bool? isEditable,
+          @JsonKey(name: 'start_time') final String? startTime,
+          @JsonKey(name: 'end_time') final String? endTime,
+          @JsonKey(name: 'property_id') final String? garageYardId}) =
+      _$AvailableTimeSlotImpl;
 
   factory _AvailableTimeSlot.fromJson(Map<String, dynamic> json) =
       _$AvailableTimeSlotImpl.fromJson;
@@ -369,22 +338,20 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = freezed, Object? name = freezed}) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            name:
-                freezed == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -392,9 +359,8 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
 abstract class _$$CategoryImplCopyWith<$Res>
     implements $CategoryCopyWith<$Res> {
   factory _$$CategoryImplCopyWith(
-    _$CategoryImpl value,
-    $Res Function(_$CategoryImpl) then,
-  ) = __$$CategoryImplCopyWithImpl<$Res>;
+          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
+      __$$CategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? id, String? name});
@@ -405,29 +371,27 @@ class __$$CategoryImplCopyWithImpl<$Res>
     extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
     implements _$$CategoryImplCopyWith<$Res> {
   __$$CategoryImplCopyWithImpl(
-    _$CategoryImpl _value,
-    $Res Function(_$CategoryImpl) _then,
-  ) : super(_value, _then);
+      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = freezed, Object? name = freezed}) {
-    return _then(
-      _$CategoryImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        name:
-            freezed == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_$CategoryImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -481,7 +445,9 @@ class _$CategoryImpl with DiagnosticableTreeMixin implements _Category {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CategoryImplToJson(this);
+    return _$$CategoryImplToJson(
+      this,
+    );
   }
 }
 
@@ -545,25 +511,23 @@ mixin _$LocationModel {
 /// @nodoc
 abstract class $LocationModelCopyWith<$Res> {
   factory $LocationModelCopyWith(
-    LocationModel value,
-    $Res Function(LocationModel) then,
-  ) = _$LocationModelCopyWithImpl<$Res, LocationModel>;
+          LocationModel value, $Res Function(LocationModel) then) =
+      _$LocationModelCopyWithImpl<$Res, LocationModel>;
   @useResult
-  $Res call({
-    int? id,
-    double? latitude,
-    double? longitude,
-    @JsonKey(name: 'sub_locality') String? subLocality,
-    String? locality,
-    @JsonKey(name: 'sub_throughfare') String? subThoroughfare,
-    String? throughfare,
-    @JsonKey(name: 'sub_admin_area') String? subAdminArea,
-    @JsonKey(name: 'admin_area') String? adminArea,
-    @JsonKey(name: 'address_line') String? addressLine,
-    @JsonKey(name: 'zip_code') String? zipCode,
-    @JsonKey(name: 'apartment_number') String? apartmentNumber,
-    @JsonKey(name: 'distance_from_user') double? distanceFromUser,
-  });
+  $Res call(
+      {int? id,
+      double? latitude,
+      double? longitude,
+      @JsonKey(name: 'sub_locality') String? subLocality,
+      String? locality,
+      @JsonKey(name: 'sub_throughfare') String? subThoroughfare,
+      String? throughfare,
+      @JsonKey(name: 'sub_admin_area') String? subAdminArea,
+      @JsonKey(name: 'admin_area') String? adminArea,
+      @JsonKey(name: 'address_line') String? addressLine,
+      @JsonKey(name: 'zip_code') String? zipCode,
+      @JsonKey(name: 'apartment_number') String? apartmentNumber,
+      @JsonKey(name: 'distance_from_user') double? distanceFromUser});
 }
 
 /// @nodoc
@@ -595,76 +559,60 @@ class _$LocationModelCopyWithImpl<$Res, $Val extends LocationModel>
     Object? apartmentNumber = freezed,
     Object? distanceFromUser = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            latitude:
-                freezed == latitude
-                    ? _value.latitude
-                    : latitude // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            longitude:
-                freezed == longitude
-                    ? _value.longitude
-                    : longitude // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            subLocality:
-                freezed == subLocality
-                    ? _value.subLocality
-                    : subLocality // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            locality:
-                freezed == locality
-                    ? _value.locality
-                    : locality // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            subThoroughfare:
-                freezed == subThoroughfare
-                    ? _value.subThoroughfare
-                    : subThoroughfare // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            throughfare:
-                freezed == throughfare
-                    ? _value.throughfare
-                    : throughfare // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            subAdminArea:
-                freezed == subAdminArea
-                    ? _value.subAdminArea
-                    : subAdminArea // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            adminArea:
-                freezed == adminArea
-                    ? _value.adminArea
-                    : adminArea // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            addressLine:
-                freezed == addressLine
-                    ? _value.addressLine
-                    : addressLine // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            zipCode:
-                freezed == zipCode
-                    ? _value.zipCode
-                    : zipCode // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            apartmentNumber:
-                freezed == apartmentNumber
-                    ? _value.apartmentNumber
-                    : apartmentNumber // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            distanceFromUser:
-                freezed == distanceFromUser
-                    ? _value.distanceFromUser
-                    : distanceFromUser // ignore: cast_nullable_to_non_nullable
-                        as double?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      latitude: freezed == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude: freezed == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      subLocality: freezed == subLocality
+          ? _value.subLocality
+          : subLocality // ignore: cast_nullable_to_non_nullable
+              as String?,
+      locality: freezed == locality
+          ? _value.locality
+          : locality // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subThoroughfare: freezed == subThoroughfare
+          ? _value.subThoroughfare
+          : subThoroughfare // ignore: cast_nullable_to_non_nullable
+              as String?,
+      throughfare: freezed == throughfare
+          ? _value.throughfare
+          : throughfare // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subAdminArea: freezed == subAdminArea
+          ? _value.subAdminArea
+          : subAdminArea // ignore: cast_nullable_to_non_nullable
+              as String?,
+      adminArea: freezed == adminArea
+          ? _value.adminArea
+          : adminArea // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine: freezed == addressLine
+          ? _value.addressLine
+          : addressLine // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zipCode: freezed == zipCode
+          ? _value.zipCode
+          : zipCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apartmentNumber: freezed == apartmentNumber
+          ? _value.apartmentNumber
+          : apartmentNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      distanceFromUser: freezed == distanceFromUser
+          ? _value.distanceFromUser
+          : distanceFromUser // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ) as $Val);
   }
 }
 
@@ -672,26 +620,24 @@ class _$LocationModelCopyWithImpl<$Res, $Val extends LocationModel>
 abstract class _$$LocationModelImplCopyWith<$Res>
     implements $LocationModelCopyWith<$Res> {
   factory _$$LocationModelImplCopyWith(
-    _$LocationModelImpl value,
-    $Res Function(_$LocationModelImpl) then,
-  ) = __$$LocationModelImplCopyWithImpl<$Res>;
+          _$LocationModelImpl value, $Res Function(_$LocationModelImpl) then) =
+      __$$LocationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int? id,
-    double? latitude,
-    double? longitude,
-    @JsonKey(name: 'sub_locality') String? subLocality,
-    String? locality,
-    @JsonKey(name: 'sub_throughfare') String? subThoroughfare,
-    String? throughfare,
-    @JsonKey(name: 'sub_admin_area') String? subAdminArea,
-    @JsonKey(name: 'admin_area') String? adminArea,
-    @JsonKey(name: 'address_line') String? addressLine,
-    @JsonKey(name: 'zip_code') String? zipCode,
-    @JsonKey(name: 'apartment_number') String? apartmentNumber,
-    @JsonKey(name: 'distance_from_user') double? distanceFromUser,
-  });
+  $Res call(
+      {int? id,
+      double? latitude,
+      double? longitude,
+      @JsonKey(name: 'sub_locality') String? subLocality,
+      String? locality,
+      @JsonKey(name: 'sub_throughfare') String? subThoroughfare,
+      String? throughfare,
+      @JsonKey(name: 'sub_admin_area') String? subAdminArea,
+      @JsonKey(name: 'admin_area') String? adminArea,
+      @JsonKey(name: 'address_line') String? addressLine,
+      @JsonKey(name: 'zip_code') String? zipCode,
+      @JsonKey(name: 'apartment_number') String? apartmentNumber,
+      @JsonKey(name: 'distance_from_user') double? distanceFromUser});
 }
 
 /// @nodoc
@@ -699,9 +645,8 @@ class __$$LocationModelImplCopyWithImpl<$Res>
     extends _$LocationModelCopyWithImpl<$Res, _$LocationModelImpl>
     implements _$$LocationModelImplCopyWith<$Res> {
   __$$LocationModelImplCopyWithImpl(
-    _$LocationModelImpl _value,
-    $Res Function(_$LocationModelImpl) _then,
-  ) : super(_value, _then);
+      _$LocationModelImpl _value, $Res Function(_$LocationModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of LocationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -722,75 +667,60 @@ class __$$LocationModelImplCopyWithImpl<$Res>
     Object? apartmentNumber = freezed,
     Object? distanceFromUser = freezed,
   }) {
-    return _then(
-      _$LocationModelImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        latitude:
-            freezed == latitude
-                ? _value.latitude
-                : latitude // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        longitude:
-            freezed == longitude
-                ? _value.longitude
-                : longitude // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        subLocality:
-            freezed == subLocality
-                ? _value.subLocality
-                : subLocality // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        locality:
-            freezed == locality
-                ? _value.locality
-                : locality // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        subThoroughfare:
-            freezed == subThoroughfare
-                ? _value.subThoroughfare
-                : subThoroughfare // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        throughfare:
-            freezed == throughfare
-                ? _value.throughfare
-                : throughfare // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        subAdminArea:
-            freezed == subAdminArea
-                ? _value.subAdminArea
-                : subAdminArea // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        adminArea:
-            freezed == adminArea
-                ? _value.adminArea
-                : adminArea // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        addressLine:
-            freezed == addressLine
-                ? _value.addressLine
-                : addressLine // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        zipCode:
-            freezed == zipCode
-                ? _value.zipCode
-                : zipCode // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        apartmentNumber:
-            freezed == apartmentNumber
-                ? _value.apartmentNumber
-                : apartmentNumber // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        distanceFromUser:
-            freezed == distanceFromUser
-                ? _value.distanceFromUser
-                : distanceFromUser // ignore: cast_nullable_to_non_nullable
-                    as double?,
-      ),
-    );
+    return _then(_$LocationModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      latitude: freezed == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude: freezed == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      subLocality: freezed == subLocality
+          ? _value.subLocality
+          : subLocality // ignore: cast_nullable_to_non_nullable
+              as String?,
+      locality: freezed == locality
+          ? _value.locality
+          : locality // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subThoroughfare: freezed == subThoroughfare
+          ? _value.subThoroughfare
+          : subThoroughfare // ignore: cast_nullable_to_non_nullable
+              as String?,
+      throughfare: freezed == throughfare
+          ? _value.throughfare
+          : throughfare // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subAdminArea: freezed == subAdminArea
+          ? _value.subAdminArea
+          : subAdminArea // ignore: cast_nullable_to_non_nullable
+              as String?,
+      adminArea: freezed == adminArea
+          ? _value.adminArea
+          : adminArea // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine: freezed == addressLine
+          ? _value.addressLine
+          : addressLine // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zipCode: freezed == zipCode
+          ? _value.zipCode
+          : zipCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apartmentNumber: freezed == apartmentNumber
+          ? _value.apartmentNumber
+          : apartmentNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      distanceFromUser: freezed == distanceFromUser
+          ? _value.distanceFromUser
+          : distanceFromUser // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
   }
 }
 
@@ -799,21 +729,20 @@ class __$$LocationModelImplCopyWithImpl<$Res>
 class _$LocationModelImpl
     with DiagnosticableTreeMixin
     implements _LocationModel {
-  const _$LocationModelImpl({
-    this.id,
-    this.latitude,
-    this.longitude,
-    @JsonKey(name: 'sub_locality') this.subLocality,
-    this.locality,
-    @JsonKey(name: 'sub_throughfare') this.subThoroughfare,
-    this.throughfare,
-    @JsonKey(name: 'sub_admin_area') this.subAdminArea,
-    @JsonKey(name: 'admin_area') this.adminArea,
-    @JsonKey(name: 'address_line') this.addressLine,
-    @JsonKey(name: 'zip_code') this.zipCode,
-    @JsonKey(name: 'apartment_number') this.apartmentNumber,
-    @JsonKey(name: 'distance_from_user') this.distanceFromUser,
-  });
+  const _$LocationModelImpl(
+      {this.id,
+      this.latitude,
+      this.longitude,
+      @JsonKey(name: 'sub_locality') this.subLocality,
+      this.locality,
+      @JsonKey(name: 'sub_throughfare') this.subThoroughfare,
+      this.throughfare,
+      @JsonKey(name: 'sub_admin_area') this.subAdminArea,
+      @JsonKey(name: 'admin_area') this.adminArea,
+      @JsonKey(name: 'address_line') this.addressLine,
+      @JsonKey(name: 'zip_code') this.zipCode,
+      @JsonKey(name: 'apartment_number') this.apartmentNumber,
+      @JsonKey(name: 'distance_from_user') this.distanceFromUser});
 
   factory _$LocationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocationModelImplFromJson(json);
@@ -912,21 +841,20 @@ class _$LocationModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    latitude,
-    longitude,
-    subLocality,
-    locality,
-    subThoroughfare,
-    throughfare,
-    subAdminArea,
-    adminArea,
-    addressLine,
-    zipCode,
-    apartmentNumber,
-    distanceFromUser,
-  );
+      runtimeType,
+      id,
+      latitude,
+      longitude,
+      subLocality,
+      locality,
+      subThoroughfare,
+      throughfare,
+      subAdminArea,
+      adminArea,
+      addressLine,
+      zipCode,
+      apartmentNumber,
+      distanceFromUser);
 
   /// Create a copy of LocationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -938,26 +866,28 @@ class _$LocationModelImpl
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LocationModelImplToJson(this);
+    return _$$LocationModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _LocationModel implements LocationModel {
-  const factory _LocationModel({
-    final int? id,
-    final double? latitude,
-    final double? longitude,
-    @JsonKey(name: 'sub_locality') final String? subLocality,
-    final String? locality,
-    @JsonKey(name: 'sub_throughfare') final String? subThoroughfare,
-    final String? throughfare,
-    @JsonKey(name: 'sub_admin_area') final String? subAdminArea,
-    @JsonKey(name: 'admin_area') final String? adminArea,
-    @JsonKey(name: 'address_line') final String? addressLine,
-    @JsonKey(name: 'zip_code') final String? zipCode,
-    @JsonKey(name: 'apartment_number') final String? apartmentNumber,
-    @JsonKey(name: 'distance_from_user') final double? distanceFromUser,
-  }) = _$LocationModelImpl;
+  const factory _LocationModel(
+      {final int? id,
+      final double? latitude,
+      final double? longitude,
+      @JsonKey(name: 'sub_locality') final String? subLocality,
+      final String? locality,
+      @JsonKey(name: 'sub_throughfare') final String? subThoroughfare,
+      final String? throughfare,
+      @JsonKey(name: 'sub_admin_area') final String? subAdminArea,
+      @JsonKey(name: 'admin_area') final String? adminArea,
+      @JsonKey(name: 'address_line') final String? addressLine,
+      @JsonKey(name: 'zip_code') final String? zipCode,
+      @JsonKey(name: 'apartment_number') final String? apartmentNumber,
+      @JsonKey(name: 'distance_from_user')
+      final double? distanceFromUser}) = _$LocationModelImpl;
 
   factory _LocationModel.fromJson(Map<String, dynamic> json) =
       _$LocationModelImpl.fromJson;
@@ -1012,8 +942,7 @@ OpenHouse _$OpenHouseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OpenHouse {
   LocationModel? get location => throw _privateConstructorUsedError;
-  @JsonKey(name: 'property_id')
-  String? get propertyId => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'transaction_id')
   String? get transactionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'property')
@@ -1021,6 +950,12 @@ mixin _$OpenHouse {
       throw _privateConstructorUsedError;
   @JsonKey(name: 'size')
   PropertySize? get propertySize => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_by')
+  User? get createdBy => throw _privateConstructorUsedError;
   StatusEnum? get status => throw _privateConstructorUsedError;
 
   /// Serializes this OpenHouse to a JSON map.
@@ -1038,18 +973,21 @@ abstract class $OpenHouseCopyWith<$Res> {
   factory $OpenHouseCopyWith(OpenHouse value, $Res Function(OpenHouse) then) =
       _$OpenHouseCopyWithImpl<$Res, OpenHouse>;
   @useResult
-  $Res call({
-    LocationModel? location,
-    @JsonKey(name: 'property_id') String? propertyId,
-    @JsonKey(name: 'transaction_id') String? transactionId,
-    @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
-    @JsonKey(name: 'size') PropertySize? propertySize,
-    StatusEnum? status,
-  });
+  $Res call(
+      {LocationModel? location,
+      int? id,
+      @JsonKey(name: 'transaction_id') String? transactionId,
+      @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
+      @JsonKey(name: 'size') PropertySize? propertySize,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'created_by') User? createdBy,
+      StatusEnum? status});
 
   $LocationModelCopyWith<$Res>? get location;
   $OpenHousePropertyCopyWith<$Res>? get openHouseProperty;
   $PropertySizeCopyWith<$Res>? get propertySize;
+  $UserCopyWith<$Res>? get createdBy;
 }
 
 /// @nodoc
@@ -1068,47 +1006,53 @@ class _$OpenHouseCopyWithImpl<$Res, $Val extends OpenHouse>
   @override
   $Res call({
     Object? location = freezed,
-    Object? propertyId = freezed,
+    Object? id = freezed,
     Object? transactionId = freezed,
     Object? openHouseProperty = freezed,
     Object? propertySize = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? createdBy = freezed,
     Object? status = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            location:
-                freezed == location
-                    ? _value.location
-                    : location // ignore: cast_nullable_to_non_nullable
-                        as LocationModel?,
-            propertyId:
-                freezed == propertyId
-                    ? _value.propertyId
-                    : propertyId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            transactionId:
-                freezed == transactionId
-                    ? _value.transactionId
-                    : transactionId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            openHouseProperty:
-                freezed == openHouseProperty
-                    ? _value.openHouseProperty
-                    : openHouseProperty // ignore: cast_nullable_to_non_nullable
-                        as OpenHouseProperty?,
-            propertySize:
-                freezed == propertySize
-                    ? _value.propertySize
-                    : propertySize // ignore: cast_nullable_to_non_nullable
-                        as PropertySize?,
-            status:
-                freezed == status
-                    ? _value.status
-                    : status // ignore: cast_nullable_to_non_nullable
-                        as StatusEnum?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LocationModel?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      transactionId: freezed == transactionId
+          ? _value.transactionId
+          : transactionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      openHouseProperty: freezed == openHouseProperty
+          ? _value.openHouseProperty
+          : openHouseProperty // ignore: cast_nullable_to_non_nullable
+              as OpenHouseProperty?,
+      propertySize: freezed == propertySize
+          ? _value.propertySize
+          : propertySize // ignore: cast_nullable_to_non_nullable
+              as PropertySize?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as User?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as StatusEnum?,
+    ) as $Val);
   }
 
   /// Create a copy of OpenHouse
@@ -1152,25 +1096,40 @@ class _$OpenHouseCopyWithImpl<$Res, $Val extends OpenHouse>
       return _then(_value.copyWith(propertySize: value) as $Val);
     });
   }
+
+  /// Create a copy of OpenHouse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res>? get createdBy {
+    if (_value.createdBy == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.createdBy!, (value) {
+      return _then(_value.copyWith(createdBy: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
 abstract class _$$OpenHouseImplCopyWith<$Res>
     implements $OpenHouseCopyWith<$Res> {
   factory _$$OpenHouseImplCopyWith(
-    _$OpenHouseImpl value,
-    $Res Function(_$OpenHouseImpl) then,
-  ) = __$$OpenHouseImplCopyWithImpl<$Res>;
+          _$OpenHouseImpl value, $Res Function(_$OpenHouseImpl) then) =
+      __$$OpenHouseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    LocationModel? location,
-    @JsonKey(name: 'property_id') String? propertyId,
-    @JsonKey(name: 'transaction_id') String? transactionId,
-    @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
-    @JsonKey(name: 'size') PropertySize? propertySize,
-    StatusEnum? status,
-  });
+  $Res call(
+      {LocationModel? location,
+      int? id,
+      @JsonKey(name: 'transaction_id') String? transactionId,
+      @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
+      @JsonKey(name: 'size') PropertySize? propertySize,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'created_by') User? createdBy,
+      StatusEnum? status});
 
   @override
   $LocationModelCopyWith<$Res>? get location;
@@ -1178,6 +1137,8 @@ abstract class _$$OpenHouseImplCopyWith<$Res>
   $OpenHousePropertyCopyWith<$Res>? get openHouseProperty;
   @override
   $PropertySizeCopyWith<$Res>? get propertySize;
+  @override
+  $UserCopyWith<$Res>? get createdBy;
 }
 
 /// @nodoc
@@ -1185,9 +1146,8 @@ class __$$OpenHouseImplCopyWithImpl<$Res>
     extends _$OpenHouseCopyWithImpl<$Res, _$OpenHouseImpl>
     implements _$$OpenHouseImplCopyWith<$Res> {
   __$$OpenHouseImplCopyWithImpl(
-    _$OpenHouseImpl _value,
-    $Res Function(_$OpenHouseImpl) _then,
-  ) : super(_value, _then);
+      _$OpenHouseImpl _value, $Res Function(_$OpenHouseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OpenHouse
   /// with the given fields replaced by the non-null parameter values.
@@ -1195,60 +1155,69 @@ class __$$OpenHouseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? location = freezed,
-    Object? propertyId = freezed,
+    Object? id = freezed,
     Object? transactionId = freezed,
     Object? openHouseProperty = freezed,
     Object? propertySize = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? createdBy = freezed,
     Object? status = freezed,
   }) {
-    return _then(
-      _$OpenHouseImpl(
-        location:
-            freezed == location
-                ? _value.location
-                : location // ignore: cast_nullable_to_non_nullable
-                    as LocationModel?,
-        propertyId:
-            freezed == propertyId
-                ? _value.propertyId
-                : propertyId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        transactionId:
-            freezed == transactionId
-                ? _value.transactionId
-                : transactionId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        openHouseProperty:
-            freezed == openHouseProperty
-                ? _value.openHouseProperty
-                : openHouseProperty // ignore: cast_nullable_to_non_nullable
-                    as OpenHouseProperty?,
-        propertySize:
-            freezed == propertySize
-                ? _value.propertySize
-                : propertySize // ignore: cast_nullable_to_non_nullable
-                    as PropertySize?,
-        status:
-            freezed == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                    as StatusEnum?,
-      ),
-    );
+    return _then(_$OpenHouseImpl(
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LocationModel?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      transactionId: freezed == transactionId
+          ? _value.transactionId
+          : transactionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      openHouseProperty: freezed == openHouseProperty
+          ? _value.openHouseProperty
+          : openHouseProperty // ignore: cast_nullable_to_non_nullable
+              as OpenHouseProperty?,
+      propertySize: freezed == propertySize
+          ? _value.propertySize
+          : propertySize // ignore: cast_nullable_to_non_nullable
+              as PropertySize?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as User?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as StatusEnum?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
-  const _$OpenHouseImpl({
-    this.location,
-    @JsonKey(name: 'property_id') this.propertyId,
-    @JsonKey(name: 'transaction_id') this.transactionId,
-    @JsonKey(name: 'property') this.openHouseProperty,
-    @JsonKey(name: 'size') this.propertySize,
-    this.status,
-  });
+  const _$OpenHouseImpl(
+      {this.location,
+      this.id,
+      @JsonKey(name: 'transaction_id') this.transactionId,
+      @JsonKey(name: 'property') this.openHouseProperty,
+      @JsonKey(name: 'size') this.propertySize,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'created_by') this.createdBy,
+      this.status});
 
   factory _$OpenHouseImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenHouseImplFromJson(json);
@@ -1256,8 +1225,7 @@ class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
   @override
   final LocationModel? location;
   @override
-  @JsonKey(name: 'property_id')
-  final String? propertyId;
+  final int? id;
   @override
   @JsonKey(name: 'transaction_id')
   final String? transactionId;
@@ -1268,11 +1236,20 @@ class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
   @JsonKey(name: 'size')
   final PropertySize? propertySize;
   @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+  @override
+  @JsonKey(name: 'created_by')
+  final User? createdBy;
+  @override
   final StatusEnum? status;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OpenHouse(location: $location, propertyId: $propertyId, transactionId: $transactionId, openHouseProperty: $openHouseProperty, propertySize: $propertySize, status: $status)';
+    return 'OpenHouse(location: $location, id: $id, transactionId: $transactionId, openHouseProperty: $openHouseProperty, propertySize: $propertySize, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, status: $status)';
   }
 
   @override
@@ -1281,10 +1258,13 @@ class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
     properties
       ..add(DiagnosticsProperty('type', 'OpenHouse'))
       ..add(DiagnosticsProperty('location', location))
-      ..add(DiagnosticsProperty('propertyId', propertyId))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('transactionId', transactionId))
       ..add(DiagnosticsProperty('openHouseProperty', openHouseProperty))
       ..add(DiagnosticsProperty('propertySize', propertySize))
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('updatedAt', updatedAt))
+      ..add(DiagnosticsProperty('createdBy', createdBy))
       ..add(DiagnosticsProperty('status', status));
   }
 
@@ -1295,28 +1275,26 @@ class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
             other is _$OpenHouseImpl &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.propertyId, propertyId) ||
-                other.propertyId == propertyId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.transactionId, transactionId) ||
                 other.transactionId == transactionId) &&
             (identical(other.openHouseProperty, openHouseProperty) ||
                 other.openHouseProperty == openHouseProperty) &&
             (identical(other.propertySize, propertySize) ||
                 other.propertySize == propertySize) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    location,
-    propertyId,
-    transactionId,
-    openHouseProperty,
-    propertySize,
-    status,
-  );
+  int get hashCode => Object.hash(runtimeType, location, id, transactionId,
+      openHouseProperty, propertySize, createdAt, updatedAt, createdBy, status);
 
   /// Create a copy of OpenHouse
   /// with the given fields replaced by the non-null parameter values.
@@ -1328,19 +1306,23 @@ class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OpenHouseImplToJson(this);
+    return _$$OpenHouseImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _OpenHouse implements OpenHouse {
-  const factory _OpenHouse({
-    final LocationModel? location,
-    @JsonKey(name: 'property_id') final String? propertyId,
-    @JsonKey(name: 'transaction_id') final String? transactionId,
-    @JsonKey(name: 'property') final OpenHouseProperty? openHouseProperty,
-    @JsonKey(name: 'size') final PropertySize? propertySize,
-    final StatusEnum? status,
-  }) = _$OpenHouseImpl;
+  const factory _OpenHouse(
+      {final LocationModel? location,
+      final int? id,
+      @JsonKey(name: 'transaction_id') final String? transactionId,
+      @JsonKey(name: 'property') final OpenHouseProperty? openHouseProperty,
+      @JsonKey(name: 'size') final PropertySize? propertySize,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at') final DateTime? updatedAt,
+      @JsonKey(name: 'created_by') final User? createdBy,
+      final StatusEnum? status}) = _$OpenHouseImpl;
 
   factory _OpenHouse.fromJson(Map<String, dynamic> json) =
       _$OpenHouseImpl.fromJson;
@@ -1348,8 +1330,7 @@ abstract class _OpenHouse implements OpenHouse {
   @override
   LocationModel? get location;
   @override
-  @JsonKey(name: 'property_id')
-  String? get propertyId;
+  int? get id;
   @override
   @JsonKey(name: 'transaction_id')
   String? get transactionId;
@@ -1359,6 +1340,15 @@ abstract class _OpenHouse implements OpenHouse {
   @override
   @JsonKey(name: 'size')
   PropertySize? get propertySize;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(name: 'created_by')
+  User? get createdBy;
   @override
   StatusEnum? get status;
 
@@ -1378,10 +1368,10 @@ OpenHouseProperty _$OpenHousePropertyFromJson(Map<String, dynamic> json) {
 mixin _$OpenHouseProperty {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  double? get price => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'images')
   List<AttachmentModel>? get attachments => throw _privateConstructorUsedError;
-  List<Category>? get category => throw _privateConstructorUsedError;
+  Category? get category => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   PropertyTypeModel? get propertyType => throw _privateConstructorUsedError;
 
@@ -1398,19 +1388,18 @@ mixin _$OpenHouseProperty {
 /// @nodoc
 abstract class $OpenHousePropertyCopyWith<$Res> {
   factory $OpenHousePropertyCopyWith(
-    OpenHouseProperty value,
-    $Res Function(OpenHouseProperty) then,
-  ) = _$OpenHousePropertyCopyWithImpl<$Res, OpenHouseProperty>;
+          OpenHouseProperty value, $Res Function(OpenHouseProperty) then) =
+      _$OpenHousePropertyCopyWithImpl<$Res, OpenHouseProperty>;
   @useResult
-  $Res call({
-    String? name,
-    String? description,
-    double? price,
-    @JsonKey(name: 'images') List<AttachmentModel>? attachments,
-    List<Category>? category,
-    @JsonKey(name: 'type') PropertyTypeModel? propertyType,
-  });
+  $Res call(
+      {String? name,
+      String? description,
+      int? price,
+      @JsonKey(name: 'images') List<AttachmentModel>? attachments,
+      Category? category,
+      @JsonKey(name: 'type') PropertyTypeModel? propertyType});
 
+  $CategoryCopyWith<$Res>? get category;
   $PropertyTypeModelCopyWith<$Res>? get propertyType;
 }
 
@@ -1436,41 +1425,46 @@ class _$OpenHousePropertyCopyWithImpl<$Res, $Val extends OpenHouseProperty>
     Object? category = freezed,
     Object? propertyType = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            name:
-                freezed == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            description:
-                freezed == description
-                    ? _value.description
-                    : description // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            price:
-                freezed == price
-                    ? _value.price
-                    : price // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            attachments:
-                freezed == attachments
-                    ? _value.attachments
-                    : attachments // ignore: cast_nullable_to_non_nullable
-                        as List<AttachmentModel>?,
-            category:
-                freezed == category
-                    ? _value.category
-                    : category // ignore: cast_nullable_to_non_nullable
-                        as List<Category>?,
-            propertyType:
-                freezed == propertyType
-                    ? _value.propertyType
-                    : propertyType // ignore: cast_nullable_to_non_nullable
-                        as PropertyTypeModel?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      attachments: freezed == attachments
+          ? _value.attachments
+          : attachments // ignore: cast_nullable_to_non_nullable
+              as List<AttachmentModel>?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category?,
+      propertyType: freezed == propertyType
+          ? _value.propertyType
+          : propertyType // ignore: cast_nullable_to_non_nullable
+              as PropertyTypeModel?,
+    ) as $Val);
+  }
+
+  /// Create a copy of OpenHouseProperty
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryCopyWith<$Res>? get category {
+    if (_value.category == null) {
+      return null;
+    }
+
+    return $CategoryCopyWith<$Res>(_value.category!, (value) {
+      return _then(_value.copyWith(category: value) as $Val);
+    });
   }
 
   /// Create a copy of OpenHouseProperty
@@ -1491,21 +1485,21 @@ class _$OpenHousePropertyCopyWithImpl<$Res, $Val extends OpenHouseProperty>
 /// @nodoc
 abstract class _$$OpenHousePropertyImplCopyWith<$Res>
     implements $OpenHousePropertyCopyWith<$Res> {
-  factory _$$OpenHousePropertyImplCopyWith(
-    _$OpenHousePropertyImpl value,
-    $Res Function(_$OpenHousePropertyImpl) then,
-  ) = __$$OpenHousePropertyImplCopyWithImpl<$Res>;
+  factory _$$OpenHousePropertyImplCopyWith(_$OpenHousePropertyImpl value,
+          $Res Function(_$OpenHousePropertyImpl) then) =
+      __$$OpenHousePropertyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? name,
-    String? description,
-    double? price,
-    @JsonKey(name: 'images') List<AttachmentModel>? attachments,
-    List<Category>? category,
-    @JsonKey(name: 'type') PropertyTypeModel? propertyType,
-  });
+  $Res call(
+      {String? name,
+      String? description,
+      int? price,
+      @JsonKey(name: 'images') List<AttachmentModel>? attachments,
+      Category? category,
+      @JsonKey(name: 'type') PropertyTypeModel? propertyType});
 
+  @override
+  $CategoryCopyWith<$Res>? get category;
   @override
   $PropertyTypeModelCopyWith<$Res>? get propertyType;
 }
@@ -1514,10 +1508,9 @@ abstract class _$$OpenHousePropertyImplCopyWith<$Res>
 class __$$OpenHousePropertyImplCopyWithImpl<$Res>
     extends _$OpenHousePropertyCopyWithImpl<$Res, _$OpenHousePropertyImpl>
     implements _$$OpenHousePropertyImplCopyWith<$Res> {
-  __$$OpenHousePropertyImplCopyWithImpl(
-    _$OpenHousePropertyImpl _value,
-    $Res Function(_$OpenHousePropertyImpl) _then,
-  ) : super(_value, _then);
+  __$$OpenHousePropertyImplCopyWithImpl(_$OpenHousePropertyImpl _value,
+      $Res Function(_$OpenHousePropertyImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OpenHouseProperty
   /// with the given fields replaced by the non-null parameter values.
@@ -1531,40 +1524,32 @@ class __$$OpenHousePropertyImplCopyWithImpl<$Res>
     Object? category = freezed,
     Object? propertyType = freezed,
   }) {
-    return _then(
-      _$OpenHousePropertyImpl(
-        name:
-            freezed == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        description:
-            freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        price:
-            freezed == price
-                ? _value.price
-                : price // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        attachments:
-            freezed == attachments
-                ? _value._attachments
-                : attachments // ignore: cast_nullable_to_non_nullable
-                    as List<AttachmentModel>?,
-        category:
-            freezed == category
-                ? _value._category
-                : category // ignore: cast_nullable_to_non_nullable
-                    as List<Category>?,
-        propertyType:
-            freezed == propertyType
-                ? _value.propertyType
-                : propertyType // ignore: cast_nullable_to_non_nullable
-                    as PropertyTypeModel?,
-      ),
-    );
+    return _then(_$OpenHousePropertyImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      attachments: freezed == attachments
+          ? _value._attachments
+          : attachments // ignore: cast_nullable_to_non_nullable
+              as List<AttachmentModel>?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category?,
+      propertyType: freezed == propertyType
+          ? _value.propertyType
+          : propertyType // ignore: cast_nullable_to_non_nullable
+              as PropertyTypeModel?,
+    ));
   }
 }
 
@@ -1573,15 +1558,14 @@ class __$$OpenHousePropertyImplCopyWithImpl<$Res>
 class _$OpenHousePropertyImpl
     with DiagnosticableTreeMixin
     implements _OpenHouseProperty {
-  const _$OpenHousePropertyImpl({
-    this.name,
-    this.description,
-    this.price,
-    @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
-    final List<Category>? category,
-    @JsonKey(name: 'type') this.propertyType,
-  }) : _attachments = attachments,
-       _category = category;
+  const _$OpenHousePropertyImpl(
+      {this.name,
+      this.description,
+      this.price,
+      @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
+      this.category,
+      @JsonKey(name: 'type') this.propertyType})
+      : _attachments = attachments;
 
   factory _$OpenHousePropertyImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenHousePropertyImplFromJson(json);
@@ -1591,7 +1575,7 @@ class _$OpenHousePropertyImpl
   @override
   final String? description;
   @override
-  final double? price;
+  final int? price;
   final List<AttachmentModel>? _attachments;
   @override
   @JsonKey(name: 'images')
@@ -1603,16 +1587,8 @@ class _$OpenHousePropertyImpl
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Category>? _category;
   @override
-  List<Category>? get category {
-    final value = _category;
-    if (value == null) return null;
-    if (_category is EqualUnmodifiableListView) return _category;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final Category? category;
   @override
   @JsonKey(name: 'type')
   final PropertyTypeModel? propertyType;
@@ -1644,11 +1620,10 @@ class _$OpenHousePropertyImpl
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.price, price) || other.price == price) &&
-            const DeepCollectionEquality().equals(
-              other._attachments,
-              _attachments,
-            ) &&
-            const DeepCollectionEquality().equals(other._category, _category) &&
+            const DeepCollectionEquality()
+                .equals(other._attachments, _attachments) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             (identical(other.propertyType, propertyType) ||
                 other.propertyType == propertyType));
   }
@@ -1656,14 +1631,13 @@ class _$OpenHousePropertyImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    name,
-    description,
-    price,
-    const DeepCollectionEquality().hash(_attachments),
-    const DeepCollectionEquality().hash(_category),
-    propertyType,
-  );
+      runtimeType,
+      name,
+      description,
+      price,
+      const DeepCollectionEquality().hash(_attachments),
+      category,
+      propertyType);
 
   /// Create a copy of OpenHouseProperty
   /// with the given fields replaced by the non-null parameter values.
@@ -1672,25 +1646,25 @@ class _$OpenHousePropertyImpl
   @pragma('vm:prefer-inline')
   _$$OpenHousePropertyImplCopyWith<_$OpenHousePropertyImpl> get copyWith =>
       __$$OpenHousePropertyImplCopyWithImpl<_$OpenHousePropertyImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OpenHousePropertyImplToJson(this);
+    return _$$OpenHousePropertyImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _OpenHouseProperty implements OpenHouseProperty {
-  const factory _OpenHouseProperty({
-    final String? name,
-    final String? description,
-    final double? price,
-    @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
-    final List<Category>? category,
-    @JsonKey(name: 'type') final PropertyTypeModel? propertyType,
-  }) = _$OpenHousePropertyImpl;
+  const factory _OpenHouseProperty(
+          {final String? name,
+          final String? description,
+          final int? price,
+          @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
+          final Category? category,
+          @JsonKey(name: 'type') final PropertyTypeModel? propertyType}) =
+      _$OpenHousePropertyImpl;
 
   factory _OpenHouseProperty.fromJson(Map<String, dynamic> json) =
       _$OpenHousePropertyImpl.fromJson;
@@ -1700,12 +1674,12 @@ abstract class _OpenHouseProperty implements OpenHouseProperty {
   @override
   String? get description;
   @override
-  double? get price;
+  int? get price;
   @override
   @JsonKey(name: 'images')
   List<AttachmentModel>? get attachments;
   @override
-  List<Category>? get category;
+  Category? get category;
   @override
   @JsonKey(name: 'type')
   PropertyTypeModel? get propertyType;
@@ -1725,13 +1699,13 @@ PropertySize _$PropertySizeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PropertySize {
   @JsonKey(name: 'covered_area')
-  double? get coveredArea => throw _privateConstructorUsedError;
+  int? get coveredArea => throw _privateConstructorUsedError;
   @JsonKey(name: 'lot_size')
-  double? get lotSize => throw _privateConstructorUsedError;
+  int? get lotSize => throw _privateConstructorUsedError;
   @JsonKey(name: 'bedrooms')
-  String? get bedrooms => throw _privateConstructorUsedError;
+  int? get bedrooms => throw _privateConstructorUsedError;
   @JsonKey(name: 'bathrooms')
-  String? get bathrooms => throw _privateConstructorUsedError;
+  int? get bathrooms => throw _privateConstructorUsedError;
   @JsonKey(name: 'year_built')
   DateTime? get yearBuilt => throw _privateConstructorUsedError;
   @JsonKey(name: 'available_time_slots')
@@ -1751,19 +1725,17 @@ mixin _$PropertySize {
 /// @nodoc
 abstract class $PropertySizeCopyWith<$Res> {
   factory $PropertySizeCopyWith(
-    PropertySize value,
-    $Res Function(PropertySize) then,
-  ) = _$PropertySizeCopyWithImpl<$Res, PropertySize>;
+          PropertySize value, $Res Function(PropertySize) then) =
+      _$PropertySizeCopyWithImpl<$Res, PropertySize>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'covered_area') double? coveredArea,
-    @JsonKey(name: 'lot_size') double? lotSize,
-    @JsonKey(name: 'bedrooms') String? bedrooms,
-    @JsonKey(name: 'bathrooms') String? bathrooms,
-    @JsonKey(name: 'year_built') DateTime? yearBuilt,
-    @JsonKey(name: 'available_time_slots')
-    List<AvailableTimeSlot>? availableTimeSlots,
-  });
+  $Res call(
+      {@JsonKey(name: 'covered_area') int? coveredArea,
+      @JsonKey(name: 'lot_size') int? lotSize,
+      @JsonKey(name: 'bedrooms') int? bedrooms,
+      @JsonKey(name: 'bathrooms') int? bathrooms,
+      @JsonKey(name: 'year_built') DateTime? yearBuilt,
+      @JsonKey(name: 'available_time_slots')
+      List<AvailableTimeSlot>? availableTimeSlots});
 }
 
 /// @nodoc
@@ -1788,41 +1760,32 @@ class _$PropertySizeCopyWithImpl<$Res, $Val extends PropertySize>
     Object? yearBuilt = freezed,
     Object? availableTimeSlots = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            coveredArea:
-                freezed == coveredArea
-                    ? _value.coveredArea
-                    : coveredArea // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            lotSize:
-                freezed == lotSize
-                    ? _value.lotSize
-                    : lotSize // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            bedrooms:
-                freezed == bedrooms
-                    ? _value.bedrooms
-                    : bedrooms // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            bathrooms:
-                freezed == bathrooms
-                    ? _value.bathrooms
-                    : bathrooms // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            yearBuilt:
-                freezed == yearBuilt
-                    ? _value.yearBuilt
-                    : yearBuilt // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            availableTimeSlots:
-                freezed == availableTimeSlots
-                    ? _value.availableTimeSlots
-                    : availableTimeSlots // ignore: cast_nullable_to_non_nullable
-                        as List<AvailableTimeSlot>?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      coveredArea: freezed == coveredArea
+          ? _value.coveredArea
+          : coveredArea // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lotSize: freezed == lotSize
+          ? _value.lotSize
+          : lotSize // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bedrooms: freezed == bedrooms
+          ? _value.bedrooms
+          : bedrooms // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bathrooms: freezed == bathrooms
+          ? _value.bathrooms
+          : bathrooms // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yearBuilt: freezed == yearBuilt
+          ? _value.yearBuilt
+          : yearBuilt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      availableTimeSlots: freezed == availableTimeSlots
+          ? _value.availableTimeSlots
+          : availableTimeSlots // ignore: cast_nullable_to_non_nullable
+              as List<AvailableTimeSlot>?,
+    ) as $Val);
   }
 }
 
@@ -1830,20 +1793,18 @@ class _$PropertySizeCopyWithImpl<$Res, $Val extends PropertySize>
 abstract class _$$PropertySizeImplCopyWith<$Res>
     implements $PropertySizeCopyWith<$Res> {
   factory _$$PropertySizeImplCopyWith(
-    _$PropertySizeImpl value,
-    $Res Function(_$PropertySizeImpl) then,
-  ) = __$$PropertySizeImplCopyWithImpl<$Res>;
+          _$PropertySizeImpl value, $Res Function(_$PropertySizeImpl) then) =
+      __$$PropertySizeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'covered_area') double? coveredArea,
-    @JsonKey(name: 'lot_size') double? lotSize,
-    @JsonKey(name: 'bedrooms') String? bedrooms,
-    @JsonKey(name: 'bathrooms') String? bathrooms,
-    @JsonKey(name: 'year_built') DateTime? yearBuilt,
-    @JsonKey(name: 'available_time_slots')
-    List<AvailableTimeSlot>? availableTimeSlots,
-  });
+  $Res call(
+      {@JsonKey(name: 'covered_area') int? coveredArea,
+      @JsonKey(name: 'lot_size') int? lotSize,
+      @JsonKey(name: 'bedrooms') int? bedrooms,
+      @JsonKey(name: 'bathrooms') int? bathrooms,
+      @JsonKey(name: 'year_built') DateTime? yearBuilt,
+      @JsonKey(name: 'available_time_slots')
+      List<AvailableTimeSlot>? availableTimeSlots});
 }
 
 /// @nodoc
@@ -1851,9 +1812,8 @@ class __$$PropertySizeImplCopyWithImpl<$Res>
     extends _$PropertySizeCopyWithImpl<$Res, _$PropertySizeImpl>
     implements _$$PropertySizeImplCopyWith<$Res> {
   __$$PropertySizeImplCopyWithImpl(
-    _$PropertySizeImpl _value,
-    $Res Function(_$PropertySizeImpl) _then,
-  ) : super(_value, _then);
+      _$PropertySizeImpl _value, $Res Function(_$PropertySizeImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PropertySize
   /// with the given fields replaced by the non-null parameter values.
@@ -1867,71 +1827,63 @@ class __$$PropertySizeImplCopyWithImpl<$Res>
     Object? yearBuilt = freezed,
     Object? availableTimeSlots = freezed,
   }) {
-    return _then(
-      _$PropertySizeImpl(
-        coveredArea:
-            freezed == coveredArea
-                ? _value.coveredArea
-                : coveredArea // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        lotSize:
-            freezed == lotSize
-                ? _value.lotSize
-                : lotSize // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        bedrooms:
-            freezed == bedrooms
-                ? _value.bedrooms
-                : bedrooms // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        bathrooms:
-            freezed == bathrooms
-                ? _value.bathrooms
-                : bathrooms // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        yearBuilt:
-            freezed == yearBuilt
-                ? _value.yearBuilt
-                : yearBuilt // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        availableTimeSlots:
-            freezed == availableTimeSlots
-                ? _value._availableTimeSlots
-                : availableTimeSlots // ignore: cast_nullable_to_non_nullable
-                    as List<AvailableTimeSlot>?,
-      ),
-    );
+    return _then(_$PropertySizeImpl(
+      coveredArea: freezed == coveredArea
+          ? _value.coveredArea
+          : coveredArea // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lotSize: freezed == lotSize
+          ? _value.lotSize
+          : lotSize // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bedrooms: freezed == bedrooms
+          ? _value.bedrooms
+          : bedrooms // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bathrooms: freezed == bathrooms
+          ? _value.bathrooms
+          : bathrooms // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yearBuilt: freezed == yearBuilt
+          ? _value.yearBuilt
+          : yearBuilt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      availableTimeSlots: freezed == availableTimeSlots
+          ? _value._availableTimeSlots
+          : availableTimeSlots // ignore: cast_nullable_to_non_nullable
+              as List<AvailableTimeSlot>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PropertySizeImpl with DiagnosticableTreeMixin implements _PropertySize {
-  const _$PropertySizeImpl({
-    @JsonKey(name: 'covered_area') this.coveredArea,
-    @JsonKey(name: 'lot_size') this.lotSize,
-    @JsonKey(name: 'bedrooms') this.bedrooms,
-    @JsonKey(name: 'bathrooms') this.bathrooms,
-    @JsonKey(name: 'year_built') this.yearBuilt,
-    @JsonKey(name: 'available_time_slots')
-    final List<AvailableTimeSlot>? availableTimeSlots,
-  }) : _availableTimeSlots = availableTimeSlots;
+  const _$PropertySizeImpl(
+      {@JsonKey(name: 'covered_area') this.coveredArea,
+      @JsonKey(name: 'lot_size') this.lotSize,
+      @JsonKey(name: 'bedrooms') this.bedrooms,
+      @JsonKey(name: 'bathrooms') this.bathrooms,
+      @JsonKey(name: 'year_built') this.yearBuilt,
+      @JsonKey(name: 'available_time_slots')
+      final List<AvailableTimeSlot>? availableTimeSlots})
+      : _availableTimeSlots = availableTimeSlots;
 
   factory _$PropertySizeImpl.fromJson(Map<String, dynamic> json) =>
       _$$PropertySizeImplFromJson(json);
 
   @override
   @JsonKey(name: 'covered_area')
-  final double? coveredArea;
+  final int? coveredArea;
   @override
   @JsonKey(name: 'lot_size')
-  final double? lotSize;
+  final int? lotSize;
   @override
   @JsonKey(name: 'bedrooms')
-  final String? bedrooms;
+  final int? bedrooms;
   @override
   @JsonKey(name: 'bathrooms')
-  final String? bathrooms;
+  final int? bathrooms;
   @override
   @JsonKey(name: 'year_built')
   final DateTime? yearBuilt;
@@ -1979,23 +1931,20 @@ class _$PropertySizeImpl with DiagnosticableTreeMixin implements _PropertySize {
                 other.bathrooms == bathrooms) &&
             (identical(other.yearBuilt, yearBuilt) ||
                 other.yearBuilt == yearBuilt) &&
-            const DeepCollectionEquality().equals(
-              other._availableTimeSlots,
-              _availableTimeSlots,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._availableTimeSlots, _availableTimeSlots));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    coveredArea,
-    lotSize,
-    bedrooms,
-    bathrooms,
-    yearBuilt,
-    const DeepCollectionEquality().hash(_availableTimeSlots),
-  );
+      runtimeType,
+      coveredArea,
+      lotSize,
+      bedrooms,
+      bathrooms,
+      yearBuilt,
+      const DeepCollectionEquality().hash(_availableTimeSlots));
 
   /// Create a copy of PropertySize
   /// with the given fields replaced by the non-null parameter values.
@@ -2007,36 +1956,37 @@ class _$PropertySizeImpl with DiagnosticableTreeMixin implements _PropertySize {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PropertySizeImplToJson(this);
+    return _$$PropertySizeImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _PropertySize implements PropertySize {
-  const factory _PropertySize({
-    @JsonKey(name: 'covered_area') final double? coveredArea,
-    @JsonKey(name: 'lot_size') final double? lotSize,
-    @JsonKey(name: 'bedrooms') final String? bedrooms,
-    @JsonKey(name: 'bathrooms') final String? bathrooms,
-    @JsonKey(name: 'year_built') final DateTime? yearBuilt,
-    @JsonKey(name: 'available_time_slots')
-    final List<AvailableTimeSlot>? availableTimeSlots,
-  }) = _$PropertySizeImpl;
+  const factory _PropertySize(
+      {@JsonKey(name: 'covered_area') final int? coveredArea,
+      @JsonKey(name: 'lot_size') final int? lotSize,
+      @JsonKey(name: 'bedrooms') final int? bedrooms,
+      @JsonKey(name: 'bathrooms') final int? bathrooms,
+      @JsonKey(name: 'year_built') final DateTime? yearBuilt,
+      @JsonKey(name: 'available_time_slots')
+      final List<AvailableTimeSlot>? availableTimeSlots}) = _$PropertySizeImpl;
 
   factory _PropertySize.fromJson(Map<String, dynamic> json) =
       _$PropertySizeImpl.fromJson;
 
   @override
   @JsonKey(name: 'covered_area')
-  double? get coveredArea;
+  int? get coveredArea;
   @override
   @JsonKey(name: 'lot_size')
-  double? get lotSize;
+  int? get lotSize;
   @override
   @JsonKey(name: 'bedrooms')
-  String? get bedrooms;
+  int? get bedrooms;
   @override
   @JsonKey(name: 'bathrooms')
-  String? get bathrooms;
+  int? get bathrooms;
   @override
   @JsonKey(name: 'year_built')
   DateTime? get yearBuilt;

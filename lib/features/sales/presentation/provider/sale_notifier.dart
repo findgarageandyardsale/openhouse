@@ -18,7 +18,7 @@ class SaleNotifier extends StateNotifier<ExploreState> {
       state.state != ExploreConcreteState.fetchingMore;
 
   Future<void> fetchExplorePosts() async {
-    try {
+    // try {
       if (isFetching && state.state != ExploreConcreteState.fetchedAllExplore) {
         state = state.copyWith(
           state:
@@ -41,13 +41,13 @@ class SaleNotifier extends StateNotifier<ExploreState> {
           isLoading: false,
         );
       }
-    } catch (e) {
-      state = state.copyWith(
-        state: ExploreConcreteState.failure,
-        message: e.toString(),
-        isLoading: false,
-      );
-    }
+    // } catch (e) {
+    //   state = state.copyWith(
+    //     state: ExploreConcreteState.failure,
+    //     message: e.toString(),
+    //     isLoading: false,
+    //   );
+    // }
   }
 
   Future<void> searchExplorePosts(String query) async {

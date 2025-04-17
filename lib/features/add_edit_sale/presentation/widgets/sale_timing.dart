@@ -21,7 +21,7 @@ class SaleTiming extends ConsumerWidget {
     final garageayard = ref.watch(addDataNotifierProvider);
     final showMoney =
         garageayard?.status == StatusEnum.expired ||
-        garageayard?.propertyId == null;
+        garageayard?.id == null;
 
     bool? isDateWithinAvailableSlots(DateTime? dateToCheck) {
       try {
@@ -73,7 +73,7 @@ class SaleTiming extends ConsumerWidget {
         ),
         // if (!(availableSlot.length >= 7))
         if (showMoney ||
-            (garageayard?.propertyId != null &&
+            (garageayard?.id != null &&
                 (garageayard?.propertySize?.availableTimeSlots ?? []).length <
                     totalSlot!))
           ActionButton(

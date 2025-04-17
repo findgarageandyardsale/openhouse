@@ -4,6 +4,7 @@ import 'package:open_house/features/post_detail/presentation/widgets/custom_caro
 import 'package:open_house/routes/app_route.gr.dart';
 import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/theme/test_styles.dart';
+import 'package:open_house/shared/utils/app_utils.dart';
 import 'package:open_house/shared/utils/cusotm_date_utils.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
 import 'package:open_house/shared/widgets/amenities_line.dart';
@@ -30,7 +31,9 @@ class PostSingleItem extends StatelessWidget {
     Widget locationWidget() {
       return LocationText(
         fromDetail: false,
-        location: singlePost?.location?.throughfare ?? '',
+        location: AppUtils.formatLocationAsAddress(
+          singlePost?.location ?? const LocationModel(),
+        ),
       );
     }
 
@@ -56,7 +59,7 @@ class PostSingleItem extends StatelessWidget {
               ),
               Text(
                 singlePost?.openHouseProperty?.name ?? '',
-                style: AppTextStyles.bodyMedium.copyWith(
+                style: AppTextStyles.bodyLarge.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -79,11 +82,10 @@ class PostSingleItem extends StatelessWidget {
                 ),
                 time:
                     '${CustomDateUtils.convertTo12HourFormat(singlePost?.propertySize?.availableTimeSlots?[0].startTime)} - ${CustomDateUtils.convertTo12HourFormat(singlePost?.propertySize?.availableTimeSlots?[0].endTime)}',
-                days:
-                    ((singlePost?.propertySize?.availableTimeSlots ?? [])
-                                .length -
-                            1)
-                        .toString(),
+                days: ((singlePost?.propertySize?.availableTimeSlots ?? [])
+                            .length -
+                        1)
+                    .toString(),
               ),
               Spacing.sizedBoxH_08(),
               Row(
@@ -102,9 +104,9 @@ class PostSingleItem extends StatelessWidget {
                       textStyle: Theme.of(
                         context,
                       ).textTheme.labelSmall?.copyWith(
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.black,
-                      ),
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.black,
+                          ),
                     ),
                   ),
                   Spacing.sizedBoxW_10(),
@@ -113,13 +115,12 @@ class PostSingleItem extends StatelessWidget {
                       onPressed: () => Navigator.pop(context),
                       label: 'Get Directions',
                       height: 36,
-
                       textStyle: Theme.of(
                         context,
                       ).textTheme.labelSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        fontWeight: FontWeight.w700,
-                      ),
+                            color: Theme.of(context).colorScheme.onPrimary,
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                   ),
                 ],
@@ -127,7 +128,6 @@ class PostSingleItem extends StatelessWidget {
             ],
           ),
         ),
-
         Divider(color: AppColors.extraLightGrey, height: 20, thickness: 20),
       ],
     );

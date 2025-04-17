@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:open_house/shared/domain/models/attachment_file/attachment_model.dart';
 import 'package:open_house/shared/domain/models/property_type_model/property_type_model.dart';
+import 'package:open_house/shared/domain/models/user/user_model.dart';
 
 part 'open_house.freezed.dart';
 part 'open_house.g.dart';
@@ -85,10 +86,13 @@ class LocationModel with _$LocationModel {
 class OpenHouse with _$OpenHouse {
   const factory OpenHouse({
     LocationModel? location,
-    @JsonKey(name: 'property_id') String? propertyId,
+    int? id,
     @JsonKey(name: 'transaction_id') String? transactionId,
     @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
     @JsonKey(name: 'size') PropertySize? propertySize,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'created_by') User? createdBy,
     StatusEnum? status,
   }) = _OpenHouse;
 
@@ -109,9 +113,9 @@ class OpenHouseProperty with _$OpenHouseProperty {
   const factory OpenHouseProperty({
     String? name,
     String? description,
-    double? price,
+    int? price,
     @JsonKey(name: 'images') List<AttachmentModel>? attachments,
-    List<Category>? category,
+    Category? category,
     @JsonKey(name: 'type') PropertyTypeModel? propertyType,
   }) = _OpenHouseProperty;
 
@@ -122,10 +126,10 @@ class OpenHouseProperty with _$OpenHouseProperty {
 @freezed
 class PropertySize with _$PropertySize {
   const factory PropertySize({
-    @JsonKey(name: 'covered_area') double? coveredArea,
-    @JsonKey(name: 'lot_size') double? lotSize,
-    @JsonKey(name: 'bedrooms') String? bedrooms,
-    @JsonKey(name: 'bathrooms') String? bathrooms,
+    @JsonKey(name: 'covered_area') int? coveredArea,
+    @JsonKey(name: 'lot_size') int? lotSize,
+    @JsonKey(name: 'bedrooms') int? bedrooms,
+    @JsonKey(name: 'bathrooms') int? bathrooms,
     @JsonKey(name: 'year_built') DateTime? yearBuilt,
     @JsonKey(name: 'available_time_slots')
     List<AvailableTimeSlot>? availableTimeSlots,

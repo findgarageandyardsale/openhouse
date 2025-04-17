@@ -12,8 +12,7 @@ part of 'paginated_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaginatedResponse _$PaginatedResponseFromJson(Map<String, dynamic> json) {
   return _PaginatedResponse.fromJson(json);
@@ -39,16 +38,14 @@ mixin _$PaginatedResponse {
 /// @nodoc
 abstract class $PaginatedResponseCopyWith<$Res> {
   factory $PaginatedResponseCopyWith(
-    PaginatedResponse value,
-    $Res Function(PaginatedResponse) then,
-  ) = _$PaginatedResponseCopyWithImpl<$Res, PaginatedResponse>;
+          PaginatedResponse value, $Res Function(PaginatedResponse) then) =
+      _$PaginatedResponseCopyWithImpl<$Res, PaginatedResponse>;
   @useResult
-  $Res call({
-    int? status,
-    String? message,
-    Pagination? pagination,
-    List<dynamic>? data,
-  });
+  $Res call(
+      {int? status,
+      String? message,
+      Pagination? pagination,
+      List<dynamic>? data});
 
   $PaginationCopyWith<$Res>? get pagination;
 }
@@ -73,31 +70,24 @@ class _$PaginatedResponseCopyWithImpl<$Res, $Val extends PaginatedResponse>
     Object? pagination = freezed,
     Object? data = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            status:
-                freezed == status
-                    ? _value.status
-                    : status // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            message:
-                freezed == message
-                    ? _value.message
-                    : message // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            pagination:
-                freezed == pagination
-                    ? _value.pagination
-                    : pagination // ignore: cast_nullable_to_non_nullable
-                        as Pagination?,
-            data:
-                freezed == data
-                    ? _value.data
-                    : data // ignore: cast_nullable_to_non_nullable
-                        as List<dynamic>?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pagination: freezed == pagination
+          ? _value.pagination
+          : pagination // ignore: cast_nullable_to_non_nullable
+              as Pagination?,
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+    ) as $Val);
   }
 
   /// Create a copy of PaginatedResponse
@@ -118,18 +108,16 @@ class _$PaginatedResponseCopyWithImpl<$Res, $Val extends PaginatedResponse>
 /// @nodoc
 abstract class _$$PaginatedResponseImplCopyWith<$Res>
     implements $PaginatedResponseCopyWith<$Res> {
-  factory _$$PaginatedResponseImplCopyWith(
-    _$PaginatedResponseImpl value,
-    $Res Function(_$PaginatedResponseImpl) then,
-  ) = __$$PaginatedResponseImplCopyWithImpl<$Res>;
+  factory _$$PaginatedResponseImplCopyWith(_$PaginatedResponseImpl value,
+          $Res Function(_$PaginatedResponseImpl) then) =
+      __$$PaginatedResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int? status,
-    String? message,
-    Pagination? pagination,
-    List<dynamic>? data,
-  });
+  $Res call(
+      {int? status,
+      String? message,
+      Pagination? pagination,
+      List<dynamic>? data});
 
   @override
   $PaginationCopyWith<$Res>? get pagination;
@@ -139,10 +127,9 @@ abstract class _$$PaginatedResponseImplCopyWith<$Res>
 class __$$PaginatedResponseImplCopyWithImpl<$Res>
     extends _$PaginatedResponseCopyWithImpl<$Res, _$PaginatedResponseImpl>
     implements _$$PaginatedResponseImplCopyWith<$Res> {
-  __$$PaginatedResponseImplCopyWithImpl(
-    _$PaginatedResponseImpl _value,
-    $Res Function(_$PaginatedResponseImpl) _then,
-  ) : super(_value, _then);
+  __$$PaginatedResponseImplCopyWithImpl(_$PaginatedResponseImpl _value,
+      $Res Function(_$PaginatedResponseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PaginatedResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -154,42 +141,33 @@ class __$$PaginatedResponseImplCopyWithImpl<$Res>
     Object? pagination = freezed,
     Object? data = freezed,
   }) {
-    return _then(
-      _$PaginatedResponseImpl(
-        status:
-            freezed == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        message:
-            freezed == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        pagination:
-            freezed == pagination
-                ? _value.pagination
-                : pagination // ignore: cast_nullable_to_non_nullable
-                    as Pagination?,
-        data:
-            freezed == data
-                ? _value._data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as List<dynamic>?,
-      ),
-    );
+    return _then(_$PaginatedResponseImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pagination: freezed == pagination
+          ? _value.pagination
+          : pagination // ignore: cast_nullable_to_non_nullable
+              as Pagination?,
+      data: freezed == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PaginatedResponseImpl implements _PaginatedResponse {
-  const _$PaginatedResponseImpl({
-    this.status,
-    this.message,
-    this.pagination,
-    final List<dynamic>? data,
-  }) : _data = data;
+  const _$PaginatedResponseImpl(
+      {this.status, this.message, this.pagination, final List<dynamic>? data})
+      : _data = data;
 
   factory _$PaginatedResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaginatedResponseImplFromJson(json);
@@ -229,13 +207,8 @@ class _$PaginatedResponseImpl implements _PaginatedResponse {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    status,
-    message,
-    pagination,
-    const DeepCollectionEquality().hash(_data),
-  );
+  int get hashCode => Object.hash(runtimeType, status, message, pagination,
+      const DeepCollectionEquality().hash(_data));
 
   /// Create a copy of PaginatedResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -244,23 +217,22 @@ class _$PaginatedResponseImpl implements _PaginatedResponse {
   @pragma('vm:prefer-inline')
   _$$PaginatedResponseImplCopyWith<_$PaginatedResponseImpl> get copyWith =>
       __$$PaginatedResponseImplCopyWithImpl<_$PaginatedResponseImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PaginatedResponseImplToJson(this);
+    return _$$PaginatedResponseImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _PaginatedResponse implements PaginatedResponse {
-  const factory _PaginatedResponse({
-    final int? status,
-    final String? message,
-    final Pagination? pagination,
-    final List<dynamic>? data,
-  }) = _$PaginatedResponseImpl;
+  const factory _PaginatedResponse(
+      {final int? status,
+      final String? message,
+      final Pagination? pagination,
+      final List<dynamic>? data}) = _$PaginatedResponseImpl;
 
   factory _PaginatedResponse.fromJson(Map<String, dynamic> json) =
       _$PaginatedResponseImpl.fromJson;
@@ -310,17 +282,15 @@ mixin _$Pagination {
 /// @nodoc
 abstract class $PaginationCopyWith<$Res> {
   factory $PaginationCopyWith(
-    Pagination value,
-    $Res Function(Pagination) then,
-  ) = _$PaginationCopyWithImpl<$Res, Pagination>;
+          Pagination value, $Res Function(Pagination) then) =
+      _$PaginationCopyWithImpl<$Res, Pagination>;
   @useResult
-  $Res call({
-    Links? links,
-    @JsonKey(name: 'current_page') int? currentPage,
-    int? total,
-    @JsonKey(name: 'per_page') int? perPage,
-    @JsonKey(name: 'total_pages') int? totalPages,
-  });
+  $Res call(
+      {Links? links,
+      @JsonKey(name: 'current_page') int? currentPage,
+      int? total,
+      @JsonKey(name: 'per_page') int? perPage,
+      @JsonKey(name: 'total_pages') int? totalPages});
 
   $LinksCopyWith<$Res>? get links;
 }
@@ -346,36 +316,28 @@ class _$PaginationCopyWithImpl<$Res, $Val extends Pagination>
     Object? perPage = freezed,
     Object? totalPages = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            links:
-                freezed == links
-                    ? _value.links
-                    : links // ignore: cast_nullable_to_non_nullable
-                        as Links?,
-            currentPage:
-                freezed == currentPage
-                    ? _value.currentPage
-                    : currentPage // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            total:
-                freezed == total
-                    ? _value.total
-                    : total // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            perPage:
-                freezed == perPage
-                    ? _value.perPage
-                    : perPage // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            totalPages:
-                freezed == totalPages
-                    ? _value.totalPages
-                    : totalPages // ignore: cast_nullable_to_non_nullable
-                        as int?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      links: freezed == links
+          ? _value.links
+          : links // ignore: cast_nullable_to_non_nullable
+              as Links?,
+      currentPage: freezed == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int?,
+      perPage: freezed == perPage
+          ? _value.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalPages: freezed == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
   }
 
   /// Create a copy of Pagination
@@ -397,18 +359,16 @@ class _$PaginationCopyWithImpl<$Res, $Val extends Pagination>
 abstract class _$$PaginationImplCopyWith<$Res>
     implements $PaginationCopyWith<$Res> {
   factory _$$PaginationImplCopyWith(
-    _$PaginationImpl value,
-    $Res Function(_$PaginationImpl) then,
-  ) = __$$PaginationImplCopyWithImpl<$Res>;
+          _$PaginationImpl value, $Res Function(_$PaginationImpl) then) =
+      __$$PaginationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    Links? links,
-    @JsonKey(name: 'current_page') int? currentPage,
-    int? total,
-    @JsonKey(name: 'per_page') int? perPage,
-    @JsonKey(name: 'total_pages') int? totalPages,
-  });
+  $Res call(
+      {Links? links,
+      @JsonKey(name: 'current_page') int? currentPage,
+      int? total,
+      @JsonKey(name: 'per_page') int? perPage,
+      @JsonKey(name: 'total_pages') int? totalPages});
 
   @override
   $LinksCopyWith<$Res>? get links;
@@ -419,9 +379,8 @@ class __$$PaginationImplCopyWithImpl<$Res>
     extends _$PaginationCopyWithImpl<$Res, _$PaginationImpl>
     implements _$$PaginationImplCopyWith<$Res> {
   __$$PaginationImplCopyWithImpl(
-    _$PaginationImpl _value,
-    $Res Function(_$PaginationImpl) _then,
-  ) : super(_value, _then);
+      _$PaginationImpl _value, $Res Function(_$PaginationImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Pagination
   /// with the given fields replaced by the non-null parameter values.
@@ -434,48 +393,40 @@ class __$$PaginationImplCopyWithImpl<$Res>
     Object? perPage = freezed,
     Object? totalPages = freezed,
   }) {
-    return _then(
-      _$PaginationImpl(
-        links:
-            freezed == links
-                ? _value.links
-                : links // ignore: cast_nullable_to_non_nullable
-                    as Links?,
-        currentPage:
-            freezed == currentPage
-                ? _value.currentPage
-                : currentPage // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        total:
-            freezed == total
-                ? _value.total
-                : total // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        perPage:
-            freezed == perPage
-                ? _value.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        totalPages:
-            freezed == totalPages
-                ? _value.totalPages
-                : totalPages // ignore: cast_nullable_to_non_nullable
-                    as int?,
-      ),
-    );
+    return _then(_$PaginationImpl(
+      links: freezed == links
+          ? _value.links
+          : links // ignore: cast_nullable_to_non_nullable
+              as Links?,
+      currentPage: freezed == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int?,
+      perPage: freezed == perPage
+          ? _value.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalPages: freezed == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PaginationImpl implements _Pagination {
-  const _$PaginationImpl({
-    this.links,
-    @JsonKey(name: 'current_page') this.currentPage,
-    this.total,
-    @JsonKey(name: 'per_page') this.perPage,
-    @JsonKey(name: 'total_pages') this.totalPages,
-  });
+  const _$PaginationImpl(
+      {this.links,
+      @JsonKey(name: 'current_page') this.currentPage,
+      this.total,
+      @JsonKey(name: 'per_page') this.perPage,
+      @JsonKey(name: 'total_pages') this.totalPages});
 
   factory _$PaginationImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaginationImplFromJson(json);
@@ -528,18 +479,19 @@ class _$PaginationImpl implements _Pagination {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PaginationImplToJson(this);
+    return _$$PaginationImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Pagination implements Pagination {
-  const factory _Pagination({
-    final Links? links,
-    @JsonKey(name: 'current_page') final int? currentPage,
-    final int? total,
-    @JsonKey(name: 'per_page') final int? perPage,
-    @JsonKey(name: 'total_pages') final int? totalPages,
-  }) = _$PaginationImpl;
+  const factory _Pagination(
+      {final Links? links,
+      @JsonKey(name: 'current_page') final int? currentPage,
+      final int? total,
+      @JsonKey(name: 'per_page') final int? perPage,
+      @JsonKey(name: 'total_pages') final int? totalPages}) = _$PaginationImpl;
 
   factory _Pagination.fromJson(Map<String, dynamic> json) =
       _$PaginationImpl.fromJson;
@@ -606,31 +558,28 @@ class _$LinksCopyWithImpl<$Res, $Val extends Links>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? next = freezed, Object? previous = freezed}) {
-    return _then(
-      _value.copyWith(
-            next:
-                freezed == next
-                    ? _value.next
-                    : next // ignore: cast_nullable_to_non_nullable
-                        as dynamic,
-            previous:
-                freezed == previous
-                    ? _value.previous
-                    : previous // ignore: cast_nullable_to_non_nullable
-                        as dynamic,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? next = freezed,
+    Object? previous = freezed,
+  }) {
+    return _then(_value.copyWith(
+      next: freezed == next
+          ? _value.next
+          : next // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      previous: freezed == previous
+          ? _value.previous
+          : previous // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$LinksImplCopyWith<$Res> implements $LinksCopyWith<$Res> {
   factory _$$LinksImplCopyWith(
-    _$LinksImpl value,
-    $Res Function(_$LinksImpl) then,
-  ) = __$$LinksImplCopyWithImpl<$Res>;
+          _$LinksImpl value, $Res Function(_$LinksImpl) then) =
+      __$$LinksImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({dynamic next, dynamic previous});
@@ -641,29 +590,27 @@ class __$$LinksImplCopyWithImpl<$Res>
     extends _$LinksCopyWithImpl<$Res, _$LinksImpl>
     implements _$$LinksImplCopyWith<$Res> {
   __$$LinksImplCopyWithImpl(
-    _$LinksImpl _value,
-    $Res Function(_$LinksImpl) _then,
-  ) : super(_value, _then);
+      _$LinksImpl _value, $Res Function(_$LinksImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Links
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? next = freezed, Object? previous = freezed}) {
-    return _then(
-      _$LinksImpl(
-        next:
-            freezed == next
-                ? _value.next
-                : next // ignore: cast_nullable_to_non_nullable
-                    as dynamic,
-        previous:
-            freezed == previous
-                ? _value.previous
-                : previous // ignore: cast_nullable_to_non_nullable
-                    as dynamic,
-      ),
-    );
+  $Res call({
+    Object? next = freezed,
+    Object? previous = freezed,
+  }) {
+    return _then(_$LinksImpl(
+      next: freezed == next
+          ? _value.next
+          : next // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      previous: freezed == previous
+          ? _value.previous
+          : previous // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
   }
 }
 
@@ -697,10 +644,9 @@ class _$LinksImpl implements _Links {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(next),
-    const DeepCollectionEquality().hash(previous),
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(next),
+      const DeepCollectionEquality().hash(previous));
 
   /// Create a copy of Links
   /// with the given fields replaced by the non-null parameter values.
@@ -712,7 +658,9 @@ class _$LinksImpl implements _Links {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LinksImplToJson(this);
+    return _$$LinksImplToJson(
+      this,
+    );
   }
 }
 

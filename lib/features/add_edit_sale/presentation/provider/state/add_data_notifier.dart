@@ -19,10 +19,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
 
   bool isSelected(Category cat) {
     // Since category is in OpenHouseProperty, we need to check if it exists
-    if (state?.openHouseProperty?.category != null) {
-      return state?.openHouseProperty?.category?.contains(cat) ?? false;
-    }
-    return false;
+    return state?.openHouseProperty?.category?.id == cat.id;
   }
 
   void manageWholeData(Map<String, dynamic> intitialData) {
@@ -99,7 +96,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
     try {
       state = state?.copyWith(
         openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
-            .copyWith(category: [cat]),
+            .copyWith(category: cat),
       );
     } catch (e) {
       log('UpdateCat Error: ${e.toString()}');
@@ -109,13 +106,13 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   void addAttachment(List<AttachmentModel>? attachments) {
     // Since attachments is in OpenHouseProperty, we need to handle it differently
     state = state?.copyWith(
-      openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
-          .copyWith(
-            attachments: [
-              ...(state?.openHouseProperty?.attachments ?? []),
-              ...(attachments ?? []),
-            ],
-          ),
+      openHouseProperty:
+          (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
+        attachments: [
+          ...(state?.openHouseProperty?.attachments ?? []),
+          ...(attachments ?? []),
+        ],
+      ),
     );
   }
 
@@ -123,13 +120,12 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
     // Since attachments is in OpenHouseProperty, we need to handle it differently
     try {
       state = state?.copyWith(
-        openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
-            .copyWith(
-              attachments:
-                  state?.openHouseProperty?.attachments
-                      ?.map((e) => e.id == id ? e : e)
-                      .toList(),
-            ),
+        openHouseProperty:
+            (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
+          attachments: state?.openHouseProperty?.attachments
+              ?.map((e) => e.id == id ? e : e)
+              .toList(),
+        ),
       );
     } catch (e) {
       PrintUtils.customLog('Error in Deleting files $e');
@@ -258,11 +254,11 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   void setTitleName(String? title) {
     // Since title is in OpenHouseProperty, we need to handle it differently
     state = state?.copyWith(
-      openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
-          .copyWith(
-            name: title,
-            // Add title handling here if needed
-          ),
+      openHouseProperty:
+          (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
+        name: title,
+        // Add title handling here if needed
+      ),
     );
   }
 
@@ -285,15 +281,15 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   void setDescription(String? desc) {
     // Since description is in OpenHouseProperty, we need to handle it differently
     state = state?.copyWith(
-      openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
-          .copyWith(
-            description: desc,
-            // Add description handling here if needed
-          ),
+      openHouseProperty:
+          (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
+        description: desc,
+        // Add description handling here if needed
+      ),
     );
   }
 
-  void setPrice(double? price) {
+  void setPrice(int? price) {
     // Since price is in OpenHouseProperty, we need to handle it differently
     state = state?.copyWith(
       openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
@@ -306,11 +302,11 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
     // Since attachments is in OpenHouseProperty, we need to handle it differently
     if (state != null) {
       state = state?.copyWith(
-        openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())
-            .copyWith(
-              attachments: [],
-              // Add attachment clearing here if needed
-            ),
+        openHouseProperty:
+            (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
+          attachments: [],
+          // Add attachment clearing here if needed
+        ),
       );
     }
   }
@@ -394,7 +390,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   }
 
   // Update covered area
-  void setCoveredArea(double? coveredArea) {
+  void setCoveredArea(int? coveredArea) {
     state = state?.copyWith(
       propertySize: (state?.propertySize ?? PropertySize()).copyWith(
         coveredArea: coveredArea,
@@ -403,7 +399,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   }
 
   // Update lot size
-  void setLotSize(double? lotSize) {
+  void setLotSize(int? lotSize) {
     state = state?.copyWith(
       propertySize: (state?.propertySize ?? PropertySize()).copyWith(
         lotSize: lotSize,
@@ -412,7 +408,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   }
 
   // Update number of bedrooms
-  void setBedrooms(String? bedrooms) {
+  void setBedrooms(int? bedrooms) {
     state = state?.copyWith(
       propertySize: (state?.propertySize ?? PropertySize()).copyWith(
         bedrooms: bedrooms,
@@ -421,7 +417,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   }
 
   // Update number of bathrooms
-  void setBathrooms(String? bathrooms) {
+  void setBathrooms(int? bathrooms) {
     state = state?.copyWith(
       propertySize: (state?.propertySize ?? PropertySize()).copyWith(
         bathrooms: bathrooms,
@@ -449,24 +445,23 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
         'end_time': CustomDateUtils.convertTo24HourFormat(
           timeSlot.endTime ?? '',
         ), // Convert end time
-        'property_id': state?.propertyId,
+        'property_id': state?.id,
       };
     }).toList();
   }
 
   // Convert the OpenHouse model to the required JSON format
   Map<String, dynamic> toAddJson(OpenHouse model) {
-    final postPrice =
-        (HelperConstant.priceForEach *
-            (model.propertySize?.availableTimeSlots ?? []).length);
+    final postPrice = (HelperConstant.priceForEach *
+        (model.propertySize?.availableTimeSlots ?? []).length);
 
     List<Map<String, dynamic>> availableTimeSlots =
         convertAvailableTimeSlotListToJson(
-          model.propertySize?.availableTimeSlots ?? [],
-        );
+      model.propertySize?.availableTimeSlots ?? [],
+    );
 
     return {
-      if (model.propertyId != null) "property_id": model.propertyId,
+      if (model.id != null) "property_id": model.id,
       "location": {
         "latitude": model.location?.latitude,
         "longitude": model.location?.longitude,
@@ -499,7 +494,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
         "price": model.openHouseProperty?.price,
         "images":
             model.openHouseProperty?.attachments?.map((e) => e.id).toList(),
-        "category": (model.openHouseProperty?.category ?? [])[0].id,
+        "category": (model.openHouseProperty?.category)?.id,
         // (model.openHouseProperty?.category ?? []).map((e) => e.id).toList(),
         "type": model.openHouseProperty?.propertyType?.id,
       },

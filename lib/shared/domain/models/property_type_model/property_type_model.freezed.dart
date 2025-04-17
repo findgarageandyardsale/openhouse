@@ -12,8 +12,7 @@ part of 'property_type_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PropertyTypeModel _$PropertyTypeModelFromJson(Map<String, dynamic> json) {
   return _PropertyTypeModel.fromJson(json);
@@ -37,9 +36,8 @@ mixin _$PropertyTypeModel {
 /// @nodoc
 abstract class $PropertyTypeModelCopyWith<$Res> {
   factory $PropertyTypeModelCopyWith(
-    PropertyTypeModel value,
-    $Res Function(PropertyTypeModel) then,
-  ) = _$PropertyTypeModelCopyWithImpl<$Res, PropertyTypeModel>;
+          PropertyTypeModel value, $Res Function(PropertyTypeModel) then) =
+      _$PropertyTypeModelCopyWithImpl<$Res, PropertyTypeModel>;
   @useResult
   $Res call({int? id, String? name});
 }
@@ -58,32 +56,29 @@ class _$PropertyTypeModelCopyWithImpl<$Res, $Val extends PropertyTypeModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = freezed, Object? name = freezed}) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            name:
-                freezed == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PropertyTypeModelImplCopyWith<$Res>
     implements $PropertyTypeModelCopyWith<$Res> {
-  factory _$$PropertyTypeModelImplCopyWith(
-    _$PropertyTypeModelImpl value,
-    $Res Function(_$PropertyTypeModelImpl) then,
-  ) = __$$PropertyTypeModelImplCopyWithImpl<$Res>;
+  factory _$$PropertyTypeModelImplCopyWith(_$PropertyTypeModelImpl value,
+          $Res Function(_$PropertyTypeModelImpl) then) =
+      __$$PropertyTypeModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? id, String? name});
@@ -93,30 +88,28 @@ abstract class _$$PropertyTypeModelImplCopyWith<$Res>
 class __$$PropertyTypeModelImplCopyWithImpl<$Res>
     extends _$PropertyTypeModelCopyWithImpl<$Res, _$PropertyTypeModelImpl>
     implements _$$PropertyTypeModelImplCopyWith<$Res> {
-  __$$PropertyTypeModelImplCopyWithImpl(
-    _$PropertyTypeModelImpl _value,
-    $Res Function(_$PropertyTypeModelImpl) _then,
-  ) : super(_value, _then);
+  __$$PropertyTypeModelImplCopyWithImpl(_$PropertyTypeModelImpl _value,
+      $Res Function(_$PropertyTypeModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PropertyTypeModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = freezed, Object? name = freezed}) {
-    return _then(
-      _$PropertyTypeModelImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        name:
-            freezed == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_$PropertyTypeModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -158,13 +151,13 @@ class _$PropertyTypeModelImpl implements _PropertyTypeModel {
   @pragma('vm:prefer-inline')
   _$$PropertyTypeModelImplCopyWith<_$PropertyTypeModelImpl> get copyWith =>
       __$$PropertyTypeModelImplCopyWithImpl<_$PropertyTypeModelImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PropertyTypeModelImplToJson(this);
+    return _$$PropertyTypeModelImplToJson(
+      this,
+    );
   }
 }
 

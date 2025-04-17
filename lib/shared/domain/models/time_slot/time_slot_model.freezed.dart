@@ -12,8 +12,7 @@ part of 'time_slot_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TimeSlotModel _$TimeSlotModelFromJson(Map<String, dynamic> json) {
   return _TimeSlotModel.fromJson(json);
@@ -39,9 +38,8 @@ mixin _$TimeSlotModel {
 /// @nodoc
 abstract class $TimeSlotModelCopyWith<$Res> {
   factory $TimeSlotModelCopyWith(
-    TimeSlotModel value,
-    $Res Function(TimeSlotModel) then,
-  ) = _$TimeSlotModelCopyWithImpl<$Res, TimeSlotModel>;
+          TimeSlotModel value, $Res Function(TimeSlotModel) then) =
+      _$TimeSlotModelCopyWithImpl<$Res, TimeSlotModel>;
   @useResult
   $Res call({int id, DateTime date, String startTime, String endTime});
 }
@@ -66,31 +64,24 @@ class _$TimeSlotModelCopyWithImpl<$Res, $Val extends TimeSlotModel>
     Object? startTime = null,
     Object? endTime = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int,
-            date:
-                null == date
-                    ? _value.date
-                    : date // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            startTime:
-                null == startTime
-                    ? _value.startTime
-                    : startTime // ignore: cast_nullable_to_non_nullable
-                        as String,
-            endTime:
-                null == endTime
-                    ? _value.endTime
-                    : endTime // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -98,9 +89,8 @@ class _$TimeSlotModelCopyWithImpl<$Res, $Val extends TimeSlotModel>
 abstract class _$$TimeSlotModelImplCopyWith<$Res>
     implements $TimeSlotModelCopyWith<$Res> {
   factory _$$TimeSlotModelImplCopyWith(
-    _$TimeSlotModelImpl value,
-    $Res Function(_$TimeSlotModelImpl) then,
-  ) = __$$TimeSlotModelImplCopyWithImpl<$Res>;
+          _$TimeSlotModelImpl value, $Res Function(_$TimeSlotModelImpl) then) =
+      __$$TimeSlotModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, DateTime date, String startTime, String endTime});
@@ -111,9 +101,8 @@ class __$$TimeSlotModelImplCopyWithImpl<$Res>
     extends _$TimeSlotModelCopyWithImpl<$Res, _$TimeSlotModelImpl>
     implements _$$TimeSlotModelImplCopyWith<$Res> {
   __$$TimeSlotModelImplCopyWithImpl(
-    _$TimeSlotModelImpl _value,
-    $Res Function(_$TimeSlotModelImpl) _then,
-  ) : super(_value, _then);
+      _$TimeSlotModelImpl _value, $Res Function(_$TimeSlotModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TimeSlotModel
   /// with the given fields replaced by the non-null parameter values.
@@ -125,42 +114,35 @@ class __$$TimeSlotModelImplCopyWithImpl<$Res>
     Object? startTime = null,
     Object? endTime = null,
   }) {
-    return _then(
-      _$TimeSlotModelImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        date:
-            null == date
-                ? _value.date
-                : date // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        startTime:
-            null == startTime
-                ? _value.startTime
-                : startTime // ignore: cast_nullable_to_non_nullable
-                    as String,
-        endTime:
-            null == endTime
-                ? _value.endTime
-                : endTime // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$TimeSlotModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TimeSlotModelImpl implements _TimeSlotModel {
-  const _$TimeSlotModelImpl({
-    required this.id,
-    required this.date,
-    required this.startTime,
-    required this.endTime,
-  });
+  const _$TimeSlotModelImpl(
+      {required this.id,
+      required this.date,
+      required this.startTime,
+      required this.endTime});
 
   factory _$TimeSlotModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TimeSlotModelImplFromJson(json);
@@ -205,17 +187,18 @@ class _$TimeSlotModelImpl implements _TimeSlotModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TimeSlotModelImplToJson(this);
+    return _$$TimeSlotModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _TimeSlotModel implements TimeSlotModel {
-  const factory _TimeSlotModel({
-    required final int id,
-    required final DateTime date,
-    required final String startTime,
-    required final String endTime,
-  }) = _$TimeSlotModelImpl;
+  const factory _TimeSlotModel(
+      {required final int id,
+      required final DateTime date,
+      required final String startTime,
+      required final String endTime}) = _$TimeSlotModelImpl;
 
   factory _TimeSlotModel.fromJson(Map<String, dynamic> json) =
       _$TimeSlotModelImpl.fromJson;

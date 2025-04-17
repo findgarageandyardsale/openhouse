@@ -12,8 +12,7 @@ part of 'attachment_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AttachmentModel _$AttachmentModelFromJson(Map<String, dynamic> json) {
   return _AttachmentModel.fromJson(json);
@@ -45,19 +44,17 @@ mixin _$AttachmentModel {
 /// @nodoc
 abstract class $AttachmentModelCopyWith<$Res> {
   factory $AttachmentModelCopyWith(
-    AttachmentModel value,
-    $Res Function(AttachmentModel) then,
-  ) = _$AttachmentModelCopyWithImpl<$Res, AttachmentModel>;
+          AttachmentModel value, $Res Function(AttachmentModel) then) =
+      _$AttachmentModelCopyWithImpl<$Res, AttachmentModel>;
   @useResult
-  $Res call({
-    int? id,
-    String? file,
-    String? thumbnail,
-    String? name,
-    @JsonKey(name: 'is_include') bool? isInclude,
-    @JsonKey(name: 'mime_type') String? mime,
-    @JsonKey(readValue: readValueForAttachmentID) String? attachment,
-  });
+  $Res call(
+      {int? id,
+      String? file,
+      String? thumbnail,
+      String? name,
+      @JsonKey(name: 'is_include') bool? isInclude,
+      @JsonKey(name: 'mime_type') String? mime,
+      @JsonKey(readValue: readValueForAttachmentID) String? attachment});
 }
 
 /// @nodoc
@@ -83,67 +80,55 @@ class _$AttachmentModelCopyWithImpl<$Res, $Val extends AttachmentModel>
     Object? mime = freezed,
     Object? attachment = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            file:
-                freezed == file
-                    ? _value.file
-                    : file // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            thumbnail:
-                freezed == thumbnail
-                    ? _value.thumbnail
-                    : thumbnail // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            name:
-                freezed == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            isInclude:
-                freezed == isInclude
-                    ? _value.isInclude
-                    : isInclude // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            mime:
-                freezed == mime
-                    ? _value.mime
-                    : mime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            attachment:
-                freezed == attachment
-                    ? _value.attachment
-                    : attachment // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnail: freezed == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isInclude: freezed == isInclude
+          ? _value.isInclude
+          : isInclude // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      mime: freezed == mime
+          ? _value.mime
+          : mime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      attachment: freezed == attachment
+          ? _value.attachment
+          : attachment // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$AttachmentModelImplCopyWith<$Res>
     implements $AttachmentModelCopyWith<$Res> {
-  factory _$$AttachmentModelImplCopyWith(
-    _$AttachmentModelImpl value,
-    $Res Function(_$AttachmentModelImpl) then,
-  ) = __$$AttachmentModelImplCopyWithImpl<$Res>;
+  factory _$$AttachmentModelImplCopyWith(_$AttachmentModelImpl value,
+          $Res Function(_$AttachmentModelImpl) then) =
+      __$$AttachmentModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int? id,
-    String? file,
-    String? thumbnail,
-    String? name,
-    @JsonKey(name: 'is_include') bool? isInclude,
-    @JsonKey(name: 'mime_type') String? mime,
-    @JsonKey(readValue: readValueForAttachmentID) String? attachment,
-  });
+  $Res call(
+      {int? id,
+      String? file,
+      String? thumbnail,
+      String? name,
+      @JsonKey(name: 'is_include') bool? isInclude,
+      @JsonKey(name: 'mime_type') String? mime,
+      @JsonKey(readValue: readValueForAttachmentID) String? attachment});
 }
 
 /// @nodoc
@@ -151,9 +136,8 @@ class __$$AttachmentModelImplCopyWithImpl<$Res>
     extends _$AttachmentModelCopyWithImpl<$Res, _$AttachmentModelImpl>
     implements _$$AttachmentModelImplCopyWith<$Res> {
   __$$AttachmentModelImplCopyWithImpl(
-    _$AttachmentModelImpl _value,
-    $Res Function(_$AttachmentModelImpl) _then,
-  ) : super(_value, _then);
+      _$AttachmentModelImpl _value, $Res Function(_$AttachmentModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AttachmentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -168,60 +152,50 @@ class __$$AttachmentModelImplCopyWithImpl<$Res>
     Object? mime = freezed,
     Object? attachment = freezed,
   }) {
-    return _then(
-      _$AttachmentModelImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        file:
-            freezed == file
-                ? _value.file
-                : file // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        thumbnail:
-            freezed == thumbnail
-                ? _value.thumbnail
-                : thumbnail // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        name:
-            freezed == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        isInclude:
-            freezed == isInclude
-                ? _value.isInclude
-                : isInclude // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        mime:
-            freezed == mime
-                ? _value.mime
-                : mime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        attachment:
-            freezed == attachment
-                ? _value.attachment
-                : attachment // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$AttachmentModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnail: freezed == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isInclude: freezed == isInclude
+          ? _value.isInclude
+          : isInclude // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      mime: freezed == mime
+          ? _value.mime
+          : mime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      attachment: freezed == attachment
+          ? _value.attachment
+          : attachment // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AttachmentModelImpl implements _AttachmentModel {
-  _$AttachmentModelImpl({
-    this.id,
-    this.file,
-    this.thumbnail,
-    this.name,
-    @JsonKey(name: 'is_include') this.isInclude,
-    @JsonKey(name: 'mime_type') this.mime,
-    @JsonKey(readValue: readValueForAttachmentID) this.attachment,
-  });
+  _$AttachmentModelImpl(
+      {this.id,
+      this.file,
+      this.thumbnail,
+      this.name,
+      @JsonKey(name: 'is_include') this.isInclude,
+      @JsonKey(name: 'mime_type') this.mime,
+      @JsonKey(readValue: readValueForAttachmentID) this.attachment});
 
   factory _$AttachmentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttachmentModelImplFromJson(json);
@@ -269,15 +243,7 @@ class _$AttachmentModelImpl implements _AttachmentModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    file,
-    thumbnail,
-    name,
-    isInclude,
-    mime,
-    attachment,
-  );
+      runtimeType, id, file, thumbnail, name, isInclude, mime, attachment);
 
   /// Create a copy of AttachmentModel
   /// with the given fields replaced by the non-null parameter values.
@@ -286,26 +252,26 @@ class _$AttachmentModelImpl implements _AttachmentModel {
   @pragma('vm:prefer-inline')
   _$$AttachmentModelImplCopyWith<_$AttachmentModelImpl> get copyWith =>
       __$$AttachmentModelImplCopyWithImpl<_$AttachmentModelImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AttachmentModelImplToJson(this);
+    return _$$AttachmentModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _AttachmentModel implements AttachmentModel {
-  factory _AttachmentModel({
-    final int? id,
-    final String? file,
-    final String? thumbnail,
-    final String? name,
-    @JsonKey(name: 'is_include') final bool? isInclude,
-    @JsonKey(name: 'mime_type') final String? mime,
-    @JsonKey(readValue: readValueForAttachmentID) final String? attachment,
-  }) = _$AttachmentModelImpl;
+  factory _AttachmentModel(
+      {final int? id,
+      final String? file,
+      final String? thumbnail,
+      final String? name,
+      @JsonKey(name: 'is_include') final bool? isInclude,
+      @JsonKey(name: 'mime_type') final String? mime,
+      @JsonKey(readValue: readValueForAttachmentID)
+      final String? attachment}) = _$AttachmentModelImpl;
 
   factory _AttachmentModel.fromJson(Map<String, dynamic> json) =
       _$AttachmentModelImpl.fromJson;

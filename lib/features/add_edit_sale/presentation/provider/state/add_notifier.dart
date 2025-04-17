@@ -79,21 +79,16 @@ class AddNotifier extends StateNotifier<FormzState> {
           convertAvailableTimeSlotListToJson(timeSlots);
 
       // state = const FormzState.loading();
-      List<int> categories = [];
-      for (var element in (postData?.openHouseProperty?.category ?? [])) {
-        categories.add(element.id!);
-      }
-      Map<String, dynamic> data = postData!.toJson();
-      final postPrice =
-          (HelperConstant.priceForEach *
-              (postData?.propertySize?.availableTimeSlots ?? []).length);
 
-      HelperConstant.postPrice =
-          (postPrice == 0
-                  ? (postData?.openHouseProperty?.price ?? '10')
-                  : postPrice)
-              .toString();
-      data['category'] = categories;
+      Map<String, dynamic> data = postData!.toJson();
+      final postPrice = (HelperConstant.priceForEach *
+          (postData?.propertySize?.availableTimeSlots ?? []).length);
+
+      HelperConstant.postPrice = (postPrice == 0
+              ? (postData?.openHouseProperty?.price ?? '10')
+              : postPrice)
+          .toString();
+      data['category'] = postData?.openHouseProperty?.category?.id;
       data['price'] = postPrice;
       if (transactionId != null) {
         data['transaction_id'] = transactionId;
@@ -109,7 +104,7 @@ class AddNotifier extends StateNotifier<FormzState> {
       PrintUtils.customLog(jsonEncode(data));
       final response = await addRepository.editPost(
         singleItem: data,
-        id: postData!.propertyId!,
+        id: postData!.id!,
       );
 
       state = await response.fold((failure) => FormzState.failure(failure), (

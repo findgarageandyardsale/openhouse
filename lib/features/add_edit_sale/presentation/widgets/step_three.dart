@@ -52,7 +52,7 @@ class StepThree extends ConsumerWidget {
                 onChanged: (value) {
                   ref
                       .read(addDataNotifierProvider.notifier)
-                      .setCoveredArea(double.tryParse(value ?? ''));
+                      .setCoveredArea(int.tryParse(value ?? ''));
                 },
                 suffixIcon: SizedBox(
                   width: 50,
@@ -86,7 +86,7 @@ class StepThree extends ConsumerWidget {
                 onChanged: (value) {
                   ref
                       .read(addDataNotifierProvider.notifier)
-                      .setLotSize(double.tryParse(value ?? ''));
+                      .setLotSize(int.tryParse(value ?? ''));
                 },
                 controller: lotSizeController,
               ),
@@ -94,7 +94,6 @@ class StepThree extends ConsumerWidget {
           ],
         ),
         Spacing.sizedBoxH_16(),
-
         Row(
           spacing: 8,
           children: [
@@ -110,9 +109,15 @@ class StepThree extends ConsumerWidget {
                     child: ListBottomSheet(
                       onTap: (value) {
                         bedroomsController.text = value;
-                        ref
-                            .read(addDataNotifierProvider.notifier)
-                            .setBedrooms(value);
+                        if (value == '5+') {
+                          ref
+                              .read(addDataNotifierProvider.notifier)
+                              .setBedrooms(5);
+                        } else {
+                          ref
+                              .read(addDataNotifierProvider.notifier)
+                              .setBedrooms(int.parse(value));
+                        }
                       },
                       items: FilterConstants.bedrooms,
                       title: 'No. of Bedrooms',
@@ -130,7 +135,6 @@ class StepThree extends ConsumerWidget {
                 controller: bedroomsController,
               ),
             ),
-
             Expanded(
               child: AuthField(
                 name: 'bathrooms',
@@ -143,9 +147,16 @@ class StepThree extends ConsumerWidget {
                     child: ListBottomSheet(
                       onTap: (value) {
                         bathroomsController.text = value;
-                        ref
-                            .read(addDataNotifierProvider.notifier)
-                            .setBathrooms(value);
+
+                        if (value == '5+') {
+                          ref
+                              .read(addDataNotifierProvider.notifier)
+                              .setBathrooms(5);
+                        } else {
+                          ref
+                              .read(addDataNotifierProvider.notifier)
+                              .setBathrooms(int.parse(value));
+                        }
                       },
                       items: FilterConstants.bedrooms,
                       title: 'No. of Bedrooms',
@@ -186,23 +197,23 @@ class ListBottomSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return items.isNotEmpty
         ? Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TitleHead(title: title),
-            ),
-            ...items.map(
-              (e) => ListTile(
-                onTap: () {
-                  Navigator.pop(context);
-                  if (onTap != null) onTap!(e);
-                },
-                title: Text(e),
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: TitleHead(title: title),
               ),
-            ),
-          ],
-        )
+              ...items.map(
+                (e) => ListTile(
+                  onTap: () {
+                    Navigator.pop(context);
+                    if (onTap != null) onTap!(e);
+                  },
+                  title: Text(e),
+                ),
+              ),
+            ],
+          )
         : Center(child: Text('No data available'));
   }
 }

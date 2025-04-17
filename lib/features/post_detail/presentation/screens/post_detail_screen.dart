@@ -47,10 +47,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   Widget locationWidget() {
     return LocationText(
       fromDetail: false,
-      location: '123 Oceanview Drive, Malibu, CA',
-      //   AppUtils.formatLocationAsAddress(
-      //   singlePost?.location ?? const LocationModel(),
-      // ),
+      location: AppUtils.formatLocationAsAddress(
+        widget.garageayard.location ?? const LocationModel(),
+      ),
     );
   }
 
@@ -86,7 +85,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
     final currentUserAsyncValue = ref.watch(currentUserProvider);
 
     return context.doublePos(
-      appbar: AppBar(title: Text(widget.garageayard.openHouseProperty?.name ?? '')),
+      appbar:
+          AppBar(title: Text(widget.garageayard.openHouseProperty?.name ?? '')),
       isActive: widget.isActive,
       actions: currentUserAsyncValue.when(
         data: (User? data) {
@@ -121,13 +121,13 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
           context.router
               .push(AddEditPostSaleScreen(garageayard: widget.garageayard))
               .then((val) {
-                if (val == true) {
-                  ref.read(saleNotifierProvider.notifier)
-                    ..resetState()
-                    ..fetchExplorePosts();
-                  Navigator.pop(context);
-                }
-              });
+            if (val == true) {
+              ref.read(saleNotifierProvider.notifier)
+                ..resetState()
+                ..fetchExplorePosts();
+              Navigator.pop(context);
+            }
+          });
         }
       },
       content: SingleChildScrollView(
@@ -149,12 +149,12 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '\$1,250,000',
+                        '\$${widget.garageayard.openHouseProperty?.price}',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(
-                        'Modern Waterfront Villa',
-                        style: AppTextStyles.bodyMedium.copyWith(
+                        '${widget.garageayard.openHouseProperty?.name}',
+                        style: AppTextStyles.bodyLarge.copyWith(
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -165,8 +165,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                           Spacing.sizedBoxW_04(),
                           Expanded(
                             child: Text(
-                              'Property Type: Apartment',
-                              style: AppTextStyles.bodySmall.copyWith(
+                              '${widget.garageayard.openHouseProperty?.propertyType?.name}',
+                              style: AppTextStyles.bodyMedium.copyWith(
                                 fontWeight: FontWeight.w400,
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -176,22 +176,21 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                         ],
                       ),
                       AmenitiesLine(
-                        bedroom: '6',
-                        bathroom: '4',
-                        size: '2500 sq.ft',
-                        lotSize: '10000 sf min.',
+                        bedroom: widget.garageayard.propertySize?.bedrooms
+                                ?.toString() ??
+                            '0',
+                        bathroom: widget.garageayard.propertySize?.bathrooms
+                                ?.toString() ??
+                            '0',
+                        size:
+                            '${widget.garageayard.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
+                        lotSize:
+                            '${widget.garageayard.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sf min.',
                       ),
-                      Wrap(
-                        runSpacing: 12.0,
-                        spacing: 6.0,
-                        children:
-                            widget.garageayard.openHouseProperty?.category
-                                ?.map(
-                                  (e) => DescriptionChip(text: e.name ?? ''),
-                                )
-                                .toList() ??
-                            [],
-                      ),
+                      DescriptionChip(
+                          text: widget.garageayard.openHouseProperty?.category
+                                  ?.name ??
+                              ''),
                       SizedBox(
                         height: 8,
                         child: Divider(
@@ -199,19 +198,22 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                           thickness: 1,
                         ),
                       ),
-                      TimerText(
-                        fromDetail: false,
-                        date: CustomDateUtils.formatDate(DateTime.now()),
-                        time:
-                            '${CustomDateUtils.convertTo12HourFormat(DateTime.now().toString())} - ${CustomDateUtils.convertTo12HourFormat(DateTime.now().toString())}',
-                        days: '1',
-                      ),
+                      ...widget.garageayard.propertySize?.availableTimeSlots
+                              ?.map((e) => TimerText(
+                                    fromDetail: false,
+                                    date: CustomDateUtils.formatDate(
+                                        e.date ?? DateTime.now()),
+                                    time:
+                                        '${CustomDateUtils.convertTo12HourFormat(e.startTime)} - ${CustomDateUtils.convertTo12HourFormat(e.endTime)}',
+                                    days: '0',
+                                  ))
+                              .toList() ??
+                          [],
                     ],
                   ),
                 ),
                 SizedBox(
                   height: 8,
-
                   child: Divider(color: Colors.grey.shade300, thickness: 4),
                 ),
                 Padding(
@@ -226,10 +228,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                           color: AppColors.textPrimaryColor,
                         ),
                       ),
-
                       Spacing.sizedBoxH_08(),
                       Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                        widget.garageayard.openHouseProperty?.description ?? '',
                         style: AppTextStyles.bodySmall.copyWith(
                           fontWeight: FontWeight.w400,
                         ),
@@ -240,7 +241,6 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
                 SizedBox(
                   height: 8,
-
                   child: Divider(color: Colors.grey.shade300, thickness: 4),
                 ),
                 // Padding(
@@ -282,7 +282,6 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
                 SizedBox(
                   height: 8,
-
                   child: Divider(color: Colors.grey.shade300, thickness: 4),
                 ),
                 SizedBox(
@@ -312,7 +311,6 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
                 SizedBox(
                   height: 8,
-
                   child: Divider(color: Colors.grey.shade300, thickness: 4),
                 ),
                 Column(
@@ -320,23 +318,26 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                   children: [
                     ProfileInfoListTileWidget(
                       icon: Icons.person_outline,
-                      title: 'Posted by John Doe',
-                      subTitle: 'March 15, 2025',
+                      title:
+                          'Posted by ${widget.garageayard.createdBy?.firstName} ${widget.garageayard.createdBy?.lastName}',
+                      subTitle: CustomDateUtils.formatDate(
+                          widget.garageayard.createdAt ?? DateTime.now()),
                     ),
                     ProfileInfoListTileWidget(
                       icon: Icons.mail_outline,
                       title: 'Email',
-                      subTitle: 'an',
+                      subTitle: widget.garageayard.createdBy?.email ?? '',
                     ),
                     ProfileInfoListTileWidget(
                       icon: Icons.call_outlined,
                       title: 'Phone',
-                      subTitle: '000',
+                      subTitle: widget.garageayard.createdBy?.phoneNumber ?? '',
                     ),
                     ProfileInfoListTileWidget(
                       icon: Icons.location_on_outlined,
                       title: 'Address',
-                      subTitle: 'Thimi',
+                      subTitle:
+                          widget.garageayard.createdBy?.officeAddress ?? '',
                     ),
                   ],
                 ),

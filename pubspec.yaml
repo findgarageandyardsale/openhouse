@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.2
+  sdk: ">=3.4.3 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -84,6 +84,9 @@ dependencies:
   syncfusion_flutter_datepicker: ^29.1.33
   mime: ^2.0.0
   pretty_dio_logger: ^1.4.0
+
+dependency_overrides:
+  analyzer: 7.2.0
 
 dev_dependencies:
   flutter_test:

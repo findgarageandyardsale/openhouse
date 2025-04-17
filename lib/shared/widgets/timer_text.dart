@@ -36,10 +36,7 @@ class TimerText extends StatelessWidget {
             child: RichText(
               text: TextSpan(
                 text: date,
-                style:
-                    fromDetail
-                        ? Theme.of(context).textTheme.bodyLarge
-                        : Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.bodyMedium,
                 children: [const TextSpan(text: ' • '), TextSpan(text: time)],
               ),
             ),

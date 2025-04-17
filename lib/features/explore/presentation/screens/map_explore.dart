@@ -86,7 +86,7 @@ class _MapExploreState extends ConsumerState<MapExplore> {
 
           markers.add(
             Marker(
-              markerId: MarkerId('${element.propertyId}'),
+              markerId: MarkerId('${element.id}'),
               position: LatLng(
                 element.location!.latitude!,
                 element.location!.longitude!,

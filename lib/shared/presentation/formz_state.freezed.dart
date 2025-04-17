@@ -12,8 +12,7 @@ part of 'formz_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$FormzState<T> {
@@ -23,14 +22,16 @@ mixin _$FormzState<T> {
     required TResult Function() loading,
     required TResult Function(AppException exception) failure,
     required TResult Function(T? data) success,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AppException exception)? failure,
     TResult? Function(T? data)? success,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -38,21 +39,24 @@ mixin _$FormzState<T> {
     TResult Function(AppException exception)? failure,
     TResult Function(T? data)? success,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Failure<T> value) failure,
     required TResult Function(Success<T> value) success,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Failure<T> value)? failure,
     TResult? Function(Success<T> value)? success,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial<T> value)? initial,
@@ -60,15 +64,15 @@ mixin _$FormzState<T> {
     TResult Function(Failure<T> value)? failure,
     TResult Function(Success<T> value)? success,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FormzStateCopyWith<T, $Res> {
   factory $FormzStateCopyWith(
-    FormzState<T> value,
-    $Res Function(FormzState<T>) then,
-  ) = _$FormzStateCopyWithImpl<T, $Res, FormzState<T>>;
+          FormzState<T> value, $Res Function(FormzState<T>) then) =
+      _$FormzStateCopyWithImpl<T, $Res, FormzState<T>>;
 }
 
 /// @nodoc
@@ -88,9 +92,8 @@ class _$FormzStateCopyWithImpl<T, $Res, $Val extends FormzState<T>>
 /// @nodoc
 abstract class _$$InitialImplCopyWith<T, $Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl<T> value,
-    $Res Function(_$InitialImpl<T>) then,
-  ) = __$$InitialImplCopyWithImpl<T, $Res>;
+          _$InitialImpl<T> value, $Res Function(_$InitialImpl<T>) then) =
+      __$$InitialImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
@@ -98,9 +101,8 @@ class __$$InitialImplCopyWithImpl<T, $Res>
     extends _$FormzStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
     implements _$$InitialImplCopyWith<T, $Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl<T> _value,
-    $Res Function(_$InitialImpl<T>) _then,
-  ) : super(_value, _then);
+      _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
+      : super(_value, _then);
 
   /// Create a copy of FormzState
   /// with the given fields replaced by the non-null parameter values.
@@ -207,9 +209,8 @@ abstract class Initial<T> implements FormzState<T> {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<T, $Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl<T> value,
-    $Res Function(_$LoadingImpl<T>) then,
-  ) = __$$LoadingImplCopyWithImpl<T, $Res>;
+          _$LoadingImpl<T> value, $Res Function(_$LoadingImpl<T>) then) =
+      __$$LoadingImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
@@ -217,9 +218,8 @@ class __$$LoadingImplCopyWithImpl<T, $Res>
     extends _$FormzStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
     implements _$$LoadingImplCopyWith<T, $Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl<T> _value,
-    $Res Function(_$LoadingImpl<T>) _then,
-  ) : super(_value, _then);
+      _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
+      : super(_value, _then);
 
   /// Create a copy of FormzState
   /// with the given fields replaced by the non-null parameter values.
@@ -326,9 +326,8 @@ abstract class Loading<T> implements FormzState<T> {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<T, $Res> {
   factory _$$FailureImplCopyWith(
-    _$FailureImpl<T> value,
-    $Res Function(_$FailureImpl<T>) then,
-  ) = __$$FailureImplCopyWithImpl<T, $Res>;
+          _$FailureImpl<T> value, $Res Function(_$FailureImpl<T>) then) =
+      __$$FailureImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({AppException exception});
 }
@@ -338,23 +337,22 @@ class __$$FailureImplCopyWithImpl<T, $Res>
     extends _$FormzStateCopyWithImpl<T, $Res, _$FailureImpl<T>>
     implements _$$FailureImplCopyWith<T, $Res> {
   __$$FailureImplCopyWithImpl(
-    _$FailureImpl<T> _value,
-    $Res Function(_$FailureImpl<T>) _then,
-  ) : super(_value, _then);
+      _$FailureImpl<T> _value, $Res Function(_$FailureImpl<T>) _then)
+      : super(_value, _then);
 
   /// Create a copy of FormzState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? exception = null}) {
-    return _then(
-      _$FailureImpl<T>(
-        null == exception
-            ? _value.exception
-            : exception // ignore: cast_nullable_to_non_nullable
-                as AppException,
-      ),
-    );
+  $Res call({
+    Object? exception = null,
+  }) {
+    return _then(_$FailureImpl<T>(
+      null == exception
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as AppException,
+    ));
   }
 }
 
@@ -481,9 +479,8 @@ abstract class Failure<T> implements FormzState<T> {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<T, $Res> {
   factory _$$SuccessImplCopyWith(
-    _$SuccessImpl<T> value,
-    $Res Function(_$SuccessImpl<T>) then,
-  ) = __$$SuccessImplCopyWithImpl<T, $Res>;
+          _$SuccessImpl<T> value, $Res Function(_$SuccessImpl<T>) then) =
+      __$$SuccessImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T? data});
 }
@@ -493,24 +490,22 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
     extends _$FormzStateCopyWithImpl<T, $Res, _$SuccessImpl<T>>
     implements _$$SuccessImplCopyWith<T, $Res> {
   __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl<T> _value,
-    $Res Function(_$SuccessImpl<T>) _then,
-  ) : super(_value, _then);
+      _$SuccessImpl<T> _value, $Res Function(_$SuccessImpl<T>) _then)
+      : super(_value, _then);
 
   /// Create a copy of FormzState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = freezed}) {
-    return _then(
-      _$SuccessImpl<T>(
-        data:
-            freezed == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as T?,
-      ),
-    );
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$SuccessImpl<T>(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T?,
+    ));
   }
 }
 

@@ -7,26 +7,27 @@ part of 'open_house.dart';
 // **************************************************************************
 
 _$AvailableTimeSlotImpl _$$AvailableTimeSlotImplFromJson(
-  Map<String, dynamic> json,
-) => _$AvailableTimeSlotImpl(
-  id: (json['id'] as num?)?.toInt(),
-  date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-  isEditable: json['isEditable'] as bool?,
-  startTime: json['start_time'] as String?,
-  endTime: json['end_time'] as String?,
-  garageYardId: json['property_id'] as String?,
-);
+        Map<String, dynamic> json) =>
+    _$AvailableTimeSlotImpl(
+      id: (json['id'] as num?)?.toInt(),
+      date:
+          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      isEditable: json['isEditable'] as bool?,
+      startTime: json['start_time'] as String?,
+      endTime: json['end_time'] as String?,
+      garageYardId: json['property_id'] as String?,
+    );
 
 Map<String, dynamic> _$$AvailableTimeSlotImplToJson(
-  _$AvailableTimeSlotImpl instance,
-) => <String, dynamic>{
-  'id': instance.id,
-  'date': instance.date?.toIso8601String(),
-  'isEditable': instance.isEditable,
-  'start_time': instance.startTime,
-  'end_time': instance.endTime,
-  'property_id': instance.garageYardId,
-};
+        _$AvailableTimeSlotImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'date': instance.date?.toIso8601String(),
+      'isEditable': instance.isEditable,
+      'start_time': instance.startTime,
+      'end_time': instance.endTime,
+      'property_id': instance.garageYardId,
+    };
 
 _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
     _$CategoryImpl(
@@ -35,7 +36,10 @@ _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
-    <String, dynamic>{'id': instance.id, 'name': instance.name};
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
 
 _$LocationModelImpl _$$LocationModelImplFromJson(Map<String, dynamic> json) =>
     _$LocationModelImpl(
@@ -73,34 +77,40 @@ Map<String, dynamic> _$$LocationModelImplToJson(_$LocationModelImpl instance) =>
 
 _$OpenHouseImpl _$$OpenHouseImplFromJson(Map<String, dynamic> json) =>
     _$OpenHouseImpl(
-      location:
-          json['location'] == null
-              ? null
-              : LocationModel.fromJson(
-                json['location'] as Map<String, dynamic>,
-              ),
-      propertyId: json['property_id'] as String?,
+      location: json['location'] == null
+          ? null
+          : LocationModel.fromJson(json['location'] as Map<String, dynamic>),
+      id: (json['id'] as num?)?.toInt(),
       transactionId: json['transaction_id'] as String?,
-      openHouseProperty:
-          json['property'] == null
-              ? null
-              : OpenHouseProperty.fromJson(
-                json['property'] as Map<String, dynamic>,
-              ),
-      propertySize:
-          json['size'] == null
-              ? null
-              : PropertySize.fromJson(json['size'] as Map<String, dynamic>),
+      openHouseProperty: json['property'] == null
+          ? null
+          : OpenHouseProperty.fromJson(
+              json['property'] as Map<String, dynamic>),
+      propertySize: json['size'] == null
+          ? null
+          : PropertySize.fromJson(json['size'] as Map<String, dynamic>),
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      createdBy: json['created_by'] == null
+          ? null
+          : User.fromJson(json['created_by'] as Map<String, dynamic>),
       status: $enumDecodeNullable(_$StatusEnumEnumMap, json['status']),
     );
 
 Map<String, dynamic> _$$OpenHouseImplToJson(_$OpenHouseImpl instance) =>
     <String, dynamic>{
       'location': instance.location,
-      'property_id': instance.propertyId,
+      'id': instance.id,
       'transaction_id': instance.transactionId,
       'property': instance.openHouseProperty,
       'size': instance.propertySize,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'created_by': instance.createdBy,
       'status': _$StatusEnumEnumMap[instance.status],
     };
 
@@ -110,52 +120,45 @@ const _$StatusEnumEnumMap = {
 };
 
 _$OpenHousePropertyImpl _$$OpenHousePropertyImplFromJson(
-  Map<String, dynamic> json,
-) => _$OpenHousePropertyImpl(
-  name: json['name'] as String?,
-  description: json['description'] as String?,
-  price: (json['price'] as num?)?.toDouble(),
-  attachments:
-      (json['images'] as List<dynamic>?)
+        Map<String, dynamic> json) =>
+    _$OpenHousePropertyImpl(
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+      price: (json['price'] as num?)?.toInt(),
+      attachments: (json['images'] as List<dynamic>?)
           ?.map((e) => AttachmentModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-  category:
-      (json['category'] as List<dynamic>?)
-          ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  propertyType:
-      json['type'] == null
+      category: json['category'] == null
+          ? null
+          : Category.fromJson(json['category'] as Map<String, dynamic>),
+      propertyType: json['type'] == null
           ? null
           : PropertyTypeModel.fromJson(json['type'] as Map<String, dynamic>),
-);
+    );
 
 Map<String, dynamic> _$$OpenHousePropertyImplToJson(
-  _$OpenHousePropertyImpl instance,
-) => <String, dynamic>{
-  'name': instance.name,
-  'description': instance.description,
-  'price': instance.price,
-  'images': instance.attachments,
-  'category': instance.category,
-  'type': instance.propertyType,
-};
+        _$OpenHousePropertyImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'description': instance.description,
+      'price': instance.price,
+      'images': instance.attachments,
+      'category': instance.category,
+      'type': instance.propertyType,
+    };
 
 _$PropertySizeImpl _$$PropertySizeImplFromJson(Map<String, dynamic> json) =>
     _$PropertySizeImpl(
-      coveredArea: (json['covered_area'] as num?)?.toDouble(),
-      lotSize: (json['lot_size'] as num?)?.toDouble(),
-      bedrooms: json['bedrooms'] as String?,
-      bathrooms: json['bathrooms'] as String?,
-      yearBuilt:
-          json['year_built'] == null
-              ? null
-              : DateTime.parse(json['year_built'] as String),
-      availableTimeSlots:
-          (json['available_time_slots'] as List<dynamic>?)
-              ?.map(
-                (e) => AvailableTimeSlot.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
+      coveredArea: (json['covered_area'] as num?)?.toInt(),
+      lotSize: (json['lot_size'] as num?)?.toInt(),
+      bedrooms: (json['bedrooms'] as num?)?.toInt(),
+      bathrooms: (json['bathrooms'] as num?)?.toInt(),
+      yearBuilt: json['year_built'] == null
+          ? null
+          : DateTime.parse(json['year_built'] as String),
+      availableTimeSlots: (json['available_time_slots'] as List<dynamic>?)
+          ?.map((e) => AvailableTimeSlot.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$PropertySizeImplToJson(_$PropertySizeImpl instance) =>
