@@ -116,6 +116,20 @@ class FilterState {
   }
 
   Map<String, dynamic> toJson() {
+    String? sortByField;
+    String? orderByField;
+
+    // Map sortBy to appropriate sort_by and order_by values
+    if (sortBy == 'Newest Listings') {
+      sortByField = 'updated_at';
+      orderByField = 'desc';
+    } else if (sortBy == 'Lowest Price First') {
+      sortByField = 'price';
+      orderByField = 'asc';
+    } else if (sortBy == 'Highest Price First') {
+      sortByField = 'price';
+      orderByField = 'desc';
+    }
     Map<String, dynamic> map = {
       if (zipCode != null) 'zip_code': zipCode,
       if (radius != null) 'max_distance_km': ((radius ?? 0.0) * 1.60934),
@@ -136,10 +150,10 @@ class FilterState {
       if (yearBuilt != null) 'year_built': yearBuilt,
       if (coveredArea != null) 'covered_area': coveredArea,
       if (lotSize != null) 'lot_size': lotSize,
-      'sort_by': sortBy,
-      'order_by': 'asc',
       if (priceMin != 10000) 'price_min': priceMin,
       if (priceMax != 1000000) 'price_max': priceMax,
+      if (sortByField != null) 'sort_by': sortByField,
+      if (orderByField != null) 'order_by': orderByField,
     };
     PrintUtils.customLog('FilterState.toJson: ${jsonEncode(map)}');
     return map;
