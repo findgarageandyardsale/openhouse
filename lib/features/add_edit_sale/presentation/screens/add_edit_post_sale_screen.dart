@@ -54,7 +54,31 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
   final dateController = TextEditingController();
   final formKey = GlobalKey<FormBuilderState>();
 
-  void inittialData() {}
+  void inittialData() {
+    titleController.text = widget.garageayard?.openHouseProperty?.name ?? '';
+    suiteController.text = widget.garageayard?.location?.subThoroughfare ?? '';
+    streetNumberController.text =
+        widget.garageayard?.location?.subLocality ?? '';
+    cityController.text = widget.garageayard?.location?.locality ?? '';
+    stateController.text = widget.garageayard?.location?.adminArea ?? '';
+    zipCodeController.text = widget.garageayard?.location?.zipCode ?? '';
+    coveredAreaController.text =
+        (widget.garageayard?.propertySize?.coveredArea ?? '').toString();
+    lotSizeController.text =
+        (widget.garageayard?.propertySize?.lotSize ?? '').toString();
+    bedroomsController.text =
+        (widget.garageayard?.propertySize?.bedrooms ?? '').toString();
+    bathroomsController.text =
+        (widget.garageayard?.propertySize?.bathrooms ?? '').toString();
+    propertyTypeController.text =
+        widget.garageayard?.openHouseProperty?.propertyType?.name ?? '';
+
+    priceController.text =
+        widget.garageayard?.openHouseProperty?.price.toString() ?? '';
+    descriptionController.text =
+        widget.garageayard?.openHouseProperty?.description ?? '';
+    // dateController.text = widget.garageayard?.propertySize?.yearBuilt ?? '';
+  }
 
   @override
   void initState() {
@@ -66,6 +90,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
         ref
             .read(addDataNotifierProvider.notifier)
             .initializeEditPost(widget.garageayard!);
+        inittialData();
 
         ref
             .read(customAttachmentProvider('image').notifier)

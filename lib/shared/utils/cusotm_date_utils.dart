@@ -25,6 +25,21 @@ class CustomDateUtils {
     return formatter.format(dateTime);
   }
 
+  /// [DateTime] into String as 2023, 2025
+  static String formatDateOnlyFilter(String dateTime) {
+    try {
+      // Define the format pattern as 'yyyy' to extract only the year
+      // Parse the string into a DateTime object
+      final DateTime parsedDate = DateTime.parse(dateTime);
+
+      // Extract and return the year
+      final DateFormat formatter = DateFormat('yyyy');
+      return formatter.format(parsedDate);
+    } catch (_) {
+      return dateTime;
+    }
+  }
+
   static TimeOfDay stringToTimeOfDay(String timeString) {
     // Example input: "10:00 PM"
     final format = timeString.split(

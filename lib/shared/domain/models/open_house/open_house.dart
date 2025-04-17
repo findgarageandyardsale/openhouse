@@ -68,11 +68,11 @@ class LocationModel with _$LocationModel {
                 
 
                 -------------------------------
-                  "sub_locality": data['suite_apt'],
+                   "sub_locality": data['street_number'],
         "locality": data['city'],
         "admin_area": data['state'],
         "zip_code": data['zip_code'],
-        "sub_throughfare": data['street_number'],
+        "sub_throughfare": data['suite_apt'],
         "throughfare": data['street_name'],
         "latitude": data['latitude'],
         "longitude": data['longitude'],

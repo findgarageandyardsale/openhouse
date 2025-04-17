@@ -72,35 +72,42 @@ class AddNotifier extends StateNotifier<FormzState> {
   Future<void> updateGarageSale({String? transactionId}) async {
     try {
       state = const FormzState.loading();
-      List<AvailableTimeSlot> timeSlots = [];
-      timeSlots.addAll(postData?.propertySize?.availableTimeSlots ?? []);
+      // List<AvailableTimeSlot> timeSlots = [];
+      // timeSlots.addAll(postData?.propertySize?.availableTimeSlots ?? []);
 
-      List<Map<String, dynamic>> availableTimeSlots =
-          convertAvailableTimeSlotListToJson(timeSlots);
+      // List<Map<String, dynamic>> availableTimeSlots =
+      //     convertAvailableTimeSlotListToJson(timeSlots);
 
-      // state = const FormzState.loading();
+      // // state = const FormzState.loading();
 
-      Map<String, dynamic> data = postData!.toJson();
-      final postPrice = (HelperConstant.priceForEach *
-          (postData?.propertySize?.availableTimeSlots ?? []).length);
+      // Map<String, dynamic> data = postData!.toJson();
+      // final postPrice = (HelperConstant.priceForEach *
+      //     (postData?.propertySize?.availableTimeSlots ?? []).length);
 
-      HelperConstant.postPrice = (postPrice == 0
-              ? (postData?.openHouseProperty?.price ?? '10')
-              : postPrice)
-          .toString();
-      data['category'] = postData?.openHouseProperty?.category?.id;
-      data['price'] = postPrice;
-      if (transactionId != null) {
-        data['transaction_id'] = transactionId;
-      } else {
-        data['transaction_id'] = null;
-      }
-      //Just for testing
-      // data['status'] = 'Expired';
-      data['status'] = 'Active';
-      data['available_time_slots'] = availableTimeSlots;
-      data['images'] =
-          postData?.openHouseProperty?.attachments?.map((e) => e.id).toList();
+      // HelperConstant.postPrice = (postPrice == 0
+      //         ? (postData?.openHouseProperty?.price ?? '10')
+      //         : postPrice)
+      //     .toString();
+      // data['category'] = postData?.openHouseProperty?.category?.id;
+      // data['price'] = postPrice;
+      // if (transactionId != null) {
+      //   data['transaction_id'] = transactionId;
+      // } else {
+      //   data['transaction_id'] = null;
+      // }
+      // //Just for testing
+      // // data['status'] = 'Expired';
+      // data['status'] = 'Active';
+      // data['available_time_slots'] = availableTimeSlots;
+      // data['images'] =
+      //     postData?.openHouseProperty?.attachments?.map((e) => e.id).toList();
+
+      final value = postData?.copyWith(
+        transactionId: (transactionId != null) ? transactionId : null,
+        status: StatusEnum.active,
+      );
+      final data = ref.read(addDataNotifierProvider.notifier).toAddJson(value!);
+
       PrintUtils.customLog(jsonEncode(data));
       final response = await addRepository.editPost(
         singleItem: data,
