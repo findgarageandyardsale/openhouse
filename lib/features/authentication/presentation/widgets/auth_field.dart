@@ -86,9 +86,14 @@ class _AuthFieldState extends State<AuthField> {
       maxLines: widget.maxlines,
       minLines: widget.maxlines,
       onChanged: widget.onChanged,
+      // onEditingComplete: () {
+      //   widget.onChanged?.call(widget.controller.text);
+      // },
+      // onTapOutside: (event) {
+      //   widget.onChanged?.call(widget.controller.text);
+      // },
       inputFormatters: widget.inputFormatters,
-      validator:
-          widget.validator ??
+      validator: widget.validator ??
           FormBuilderValidators.compose([
             if (widget.validationWithRequired == true)
               FormBuilderValidators.required(
@@ -96,10 +101,9 @@ class _AuthFieldState extends State<AuthField> {
                     '${widget.labelText ?? widget.hintText} is required.',
               ),
           ]),
-      textInputAction:
-          (widget.maxlines > 1)
-              ? TextInputAction.newline
-              : widget.textInputAction,
+      textInputAction: (widget.maxlines > 1)
+          ? TextInputAction.newline
+          : widget.textInputAction,
       keyboardType: widget.keyboardType ?? TextInputType.text,
       decoration: InputDecoration(
         errorMaxLines: 2,
@@ -119,23 +123,21 @@ class _AuthFieldState extends State<AuthField> {
         ).textTheme.bodyMedium!.copyWith(color: Colors.red),
         filled: widget.fillColor != null ? true : false,
         prefixIcon: widget.prefixIcon,
-        suffixIcon:
-            widget.suffixIcon ??
+        suffixIcon: widget.suffixIcon ??
             (widget.obscureText == false
                 ? null
                 : DefaultIconWidget(
-                  onPressed: () {
-                    setState(() {
-                      _obsecureText = !_obsecureText;
-                    });
-                  },
-                  icon:
-                      _obsecureText == false
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                  color: AppColors.primary,
-                  size: 18,
-                )),
+                    onPressed: () {
+                      setState(() {
+                        _obsecureText = !_obsecureText;
+                      });
+                    },
+                    icon: _obsecureText == false
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                    color: AppColors.primary,
+                    size: 18,
+                  )),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(widget.borderRadius)),
         ),
@@ -147,10 +149,9 @@ class _AuthFieldState extends State<AuthField> {
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color:
-                (widget.readOnly == true)
-                    ? Colors.grey
-                    : widget.fillColor != null
+            color: (widget.readOnly == true)
+                ? Colors.grey
+                : widget.fillColor != null
                     ? Colors.transparent
                     : AppColors.primary,
           ),

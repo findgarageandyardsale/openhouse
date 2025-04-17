@@ -34,7 +34,6 @@ class StepOne extends ConsumerWidget {
         Spacing.sizedBoxH_08(),
         const ImageScreen(),
         Spacing.sizedBoxH_16(),
-
         AuthField(
           name: 'name',
           hintText: 'Property Name*',
@@ -116,29 +115,28 @@ class PropertyTypeWidget extends ConsumerWidget {
         return Center(child: Text(failure.message ?? ''));
       },
       success: (success) {
-        final typeList =
-            (success as List)
-                .map((e) => PropertyTypeModel.fromJson(e))
-                .toList();
+        final typeList = (success as List)
+            .map((e) => PropertyTypeModel.fromJson(e))
+            .toList();
         return typeList.isNotEmpty
             ? Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: const TitleHead(title: 'Property Type'),
-                ),
-                ...typeList.map(
-                  (e) => ListTile(
-                    onTap: () {
-                      onTap(e);
-                      Navigator.pop(context);
-                    },
-                    title: Text(e.name ?? ''),
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: const TitleHead(title: 'Property Type'),
                   ),
-                ),
-              ],
-            )
+                  ...typeList.map(
+                    (e) => ListTile(
+                      onTap: () {
+                        onTap(e);
+                        Navigator.pop(context);
+                      },
+                      title: Text(e.name ?? ''),
+                    ),
+                  ),
+                ],
+              )
             : Center(child: Text('No data available'));
       },
     );

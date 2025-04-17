@@ -7,17 +7,22 @@ class CapitalizeWordsInputFormatter extends TextInputFormatter {
     TextEditingValue newValue,
   ) {
     final text = newValue.text;
+
+    // Capitalize the first letter of each word
     final capitalizedText = text
         .split(' ')
-        .map((word) {
-          if (word.isEmpty) return word;
-          return word[0].toUpperCase() + word.substring(1);
-        })
+        .map((word) => word.isNotEmpty
+            ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}'
+            : '')
         .join(' ');
 
-    return newValue.copyWith(
+    // Calculate the new cursor position
+    final cursorPosition =
+        newValue.selection.baseOffset + (capitalizedText.length - text.length);
+
+    return TextEditingValue(
       text: capitalizedText,
-      selection: TextSelection.collapsed(offset: capitalizedText.length),
+      selection: TextSelection.collapsed(offset: cursorPosition),
     );
   }
 }

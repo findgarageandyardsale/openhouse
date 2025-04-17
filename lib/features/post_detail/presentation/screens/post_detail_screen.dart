@@ -88,6 +88,11 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
       appbar:
           AppBar(title: Text(widget.garageayard.openHouseProperty?.name ?? '')),
       isActive: widget.isActive,
+      statusText: widget.isActive == null
+          ? 'Get Directions'
+          : widget.isActive == true
+              ? 'Edit Sale'
+              : 'Extend Expiry',
       actions: currentUserAsyncValue.when(
         data: (User? data) {
           if (data == null) {

@@ -78,13 +78,13 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(addDataNotifierProvider);
-    ref.watch(propertyTypeNotifierProvider);
+    ref.read(addDataNotifierProvider);
+    ref.read(propertyTypeNotifierProvider);
 
-    ref.watch(addCatNotifierProvider);
+    ref.read(addCatNotifierProvider);
     final addState = ref.watch(addNotifierProvider);
-    ref.watch(customAttachmentProvider('image'));
-    final imageLoadingState = ref.watch(loadingFilesProvider('image'));
+    ref.read(customAttachmentProvider('image'));
+    final imageLoadingState = ref.read(loadingFilesProvider('image'));
 
     void proceedToPaymentFunction() async {
       try {
@@ -188,41 +188,40 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
           } else {
             showDialog(
               context: context,
-              builder:
-                  (context) => AlertDialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    insetPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 24,
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Post Added Successfully',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.headlineSmall!.copyWith(
+              builder: (context) => AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                insetPadding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 24,
+                ),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Post Added Successfully',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall!.copyWith(
                             color: AppColors.primary,
                             height: 1.43,
                             fontWeight: FontWeight.w700,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacing.sizedBoxH_08(),
-                        Image.asset('assets/success.jpeg'),
-                        Spacing.sizedBoxH_20(),
-                        ActionButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          label: 'Continue',
-                        ),
-                      ],
+                      textAlign: TextAlign.center,
                     ),
-                  ),
+                    Spacing.sizedBoxH_08(),
+                    Image.asset('assets/success.jpeg'),
+                    Spacing.sizedBoxH_20(),
+                    ActionButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      label: 'Continue',
+                    ),
+                  ],
+                ),
+              ),
             );
           }
         } else {
@@ -334,12 +333,11 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
       child: context.doublePos(
         isActive: null,
         statusText: '$title Property',
-        onPosPressed:
-            imageLoadingState
-                ? null
-                : () async {
-                  addFunction();
-                },
+        onPosPressed: imageLoadingState
+            ? null
+            : () async {
+                addFunction();
+              },
         appbar: AppBar(
           backgroundColor: AppColors.white,
           title: Text(
@@ -356,7 +354,6 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
             },
           ),
         ),
-
         content: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Padding(
@@ -401,9 +398,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
 
   customtabDesign(final String text, final bool isActive, final bool isGarage) {
     return Row(
-      crossAxisAlignment:
-          CrossAxisAlignment
-              .center, // Ensures the Row sizes itself based on its children
+      crossAxisAlignment: CrossAxisAlignment
+          .center, // Ensures the Row sizes itself based on its children
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (isActive)
@@ -415,13 +411,12 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
         Text(
           text,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
-            color:
-                isActive
+                color: isActive
                     ? AppColors.white
                     : isGarage
-                    ? AppColors.tertiary
-                    : AppColors.secondary,
-          ),
+                        ? AppColors.tertiary
+                        : AppColors.secondary,
+              ),
         ),
       ],
     );

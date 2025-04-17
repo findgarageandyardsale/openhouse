@@ -68,49 +68,50 @@ class _ActiveSalesScreenState extends ConsumerState<ActiveSalesScreen> {
     return state.state == ExploreConcreteState.loading
         ? const MainViewShimmer()
         : state.state == ExploreConcreteState.failure
-        ? const Center(child: Text('Error'))
-        : state.garageYardList.isEmpty
-        ? RefreshIndicator(
-          onRefresh: _refreshPosts,
-          child: const SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
-            child: Padding(
-              padding: EdgeInsets.only(top: 50.0),
-              child: Center(child: NoData(fromAdd: true)),
-            ),
-          ),
-        )
-        : Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: RefreshIndicator(
-                onRefresh: _refreshPosts,
-                child: Scrollbar(
-                  controller: scrollController,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    controller: scrollController,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    itemBuilder: (context, index) {
-                      return PostSingleItem(
-                        singlePost: state.garageYardList[index],
-                        isActive: true,
-                      );
-                    },
-                    itemCount: state.garageYardList.length,
-                  ),
-                ),
-              ),
-            ),
-            if (state.state == ExploreConcreteState.fetchingMore)
-              const Padding(
-                padding: EdgeInsets.only(bottom: 16.0),
-                child: CircularProgressIndicator(),
-              ),
-          ],
-        );
+            ? const Center(child: Text('Error'))
+            : state.garageYardList.isEmpty
+                ? RefreshIndicator(
+                    onRefresh: _refreshPosts,
+                    child: const SingleChildScrollView(
+                      physics: AlwaysScrollableScrollPhysics(),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 50.0),
+                        child: Center(child: NoData(fromAdd: true)),
+                      ),
+                    ),
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: RefreshIndicator(
+                          onRefresh: _refreshPosts,
+                          child: Scrollbar(
+                            controller: scrollController,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              controller: scrollController,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              itemBuilder: (context, index) {
+                                return PostSingleItem(
+                                  singlePost: state.garageYardList[index],
+                                  isActive: true,
+                                );
+                              },
+                              itemCount: state.garageYardList.length,
+                            ),
+                          ),
+                        ),
+                      ),
+                      if (state.state == ExploreConcreteState.fetchingMore)
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 16.0),
+                          child: CircularProgressIndicator(),
+                        ),
+                    ],
+                  );
   }
 }

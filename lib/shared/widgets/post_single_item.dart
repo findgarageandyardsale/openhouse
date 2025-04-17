@@ -8,6 +8,7 @@ import 'package:open_house/shared/utils/app_utils.dart';
 import 'package:open_house/shared/utils/cusotm_date_utils.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
 import 'package:open_house/shared/widgets/amenities_line.dart';
+import 'package:open_house/shared/widgets/custom_toast.dart';
 import 'package:open_house/shared/widgets/location_text.dart';
 import '../constants/spacing.dart';
 import '../theme/app_colors.dart';
@@ -97,7 +98,8 @@ class PostSingleItem extends StatelessWidget {
                       borderColor: AppColors.primary,
                       onPressed: () {
                         context.router.push(
-                          PostDetailScreen(garageayard: singlePost!),
+                          PostDetailScreen(
+                              garageayard: singlePost!, isActive: isActive),
                         );
                       },
                       label: 'View Detail',
@@ -112,8 +114,30 @@ class PostSingleItem extends StatelessWidget {
                   Spacing.sizedBoxW_10(),
                   Expanded(
                     child: ActionButton(
-                      onPressed: () => Navigator.pop(context),
-                      label: 'Get Directions',
+                      onPressed: () {
+                        if (isActive != null) {
+                          context.router.push(
+                            AddEditPostSaleScreen(
+                              garageayard: singlePost!,
+                            ),
+                          );
+                        } else {
+                          if (singlePost?.location?.latitude == null ||
+                              singlePost?.location?.longitude == null) {
+                            CustomToast.showToast('Location not available',
+                                status: ToastStatus.error);
+                            return;
+                          }
+                          AppUtils.openAppDirections(
+                              singlePost?.location?.latitude ?? 0.0,
+                              singlePost?.location?.longitude ?? 0.0);
+                        }
+                      },
+                      label: isActive == null
+                          ? 'Get Directions'
+                          : isActive == true
+                              ? 'Edit Sale'
+                              : 'Extend Expiry',
                       height: 36,
                       textStyle: Theme.of(
                         context,

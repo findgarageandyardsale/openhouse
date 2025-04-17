@@ -208,8 +208,9 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
 
   void editTimeSlot(AvailableTimeSlot timeSlot) {
     try {
-      List<AvailableTimeSlot> slots =
-          state?.propertySize?.availableTimeSlots ?? [];
+      List<AvailableTimeSlot> slots = [
+        ...state?.propertySize?.availableTimeSlots ?? []
+      ];
       int index = slots.indexWhere((slot) => slot.id == timeSlot.id);
       if (index != -1) {
         slots[index] = slots[index].copyWith(
@@ -230,8 +231,9 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
 
   void removeTimeSlot(AvailableTimeSlot timeSlot) {
     try {
-      List<AvailableTimeSlot> slots =
-          state?.propertySize?.availableTimeSlots ?? [];
+      List<AvailableTimeSlot> slots = [
+        ...state?.propertySize?.availableTimeSlots ?? []
+      ];
       slots.removeWhere((slot) => slot.id == timeSlot.id);
       state = state?.copyWith(
         propertySize: state?.propertySize?.copyWith(availableTimeSlots: slots),
