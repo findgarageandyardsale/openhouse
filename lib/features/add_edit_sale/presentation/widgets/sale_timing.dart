@@ -69,7 +69,7 @@ class SaleTiming extends ConsumerWidget {
             );
           },
         ),
-        // if (!(availableSlot.length >= 7))
+        // if (!(availableSlot.length >= 10))
         if (showMoney ||
             (garageayard?.id != null &&
                 (garageayard?.propertySize?.availableTimeSlots ?? []).length <

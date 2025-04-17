@@ -19,7 +19,10 @@ class CustomDateUtils {
   }
 
   /// [DateTime] into String as Septemeber 12, 2021
-  static String formatDateFilter(DateTime dateTime) {
+  static String formatDateFilter(DateTime? dateTime) {
+    if (dateTime == null) {
+      return '';
+    }
     // Define the format pattern as 'MMM d, yyyy'
     final DateFormat formatter = DateFormat('yyyy-MM-dd');
     return formatter.format(dateTime);
@@ -69,7 +72,7 @@ class CustomDateUtils {
       final DateTime parsedTime = inputFormat.parse(timeString);
       return outputFormat.format(parsedTime); // Return 'HH:mm' format
     } catch (e) {
-      return 'Invalid time format';
+      return timeString;
     }
   }
 
@@ -87,7 +90,7 @@ class CustomDateUtils {
       final DateTime parsedTime = inputFormat.parse(timeString);
       return outputFormat.format(parsedTime); // Output as 'h:mm a'
     } catch (e) {
-      return 'Invalid time format';
+      return timeString;
     }
   }
 

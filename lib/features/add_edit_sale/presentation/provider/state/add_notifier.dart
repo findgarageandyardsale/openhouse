@@ -44,7 +44,13 @@ class AddNotifier extends StateNotifier<FormzState> {
       // for (var element in (postData!.category ?? [])) {
       //   categories.add(element.id!);
       // }
+      final postPrice = (HelperConstant.priceForEach *
+          (postData?.propertySize?.availableTimeSlots ?? []).length);
 
+      HelperConstant.postPrice = (postPrice == 0
+              ? (postData?.openHouseProperty?.price ?? '2')
+              : postPrice)
+          .toString();
       final value = postData?.copyWith(
         transactionId: (transactionId != null) ? transactionId : null,
       );
@@ -81,13 +87,13 @@ class AddNotifier extends StateNotifier<FormzState> {
       // // state = const FormzState.loading();
 
       // Map<String, dynamic> data = postData!.toJson();
-      // final postPrice = (HelperConstant.priceForEach *
-      //     (postData?.propertySize?.availableTimeSlots ?? []).length);
+      final postPrice = (HelperConstant.priceForEach *
+          (postData?.propertySize?.availableTimeSlots ?? []).length);
 
-      // HelperConstant.postPrice = (postPrice == 0
-      //         ? (postData?.openHouseProperty?.price ?? '10')
-      //         : postPrice)
-      //     .toString();
+      HelperConstant.postPrice = (postPrice == 0
+              ? (postData?.openHouseProperty?.price ?? '2')
+              : postPrice)
+          .toString();
       // data['category'] = postData?.openHouseProperty?.category?.id;
       // data['price'] = postPrice;
       // if (transactionId != null) {

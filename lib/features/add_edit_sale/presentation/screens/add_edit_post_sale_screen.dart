@@ -14,6 +14,7 @@ import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/domain/models/response_data.dart';
 import 'package:open_house/shared/extension/context.dart';
+import 'package:open_house/shared/utils/cusotm_date_utils.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
 import 'package:open_house/shared/widgets/custom_loading.dart';
@@ -77,7 +78,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
         widget.garageayard?.openHouseProperty?.price.toString() ?? '';
     descriptionController.text =
         widget.garageayard?.openHouseProperty?.description ?? '';
-    // dateController.text = widget.garageayard?.propertySize?.yearBuilt ?? '';
+    dateController.text = CustomDateUtils.formatDateFilter(
+        widget.garageayard?.propertySize?.yearBuilt);
   }
 
   @override
