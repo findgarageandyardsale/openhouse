@@ -281,6 +281,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
     }
 
     void addFunction() async {
+      final status = widget.garageayard?.status ??
+          widget.garageayard?.openHouseProperty?.status;
       try {
         FocusScope.of(context).unfocus();
         if (formKey.currentState?.saveAndValidate() ?? false) {
@@ -326,8 +328,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
               .read(addDataNotifierProvider.notifier)
               .manageWholeData(currentData);
 
-          if (widget.garageayard == null ||
-              widget.garageayard?.status == StatusEnum.expired) {
+          if (widget.garageayard == null || status == StatusEnum.expired) {
             ///[ Process is for validation]
 
             if (widget.garageayard != null) {

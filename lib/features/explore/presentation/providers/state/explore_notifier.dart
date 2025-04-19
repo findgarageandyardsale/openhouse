@@ -41,11 +41,6 @@ class ExploreNotifier extends StateNotifier<ExploreState> {
               'user_lon': locationState.currentLatLng!.longitude,
             'q': (search ?? '').isNotEmpty ? search : null,
           };
-          if (filterState.isGarage != null) {
-            mapData.addAll({
-              'type': filterState.isGarage == true ? 'Garage' : 'Yard',
-            });
-          }
 
           final response = await exploreRepository.fetchExplorePost(
             page: state.page + 1,

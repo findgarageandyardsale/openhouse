@@ -86,7 +86,7 @@ class LocationModel with _$LocationModel {
 class OpenHouse with _$OpenHouse {
   const factory OpenHouse({
     LocationModel? location,
-    int? id,
+    @JsonKey(readValue: readValueForId) int? id,
     @JsonKey(name: 'transaction_id') String? transactionId,
     @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
     @JsonKey(name: 'size') PropertySize? propertySize,
@@ -99,6 +99,8 @@ class OpenHouse with _$OpenHouse {
   factory OpenHouse.fromJson(Map<String, dynamic> json) =>
       _$OpenHouseFromJson(json);
 }
+
+int? readValueForId(Map map, String key) => map[key] ?? map['id_'];
 
 // Enum for Garage
 enum StatusEnum {
@@ -117,6 +119,7 @@ class OpenHouseProperty with _$OpenHouseProperty {
     @JsonKey(name: 'images') List<AttachmentModel>? attachments,
     Category? category,
     @JsonKey(name: 'type') PropertyTypeModel? propertyType,
+    StatusEnum? status,
   }) = _OpenHouseProperty;
 
   factory OpenHouseProperty.fromJson(Map<String, dynamic> json) =>

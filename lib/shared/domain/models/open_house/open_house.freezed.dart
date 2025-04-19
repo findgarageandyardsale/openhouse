@@ -942,6 +942,7 @@ OpenHouse _$OpenHouseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OpenHouse {
   LocationModel? get location => throw _privateConstructorUsedError;
+  @JsonKey(readValue: readValueForId)
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'transaction_id')
   String? get transactionId => throw _privateConstructorUsedError;
@@ -975,7 +976,7 @@ abstract class $OpenHouseCopyWith<$Res> {
   @useResult
   $Res call(
       {LocationModel? location,
-      int? id,
+      @JsonKey(readValue: readValueForId) int? id,
       @JsonKey(name: 'transaction_id') String? transactionId,
       @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
       @JsonKey(name: 'size') PropertySize? propertySize,
@@ -1122,7 +1123,7 @@ abstract class _$$OpenHouseImplCopyWith<$Res>
   @useResult
   $Res call(
       {LocationModel? location,
-      int? id,
+      @JsonKey(readValue: readValueForId) int? id,
       @JsonKey(name: 'transaction_id') String? transactionId,
       @JsonKey(name: 'property') OpenHouseProperty? openHouseProperty,
       @JsonKey(name: 'size') PropertySize? propertySize,
@@ -1210,7 +1211,7 @@ class __$$OpenHouseImplCopyWithImpl<$Res>
 class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
   const _$OpenHouseImpl(
       {this.location,
-      this.id,
+      @JsonKey(readValue: readValueForId) this.id,
       @JsonKey(name: 'transaction_id') this.transactionId,
       @JsonKey(name: 'property') this.openHouseProperty,
       @JsonKey(name: 'size') this.propertySize,
@@ -1225,6 +1226,7 @@ class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
   @override
   final LocationModel? location;
   @override
+  @JsonKey(readValue: readValueForId)
   final int? id;
   @override
   @JsonKey(name: 'transaction_id')
@@ -1315,7 +1317,7 @@ class _$OpenHouseImpl with DiagnosticableTreeMixin implements _OpenHouse {
 abstract class _OpenHouse implements OpenHouse {
   const factory _OpenHouse(
       {final LocationModel? location,
-      final int? id,
+      @JsonKey(readValue: readValueForId) final int? id,
       @JsonKey(name: 'transaction_id') final String? transactionId,
       @JsonKey(name: 'property') final OpenHouseProperty? openHouseProperty,
       @JsonKey(name: 'size') final PropertySize? propertySize,
@@ -1330,6 +1332,7 @@ abstract class _OpenHouse implements OpenHouse {
   @override
   LocationModel? get location;
   @override
+  @JsonKey(readValue: readValueForId)
   int? get id;
   @override
   @JsonKey(name: 'transaction_id')
@@ -1374,6 +1377,7 @@ mixin _$OpenHouseProperty {
   Category? get category => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   PropertyTypeModel? get propertyType => throw _privateConstructorUsedError;
+  StatusEnum? get status => throw _privateConstructorUsedError;
 
   /// Serializes this OpenHouseProperty to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1397,7 +1401,8 @@ abstract class $OpenHousePropertyCopyWith<$Res> {
       int? price,
       @JsonKey(name: 'images') List<AttachmentModel>? attachments,
       Category? category,
-      @JsonKey(name: 'type') PropertyTypeModel? propertyType});
+      @JsonKey(name: 'type') PropertyTypeModel? propertyType,
+      StatusEnum? status});
 
   $CategoryCopyWith<$Res>? get category;
   $PropertyTypeModelCopyWith<$Res>? get propertyType;
@@ -1424,6 +1429,7 @@ class _$OpenHousePropertyCopyWithImpl<$Res, $Val extends OpenHouseProperty>
     Object? attachments = freezed,
     Object? category = freezed,
     Object? propertyType = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -1450,6 +1456,10 @@ class _$OpenHousePropertyCopyWithImpl<$Res, $Val extends OpenHouseProperty>
           ? _value.propertyType
           : propertyType // ignore: cast_nullable_to_non_nullable
               as PropertyTypeModel?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as StatusEnum?,
     ) as $Val);
   }
 
@@ -1496,7 +1506,8 @@ abstract class _$$OpenHousePropertyImplCopyWith<$Res>
       int? price,
       @JsonKey(name: 'images') List<AttachmentModel>? attachments,
       Category? category,
-      @JsonKey(name: 'type') PropertyTypeModel? propertyType});
+      @JsonKey(name: 'type') PropertyTypeModel? propertyType,
+      StatusEnum? status});
 
   @override
   $CategoryCopyWith<$Res>? get category;
@@ -1523,6 +1534,7 @@ class __$$OpenHousePropertyImplCopyWithImpl<$Res>
     Object? attachments = freezed,
     Object? category = freezed,
     Object? propertyType = freezed,
+    Object? status = freezed,
   }) {
     return _then(_$OpenHousePropertyImpl(
       name: freezed == name
@@ -1549,6 +1561,10 @@ class __$$OpenHousePropertyImplCopyWithImpl<$Res>
           ? _value.propertyType
           : propertyType // ignore: cast_nullable_to_non_nullable
               as PropertyTypeModel?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as StatusEnum?,
     ));
   }
 }
@@ -1564,7 +1580,8 @@ class _$OpenHousePropertyImpl
       this.price,
       @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
       this.category,
-      @JsonKey(name: 'type') this.propertyType})
+      @JsonKey(name: 'type') this.propertyType,
+      this.status})
       : _attachments = attachments;
 
   factory _$OpenHousePropertyImpl.fromJson(Map<String, dynamic> json) =>
@@ -1592,10 +1609,12 @@ class _$OpenHousePropertyImpl
   @override
   @JsonKey(name: 'type')
   final PropertyTypeModel? propertyType;
+  @override
+  final StatusEnum? status;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OpenHouseProperty(name: $name, description: $description, price: $price, attachments: $attachments, category: $category, propertyType: $propertyType)';
+    return 'OpenHouseProperty(name: $name, description: $description, price: $price, attachments: $attachments, category: $category, propertyType: $propertyType, status: $status)';
   }
 
   @override
@@ -1608,7 +1627,8 @@ class _$OpenHousePropertyImpl
       ..add(DiagnosticsProperty('price', price))
       ..add(DiagnosticsProperty('attachments', attachments))
       ..add(DiagnosticsProperty('category', category))
-      ..add(DiagnosticsProperty('propertyType', propertyType));
+      ..add(DiagnosticsProperty('propertyType', propertyType))
+      ..add(DiagnosticsProperty('status', status));
   }
 
   @override
@@ -1625,7 +1645,8 @@ class _$OpenHousePropertyImpl
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.propertyType, propertyType) ||
-                other.propertyType == propertyType));
+                other.propertyType == propertyType) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1637,7 +1658,8 @@ class _$OpenHousePropertyImpl
       price,
       const DeepCollectionEquality().hash(_attachments),
       category,
-      propertyType);
+      propertyType,
+      status);
 
   /// Create a copy of OpenHouseProperty
   /// with the given fields replaced by the non-null parameter values.
@@ -1658,13 +1680,13 @@ class _$OpenHousePropertyImpl
 
 abstract class _OpenHouseProperty implements OpenHouseProperty {
   const factory _OpenHouseProperty(
-          {final String? name,
-          final String? description,
-          final int? price,
-          @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
-          final Category? category,
-          @JsonKey(name: 'type') final PropertyTypeModel? propertyType}) =
-      _$OpenHousePropertyImpl;
+      {final String? name,
+      final String? description,
+      final int? price,
+      @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
+      final Category? category,
+      @JsonKey(name: 'type') final PropertyTypeModel? propertyType,
+      final StatusEnum? status}) = _$OpenHousePropertyImpl;
 
   factory _OpenHouseProperty.fromJson(Map<String, dynamic> json) =
       _$OpenHousePropertyImpl.fromJson;
@@ -1683,6 +1705,8 @@ abstract class _OpenHouseProperty implements OpenHouseProperty {
   @override
   @JsonKey(name: 'type')
   PropertyTypeModel? get propertyType;
+  @override
+  StatusEnum? get status;
 
   /// Create a copy of OpenHouseProperty
   /// with the given fields replaced by the non-null parameter values.

@@ -234,7 +234,11 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
       List<AvailableTimeSlot> slots = [
         ...state?.propertySize?.availableTimeSlots ?? []
       ];
-      slots.removeWhere((slot) => slot.id == timeSlot.id);
+      if (timeSlot.id == null) {
+        slots.removeWhere((slot) => slot == timeSlot);
+      } else {
+        slots.removeWhere((slot) => slot.id == timeSlot.id);
+      }
       state = state?.copyWith(
         propertySize: state?.propertySize?.copyWith(availableTimeSlots: slots),
       );

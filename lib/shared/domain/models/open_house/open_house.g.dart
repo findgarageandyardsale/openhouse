@@ -80,7 +80,7 @@ _$OpenHouseImpl _$$OpenHouseImplFromJson(Map<String, dynamic> json) =>
       location: json['location'] == null
           ? null
           : LocationModel.fromJson(json['location'] as Map<String, dynamic>),
-      id: (json['id'] as num?)?.toInt(),
+      id: (readValueForId(json, 'id') as num?)?.toInt(),
       transactionId: json['transaction_id'] as String?,
       openHouseProperty: json['property'] == null
           ? null
@@ -134,6 +134,7 @@ _$OpenHousePropertyImpl _$$OpenHousePropertyImplFromJson(
       propertyType: json['type'] == null
           ? null
           : PropertyTypeModel.fromJson(json['type'] as Map<String, dynamic>),
+      status: $enumDecodeNullable(_$StatusEnumEnumMap, json['status']),
     );
 
 Map<String, dynamic> _$$OpenHousePropertyImplToJson(
@@ -145,6 +146,7 @@ Map<String, dynamic> _$$OpenHousePropertyImplToJson(
       'images': instance.attachments,
       'category': instance.category,
       'type': instance.propertyType,
+      'status': _$StatusEnumEnumMap[instance.status],
     };
 
 _$PropertySizeImpl _$$PropertySizeImplFromJson(Map<String, dynamic> json) =>

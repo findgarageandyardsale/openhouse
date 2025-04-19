@@ -77,7 +77,7 @@ class ExploreRemoteDatasource extends ExploreDatasource {
 
       final paginatedResponse = jsonData is List
           ? OpenHouse.fromJson(jsonData[0])
-          : OpenHouse.fromJson(jsonData);
+          : OpenHouse.fromJson(jsonData['data'] ?? jsonData);
       return Right(paginatedResponse);
     });
   }

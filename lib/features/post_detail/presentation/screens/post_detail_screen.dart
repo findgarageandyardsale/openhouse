@@ -306,6 +306,34 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
       );
     }
 
+    void onPressButton(OpenHouse garageayard) {
+      if (widget.isActive == null) {
+        if (garageayard.location?.latitude == null ||
+            garageayard.location?.longitude == null) {
+          CustomToast.showToast(
+            'Location not available',
+            status: ToastStatus.error,
+          );
+          return;
+        }
+        AppUtils.openAppDirections(
+          garageayard.location?.latitude ?? 0.0,
+          garageayard.location?.longitude ?? 0.0,
+        );
+      } else if (widget.isActive == true || widget.isActive == false) {
+        context.router
+            .push(AddEditPostSaleScreen(garageayard: garageayard))
+            .then((val) {
+          if (val == true) {
+            ref.read(saleNotifierProvider.notifier)
+              ..resetState()
+              ..fetchExplorePosts();
+            Navigator.pop(context);
+          }
+        });
+      }
+    }
+
     return context.doublePos(
         appbar: AppBar(
           title: detailState.maybeWhen(orElse: () {
@@ -348,32 +376,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
           detailState.maybeWhen(
               orElse: () {},
               success: (garageayard) {
-                if (widget.isActive == null) {
-                  if (garageayard.location?.latitude == null ||
-                      garageayard.location?.longitude == null) {
-                    CustomToast.showToast(
-                      'Location not available',
-                      status: ToastStatus.error,
-                    );
-                    return;
-                  }
-                  AppUtils.openAppDirections(
-                    garageayard.location?.latitude ?? 0.0,
-                    garageayard.location?.longitude ?? 0.0,
-                  );
-                } else if (widget.isActive == true ||
-                    widget.isActive == false) {
-                  context.router
-                      .push(AddEditPostSaleScreen(garageayard: garageayard))
-                      .then((val) {
-                    if (val == true) {
-                      ref.read(saleNotifierProvider.notifier)
-                        ..resetState()
-                        ..fetchExplorePosts();
-                      Navigator.pop(context);
-                    }
-                  });
-                }
+                onPressButton(garageayard);
+              },
+              failure: (error) {
+                onPressButton(widget.garageayard);
               });
         },
         content: detailState.when(
