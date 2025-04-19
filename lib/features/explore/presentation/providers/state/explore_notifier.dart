@@ -145,7 +145,7 @@ class DetailPageNotifier extends StateNotifier<FormzState> {
         (failure) => FormzState.failure(AppException(
             message: failure.message, statusCode: 0, identifier: '')),
         (data) {
-          return FormzState.success(data: data.data);
+          return FormzState.success(data: data);
         },
       );
     } catch (e) {

@@ -42,22 +42,24 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   @override
   void initState() {
     super.initState();
-    // Future.microtask(() {
-    //   ref.read(detailPageProvider(widget.garageayard.id));
-    // });
-    _loadCustomMarker();
+    Future.microtask(() {
+      ref
+          .read(detailPageProvider.notifier)
+          .fetchPostDetails((widget.garageayard.id));
+    });
+    // _loadCustomMarker();
   }
 
-  Widget locationWidget() {
+  Widget locationWidget(OpenHouse garageayard) {
     return LocationText(
       fromDetail: false,
       location: AppUtils.formatLocationAsAddress(
-        widget.garageayard.location ?? const LocationModel(),
+        garageayard.location ?? const LocationModel(),
       ),
     );
   }
 
-  void _loadCustomMarker() async {
+  void _loadCustomMarker(OpenHouse garageayard) async {
     // Load the custom marker from assets
     BitmapDescriptor customIcon = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(16, 26)),
@@ -69,8 +71,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
       Marker(
         markerId: const MarkerId('customMarker'),
         position: LatLng(
-          widget.garageayard.location?.latitude ?? 27.6782,
-          widget.garageayard.location?.longitude ?? 85.3808,
+          garageayard.location?.latitude ?? 27.6782,
+          garageayard.location?.longitude ?? 85.3808,
         ),
         icon: customIcon,
         // consumeTapEvents: true,
@@ -87,15 +89,14 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final currentUserAsyncValue = ref.watch(currentUserProvider);
-    final detailState = ref.watch(detailPageProvider(widget.garageayard.id));
-    Widget buildcontextWidget() {
+    final detailState = ref.watch(detailPageProvider);
+    Widget buildcontextWidget(OpenHouse garageayard) {
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomCarousel(
-              attachments:
-                  widget.garageayard.openHouseProperty?.attachments ?? [],
+              attachments: garageayard.openHouseProperty?.attachments ?? [],
             ),
             Column(
               spacing: 4,
@@ -108,23 +109,23 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '\$${widget.garageayard.openHouseProperty?.price}',
+                        '\$${garageayard.openHouseProperty?.price}',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(
-                        '${widget.garageayard.openHouseProperty?.name}',
+                        '${garageayard.openHouseProperty?.name}',
                         style: AppTextStyles.bodyLarge.copyWith(
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      locationWidget(),
+                      locationWidget(garageayard),
                       Row(
                         children: [
                           Icon(Icons.home_outlined, size: 18),
                           Spacing.sizedBoxW_04(),
                           Expanded(
                             child: Text(
-                              '${widget.garageayard.openHouseProperty?.propertyType?.name}',
+                              '${garageayard.openHouseProperty?.propertyType?.name}',
                               style: AppTextStyles.bodyMedium.copyWith(
                                 fontWeight: FontWeight.w400,
                               ),
@@ -135,20 +136,19 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                         ],
                       ),
                       AmenitiesLine(
-                        bedroom: widget.garageayard.propertySize?.bedrooms
-                                ?.toString() ??
-                            '0',
-                        bathroom: widget.garageayard.propertySize?.bathrooms
-                                ?.toString() ??
-                            '0',
+                        bedroom:
+                            garageayard.propertySize?.bedrooms?.toString() ??
+                                '0',
+                        bathroom:
+                            garageayard.propertySize?.bathrooms?.toString() ??
+                                '0',
                         size:
-                            '${widget.garageayard.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
+                            '${garageayard.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
                         lotSize:
-                            '${widget.garageayard.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sf min.',
+                            '${garageayard.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sf min.',
                       ),
                       DescriptionChip(
-                          text: widget.garageayard.openHouseProperty?.category
-                                  ?.name ??
+                          text: garageayard.openHouseProperty?.category?.name ??
                               ''),
                       SizedBox(
                         height: 8,
@@ -157,7 +157,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                           thickness: 1,
                         ),
                       ),
-                      ...widget.garageayard.propertySize?.availableTimeSlots
+                      ...garageayard.propertySize?.availableTimeSlots
                               ?.map((e) => TimerText(
                                     fromDetail: false,
                                     date: CustomDateUtils.formatDate(
@@ -189,7 +189,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                       ),
                       Spacing.sizedBoxH_08(),
                       Text(
-                        widget.garageayard.openHouseProperty?.description ?? '',
+                        garageayard.openHouseProperty?.description ?? '',
                         style: AppTextStyles.bodySmall.copyWith(
                           fontWeight: FontWeight.w400,
                         ),
@@ -226,7 +226,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                 //           spacing: 4,
                 //           runSpacing: 4,
                 //           children:
-                //               widget.garageayard.amenities
+                //             garageayard.amenities
                 //                   ?.map((e) => DescriptionChip(text: e))
                 //                   .toList() ??
                 //               [],
@@ -260,8 +260,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                     },
                     initialCameraPosition: CameraPosition(
                       target: LatLng(
-                        widget.garageayard.location?.latitude ?? 27.6782,
-                        widget.garageayard.location?.longitude ?? 85.3808,
+                        garageayard.location?.latitude ?? 27.6782,
+                        garageayard.location?.longitude ?? 85.3808,
                       ),
                       zoom: 15,
                     ),
@@ -278,25 +278,24 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                     ProfileInfoListTileWidget(
                       icon: Icons.person_outline,
                       title:
-                          'Posted by ${widget.garageayard.createdBy?.firstName} ${widget.garageayard.createdBy?.lastName}',
+                          'Posted by ${garageayard.createdBy?.firstName} ${garageayard.createdBy?.lastName}',
                       subTitle: CustomDateUtils.formatDate(
-                          widget.garageayard.createdAt ?? DateTime.now()),
+                          garageayard.createdAt ?? DateTime.now()),
                     ),
                     ProfileInfoListTileWidget(
                       icon: Icons.mail_outline,
                       title: 'Email',
-                      subTitle: widget.garageayard.createdBy?.email ?? '',
+                      subTitle: garageayard.createdBy?.email ?? '',
                     ),
                     ProfileInfoListTileWidget(
                       icon: Icons.call_outlined,
                       title: 'Phone',
-                      subTitle: widget.garageayard.createdBy?.phoneNumber ?? '',
+                      subTitle: garageayard.createdBy?.phoneNumber ?? '',
                     ),
                     ProfileInfoListTileWidget(
                       icon: Icons.location_on_outlined,
                       title: 'Address',
-                      subTitle:
-                          widget.garageayard.createdBy?.officeAddress ?? '',
+                      subTitle: garageayard.createdBy?.officeAddress ?? '',
                     ),
                   ],
                 ),
@@ -309,8 +308,22 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
 
     return context.doublePos(
         appbar: AppBar(
-            title: Text(widget.garageayard.openHouseProperty?.name ?? '')),
+          title: detailState.maybeWhen(orElse: () {
+            return const Text('Post Details');
+          }, success: (data) {
+            return Text(data.openHouseProperty?.name ?? '');
+          }),
+        ),
         isActive: widget.isActive,
+        showBottomBar: detailState.maybeWhen(
+            orElse: () => null,
+            success: (data) {
+              return true;
+            },
+            loading: () {
+              return false;
+            },
+            failure: (e) => null),
         statusText: widget.isActive == null
             ? 'Get Directions'
             : widget.isActive == true
@@ -332,35 +345,38 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
           },
         ),
         onPosPressed: () async {
-          if (widget.isActive == null) {
-            if (widget.garageayard.location?.latitude == null ||
-                widget.garageayard.location?.longitude == null) {
-              CustomToast.showToast(
-                'Location not available',
-                status: ToastStatus.error,
-              );
-              return;
-            }
-            AppUtils.openAppDirections(
-              widget.garageayard.location?.latitude ?? 0.0,
-              widget.garageayard.location?.longitude ?? 0.0,
-            );
-          } else if (widget.isActive == true || widget.isActive == false) {
-            context.router
-                .push(AddEditPostSaleScreen(garageayard: widget.garageayard))
-                .then((val) {
-              if (val == true) {
-                ref.read(saleNotifierProvider.notifier)
-                  ..resetState()
-                  ..fetchExplorePosts();
-                Navigator.pop(context);
-              }
-            });
-          }
+          detailState.maybeWhen(
+              orElse: () {},
+              success: (garageayard) {
+                if (widget.isActive == null) {
+                  if (garageayard.location?.latitude == null ||
+                      garageayard.location?.longitude == null) {
+                    CustomToast.showToast(
+                      'Location not available',
+                      status: ToastStatus.error,
+                    );
+                    return;
+                  }
+                  AppUtils.openAppDirections(
+                    garageayard.location?.latitude ?? 0.0,
+                    garageayard.location?.longitude ?? 0.0,
+                  );
+                } else if (widget.isActive == true ||
+                    widget.isActive == false) {
+                  context.router
+                      .push(AddEditPostSaleScreen(garageayard: garageayard))
+                      .then((val) {
+                    if (val == true) {
+                      ref.read(saleNotifierProvider.notifier)
+                        ..resetState()
+                        ..fetchExplorePosts();
+                      Navigator.pop(context);
+                    }
+                  });
+                }
+              });
         },
-        content: buildcontextWidget()
-
-        /* detailState.when(
+        content: detailState.when(
           initial: () {
             return const Center(
               child: CircularProgressIndicator(),
@@ -372,14 +388,16 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
             );
           },
           failure: (error) {
-            return buildcontextWidget();
+            return buildcontextWidget(widget.garageayard);
           },
-          success: (data) {
-            return buildcontextWidget();
+          success: (val) {
+            final OpenHouse garageayard =
+                val is OpenHouse ? val : widget.garageayard;
+            _loadCustomMarker(garageayard);
+
+            return buildcontextWidget(garageayard);
           },
-        )
-        */
-        );
+        ));
   }
 }
 

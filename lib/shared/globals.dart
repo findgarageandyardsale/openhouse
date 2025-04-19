@@ -1,7 +1,7 @@
 import 'dart:io';
 
 final kTestMode = Platform.environment.containsKey('FLUTTER_TEST');
-const int postPerPage = 10;
+const int postPerPage = 25;
 const String userLocalStorageKey = 'user';
 const String appThemeStorageKey = 'AppTheme';
 const String userId = 'user_id';

@@ -25,8 +25,8 @@ final exploreNotifierProvider =
     ..fetchExplorePosts();
 });
 
-final detailPageProvider = StateNotifierProvider.autoDispose
-    .family<DetailPageNotifier, FormzState, int?>((ref, postId) {
+final detailPageProvider =
+    StateNotifierProvider.autoDispose<DetailPageNotifier, FormzState>((ref) {
   final repository = ref.read(exploreRepositoryProvider);
-  return DetailPageNotifier(repository)..fetchPostDetails(postId);
+  return DetailPageNotifier(repository);
 });

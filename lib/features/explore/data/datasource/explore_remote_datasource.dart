@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:open_house/configs/app_configs.dart';
+import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 
 import '../../../../shared/data/remote/network_service.dart';
 import '../../../../shared/domain/models/paginated_response.dart';
@@ -12,7 +13,7 @@ abstract class ExploreDatasource {
     required Map<String, dynamic> queryParam,
   });
 
-  Future<Either<AppException, PaginatedResponse>> fetchDetailPosts({
+  Future<Either<AppException, OpenHouse>> fetchDetailPosts({
     required int? id,
   });
 }
@@ -55,7 +56,7 @@ class ExploreRemoteDatasource extends ExploreDatasource {
   }
 
   @override
-  Future<Either<AppException, PaginatedResponse>> fetchDetailPosts({
+  Future<Either<AppException, OpenHouse>> fetchDetailPosts({
     required int? id,
   }) async {
     final response = await networkService.get(
@@ -74,10 +75,9 @@ class ExploreRemoteDatasource extends ExploreDatasource {
         );
       }
 
-      final paginatedResponse = (jsonData is! List &&
-              jsonData['pagination'] != null)
-          ? PaginatedResponse.fromJson(jsonData)
-          : PaginatedResponse(data: jsonData is List ? jsonData : [jsonData]);
+      final paginatedResponse = jsonData is List
+          ? OpenHouse.fromJson(jsonData[0])
+          : OpenHouse.fromJson(jsonData);
       return Right(paginatedResponse);
     });
   }
