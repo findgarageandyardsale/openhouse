@@ -90,7 +90,7 @@ class FilterConstants {
 
   static const List<String> yearBuiltRanges = [
     'Any',
-    'New (2020+)',
+    '2020+',
     '2010-2019',
     '2000-2009',
     '1990-1999',
@@ -100,21 +100,21 @@ class FilterConstants {
 
   static const List<String> coveredAreaRanges = [
     'Any',
-    '0-500 sq ft',
-    '501-1000 sq ft',
-    '1001-1500 sq ft',
-    '1501-2000 sq ft',
-    '2001-2500 sq ft',
-    '2500+ sq ft',
+    '0-500',
+    '501-1000',
+    '1001-1500',
+    '1501-2000',
+    '2001-2500',
+    '2500+',
   ];
 
   static const List<String> lotSizeRanges = [
     'Any',
-    '0-1000 sq ft',
-    '1001-2000 sq ft',
-    '2001-3000 sq ft',
-    '3001-4000 sq ft',
-    '4001-5000 sq ft',
-    '5000+ sq ft',
+    '0-1000',
+    '1001-2000',
+    '2001-3000',
+    '3001-4000',
+    '4001-5000',
+    '5000+',
   ];
 }

@@ -147,9 +147,13 @@ class FilterState {
       if (selectedBedrooms.isNotEmpty) 'bedrooms': selectedBedrooms,
       if (selectedBathrooms.isNotEmpty) 'bathrooms': selectedBathrooms,
       if (isPetFriendly) 'is_pet_friendly': isPetFriendly,
-      if (yearBuilt != null) 'year_built': yearBuilt,
-      if (coveredArea != null) 'covered_area': coveredArea,
-      if (lotSize != null) 'lot_size': lotSize,
+      if (yearBuilt != null && !(yearBuilt ?? '').toLowerCase().contains('any'))
+        'year_built': yearBuilt,
+      if (coveredArea != null &&
+          !(coveredArea ?? '').toLowerCase().contains('any'))
+        'covered_area': coveredArea,
+      if (lotSize != null && !(lotSize ?? '').toLowerCase().contains('any'))
+        'lot_size': lotSize,
       if (priceMin != 10000) 'price_min': priceMin,
       if (priceMax != 1000000) 'price_max': priceMax,
       if (sortByField != null) 'sort_by': sortByField,

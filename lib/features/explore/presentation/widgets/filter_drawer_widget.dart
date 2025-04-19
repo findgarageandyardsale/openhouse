@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
+
 import 'package:open_house/features/add_edit_sale/presentation/provider/cat_provider.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/property_type_provider.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/title_head.dart';
@@ -380,6 +380,7 @@ class FilterDrawerWidget extends ConsumerWidget {
           value: state.yearBuilt,
           items: FilterConstants.yearBuiltRanges,
           hint: 'Select Year Built',
+          suffixText: ' years',
           onChanged: (value) {
             ref.read(filterProvider.notifier).updateYearBuilt(value);
           },
@@ -406,6 +407,7 @@ class FilterDrawerWidget extends ConsumerWidget {
           value: state.coveredArea,
           items: FilterConstants.coveredAreaRanges,
           hint: 'Select Covered Area',
+          suffixText: ' sq ft',
           onChanged: (value) {
             ref.read(filterProvider.notifier).updateCoveredArea(value);
           },
@@ -429,6 +431,7 @@ class FilterDrawerWidget extends ConsumerWidget {
           value: state.lotSize,
           items: FilterConstants.lotSizeRanges,
           hint: 'Select Lot Size',
+          suffixText: ' sq ft',
           onChanged: (value) {
             ref.read(filterProvider.notifier).updateLotSize(value);
           },
