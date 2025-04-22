@@ -3,6 +3,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:open_house/configs/flavors.dart';
 import 'package:open_house/services/location_service/presentation/map_notifier_provider.dart';
 import 'package:open_house/shared/utils/permission_utils.dart';
 import 'package:open_house/shared/utils/print_utils.dart';
@@ -57,10 +58,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     Future.delayed(const Duration(milliseconds: 900), () async {
       try {
         final isUserLoggedIn = await ref.read(userLoginCheckProvider.future);
-        final route =
-            isUserLoggedIn
-                ? const DashboardScreen()
-                : const CustomIntroScreen() as PageRouteInfo;
+        final route = isUserLoggedIn
+            ? const DashboardScreen()
+            : const CustomIntroScreen() as PageRouteInfo;
         AutoRouter.of(context).pushAndPopUntil(route, predicate: (_) => false);
       } catch (e) {
         PrintUtils.customLog('catch error $e');
@@ -73,7 +73,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     return Scaffold(
       // backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
-        child: Image.asset('assets/launcher.png', height: 150, width: 150),
+        child: Image.asset(FlavorValue.appIcon ?? 'assets/launcher.png',
+            height: 150, width: 150),
       ),
     );
   }

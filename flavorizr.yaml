@@ -1,0 +1,60 @@
+flavors:
+  openhouse:
+    app:
+      name: "Open House"
+    android:
+      applicationId: "com.findorlookup.open_house"
+      icon: "assets/launcher.png"
+    ios:
+      bundleId: "com.findorlookup.open_house"
+      icon: "assets/launcher.png"
+
+    flutter_launcher_icons:
+      android: true
+      ios: true
+      image_path: "assets/launcher.png"
+      min_sdk_android: 21
+
+    flutter_native_splash:
+      color: "#ffffff"
+      image: assets/launcher.png
+      branding: assets/launcher.png
+      branding_bottom_padding: 24
+      color_dark: "#121212"
+      image_dark: assets/launcher.png
+      branding_dark: assets/launcher.png
+      android_12:
+        image: assets/launcher.png
+        icon_background_color: "#ffffff"
+        image_dark: assets/launcher.png
+        icon_background_color_dark: "#121212"
+      web: false
+        
+  streetfood:
+    app:
+      name: "Street Food"
+    android:
+      applicationId: "com.findorlookup.streetfood"
+      icon: "assets/streetfood.png"
+    ios:
+      bundleId: "com.findorlookup.streetfood"
+      icon: "assets/streetfood.png"
+    flutter_launcher_icons:
+      android: true
+      ios: true
+      image_path: "assets/streetfood.png"
+      min_sdk_android: 21
+    flutter_native_splash:
+      color: "#ffffff"
+      image: assets/streetfood.png
+      branding: assets/streetfood.png
+      branding_bottom_padding: 24
+      color_dark: "#121212"
+      image_dark: assets/streetfood.png
+      branding_dark: assets/streetfood.png
+      android_12:
+        image: assets/streetfood.png
+        icon_background_color: "#ffffff"
+        image_dark: assets/streetfood.png
+        icon_background_color_dark: "#121212"
+      web: false

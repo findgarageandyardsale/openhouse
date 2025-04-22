@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:open_house/configs/flavors.dart';
 import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/widgets/action_button.dart';
 
@@ -40,7 +41,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
             children: [
               Center(
                 child: Image.asset(
-                  'assets/launcher.png',
+                  FlavorValue.appIcon ?? 'assets/launcher.png',
                   height: 160,
                   width: 160,
                 ),
@@ -51,8 +52,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
                     ? 'You Have \n Successfully \n Signed In'
                     : 'You Have \n Successfully \n Signed Up',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+                      fontWeight: FontWeight.w700,
+                    ),
                 textAlign: TextAlign.center,
               ),
               Spacing.sizedBoxH_30(),

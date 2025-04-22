@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:open_house/configs/flavors.dart';
 import 'package:open_house/features/account/presentation/providers/state/change_password_provider.dart';
 import 'package:open_house/features/authentication/presentation/widgets/password_field_widget.dart';
 import 'package:open_house/shared/constants/spacing.dart';
@@ -66,11 +67,14 @@ class ChangePasswordScreen extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset('assets/launcher.png', height: 150, width: 150),
+                    Image.asset(FlavorValue.appIcon ?? 'assets/launcher.png',
+                        height: 150, width: 150),
                     Spacing.sizedBoxH_36(),
                     Text(
                       'Change Password',
-                      style: Theme.of(context).textTheme.headlineMedium
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium
                           ?.copyWith(fontWeight: FontWeight.w700),
                     ),
                     Spacing.sizedBoxH_30(),

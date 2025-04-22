@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'package:oktoast/oktoast.dart';
-import 'package:open_house/observers.dart';
+import 'package:open_house/configs/flavors.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'routes/app_route.dart';
@@ -14,6 +14,12 @@ import 'shared/theme/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // const appFlavor = 'streetfood';
+  // const appFlavor = 'openhouse';
+  FlavorValue.appFlavor = Flavor.values.firstWhere(
+    (element) => element.name == appFlavor,
+    orElse: () => throw Exception('Invalid flavor: $appFlavor'),
+  );
   //FlutterBranchSdk.setPreinstallCampaign('My Campaign Name');
   //FlutterBranchSdk.setPreinstallPartner('Branch \$3p Parameter Value');
   //FlutterBranchSdk.clearPartnerParameters();
@@ -67,7 +73,7 @@ class MyApp extends ConsumerWidget {
 
     return OKToast(
       child: MaterialApp.router(
-        title: 'Open House',
+        title: FlavorValue.title,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         themeMode: themeMode,
