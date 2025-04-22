@@ -3,10 +3,10 @@ flavors:
     app:
       name: "Open House"
     android:
-      applicationId: "com.findorlookup.open_house"
+      applicationId: "com.findorlookup.openhouse"
       icon: "assets/launcher.png"
     ios:
-      bundleId: "com.findorlookup.open_house"
+      bundleId: "com.findorlookup.openhouseapp"
       icon: "assets/launcher.png"
 
     flutter_launcher_icons:
@@ -37,7 +37,7 @@ flavors:
       applicationId: "com.findorlookup.streetfood"
       icon: "assets/streetfood.png"
     ios:
-      bundleId: "com.findorlookup.streetfood"
+      bundleId: "com.findorlookup.streetfoodapp"
       icon: "assets/streetfood.png"
     flutter_launcher_icons:
       android: true

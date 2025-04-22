@@ -8,7 +8,7 @@ android.apply {
     productFlavors {
         create("openhouse") {
             dimension = "flavor-type"
-            applicationId = "com.findorlookup.open_house"
+            applicationId = "com.findorlookup.openhouse"
             resValue(type = "string", name = "app_name", value = "Open House")
         }
         create("streetfood") {

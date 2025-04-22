@@ -29,7 +29,7 @@ class FlavorValue {
         appIcon: 'assets/launcher.png'),
     Flavor.streetfood: FlavorValues(
       title: 'Street Food',
-      baseUrl: 'http://54.209.76.200:8000',
+      baseUrl: 'http://35.171.98.209:8000',
       primaryColor: const Color(0xFF9102E),
       appIcon: 'assets/streetfood.png',
     ),

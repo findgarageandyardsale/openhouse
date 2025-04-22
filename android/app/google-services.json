@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:53723541578:android:712a7e814402e65964b6b3",
+        "mobilesdk_app_id": "1:53723541578:android:40be489c6af2b1b164b6b3",
         "android_client_info": {
-          "package_name": "com.findorlookup.open_house"
+          "package_name": "com.findorlookup.openhouse"
         }
       },
       "oauth_client": [],
