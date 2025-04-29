@@ -1,3 +1,5 @@
+// ignore_for_file: unreachable_switch_default
+
 import 'package:flutter/material.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';

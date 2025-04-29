@@ -15,7 +15,7 @@ class StepFour extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(catNotifierProvider);
-    final addCatdata = ref.watch(addDataNotifierProvider);
+    ref.watch(addDataNotifierProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,37 +25,38 @@ class StepFour extends ConsumerWidget {
             return const SizedBox.shrink();
           },
           success: (categories) {
-            List<Category> cats =
-                (categories as List<dynamic>)
-                    .map((category) => Category.fromJson(category))
-                    .toList();
+            List<Category> cats = (categories as List<dynamic>)
+                .map((category) => Category.fromJson(category))
+                .toList();
             return cats.isEmpty
                 ? const SizedBox.shrink()
                 : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Category',
-                          style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                        // if ((addCatdata?.openHouseProperty?.category ?? [])
-                        //     .isNotEmpty)
-                        //   Text(
-                        //     '${(addCatdata?.openHouseProperty?.category ?? []).length} Selected',
-                        //     style: Theme.of(context).textTheme.bodyMedium,
-                        //   ),
-                      ],
-                    ),
-                    Spacing.sizedBoxH_08(),
-                    CategorySelector(cats: cats),
-                  ],
-                );
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Category',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                          // if ((addCatdata?.openHouseProperty?.category ?? [])
+                          //     .isNotEmpty)
+                          //   Text(
+                          //     '${(addCatdata?.openHouseProperty?.category ?? []).length} Selected',
+                          //     style: Theme.of(context).textTheme.bodyMedium,
+                          //   ),
+                        ],
+                      ),
+                      Spacing.sizedBoxH_08(),
+                      CategorySelector(cats: cats),
+                    ],
+                  );
           },
           loading: () {
             return Column(
@@ -66,26 +67,25 @@ class StepFour extends ConsumerWidget {
                 Wrap(
                   runSpacing: 16.0,
                   spacing: 12.0,
-                  children:
-                      [1, 2, 3, 4, 5, 6]
-                          .map(
-                            (e) => Container(
-                                  width: 120.0,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                )
-                                .animate(
-                                  onPlay: (controller) => controller.repeat(),
-                                )
-                                .shimmer(
-                                  color: Colors.grey.shade300,
-                                  duration: const Duration(seconds: 2),
-                                ),
-                          )
-                          .toList(),
+                  children: [1, 2, 3, 4, 5, 6]
+                      .map(
+                        (e) => Container(
+                          width: 120.0,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        )
+                            .animate(
+                              onPlay: (controller) => controller.repeat(),
+                            )
+                            .shimmer(
+                              color: Colors.grey.shade300,
+                              duration: const Duration(seconds: 2),
+                            ),
+                      )
+                      .toList(),
                 ),
                 Spacing.sizedBoxH_20(),
               ],

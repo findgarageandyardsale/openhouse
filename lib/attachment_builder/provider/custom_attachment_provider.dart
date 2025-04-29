@@ -10,8 +10,8 @@ import 'package:http_parser/http_parser.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:mime/mime.dart';
 import 'package:file_picker/file_picker.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
-
 import '../../features/account/domain/providers/attachment_file_provider.dart';
 import '../../shared/utils/print_utils.dart';
 import '../mixins/file_picker_mixins.dart';
@@ -160,9 +160,9 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
         if (listData.isEmpty) {
           return;
         } else {
-          // File croppedFile = await _cropImage(listData[0]);
-          // listData.clear();
-          // listData.add(croppedFile);
+          File croppedFile = await _cropImage(listData[0]);
+          listData.clear();
+          listData.add(croppedFile);
         }
       }
 

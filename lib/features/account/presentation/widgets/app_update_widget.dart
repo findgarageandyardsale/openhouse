@@ -46,7 +46,7 @@ class AppUpdateDialogBody extends StatelessWidget {
             ],
           ),
           content: Text(
-            'There’s a new update for Garage Yard app. Please update your app to continue.',
+            'There’s a new update for Open House app. Please update your app to continue.',
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),

@@ -25,5 +25,5 @@ class HelperConstant {
       'https://findgarageandyardsale.com/#/privacy-policy';
   static String postPrice = '10';
 
-  static int priceForEach = 2;
+  static int priceForEach = 5;
 }

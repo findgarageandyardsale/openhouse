@@ -72,7 +72,7 @@ class PostSingleItem extends StatelessWidget {
                 size:
                     '${singlePost?.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
                 lotSize:
-                    '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sf min.',
+                    '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sq.ft',
               ),
               Divider(color: AppColors.extraLightGrey),
               TimerText(

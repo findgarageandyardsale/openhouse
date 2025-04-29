@@ -12,7 +12,6 @@ import 'package:open_house/shared/mixins/exception_handler_mixin.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../../configs/app_configs.dart';
 import '../../exceptions/http_exception.dart';
-import '../../globals.dart';
 import 'network_service.dart';
 import 'package:open_house/shared/domain/models/response_data.dart' as response;
 

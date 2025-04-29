@@ -5,7 +5,6 @@ import 'package:open_house/features/add_edit_sale/presentation/provider/add_data
 import 'package:open_house/features/add_edit_sale/presentation/widgets/sale_timing.dart';
 import 'package:open_house/features/authentication/presentation/widgets/auth_field.dart';
 import 'package:open_house/shared/constants/spacing.dart';
-import 'package:open_house/shared/utils/cusotm_date_utils.dart';
 
 class StepFive extends ConsumerWidget {
   const StepFive({
@@ -47,31 +46,42 @@ class StepFive extends ConsumerWidget {
           keyboardType: TextInputType.multiline,
         ),
         Spacing.sizedBoxH_16(),
-
         AuthField(
           onTap: () async {
-            final date = await showDatePicker(
+            showDialog(
               context: context,
-              firstDate: DateTime(1980, 1, 1),
-              lastDate: DateTime.now(),
-              initialDate: DateTime.now(),
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text("Select Year"),
+                  content: SizedBox(
+                    width: 300,
+                    height: 300,
+                    child: YearPicker(
+                      firstDate: DateTime(DateTime.now().year - 100, 1),
+                      lastDate: DateTime(DateTime.now().year),
+                      selectedDate: dateController.text.isEmpty
+                          ? DateTime.now()
+                          : DateTime(int.parse(dateController.text)),
+                      onChanged: (DateTime date) {
+                        ref
+                            .read(addDataNotifierProvider.notifier)
+                            .setYearBuild(date);
+
+                        dateController.text = date.year.toString();
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                );
+              },
             );
-
-            if (date != null) {
-              ref.read(addDataNotifierProvider.notifier).setYearBuild(date);
-
-              dateController.text = CustomDateUtils.formatDate(date);
-              // ref
-              //   .read(addDataNotifierProvider.notifier)
-              //   .editTimeSlot(widget.timeSlot.copyWith(date: date));
-            }
           },
           name: 'date_year',
-          // validator: FormBuilderValidators.compose([
-          //   FormBuilderValidators.required(
-          //     errorText: 'Year Built cannot be empty.',
-          //   ),
-          // ]),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(
+              errorText: 'Year Built cannot be empty.',
+            ),
+          ]),
           readOnly: true,
           suffixIcon: const Icon(Icons.calendar_today),
           labelText: 'Year Built',

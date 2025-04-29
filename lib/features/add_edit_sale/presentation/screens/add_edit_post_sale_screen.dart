@@ -115,9 +115,10 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
 
     void proceedToPaymentFunction() async {
       try {
-        final model = ref.read(addNotifierProvider.notifier).postData;
+        // final model = ref.read(addNotifierProvider.notifier).postData;
 
         String? transactionId = await StripeService.instance.makePayment();
+        // ignore: use_build_context_synchronously
         Navigator.pop(context);
 
         if ((transactionId ?? '').isNotEmpty) {
@@ -145,7 +146,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
           child: Column(
             children: [
               Text(
-                'Save Your Time and Energy By not Posting Physical Garage & Yard Sale signs on poles and streets.\n',
+                'Save Your Time and Energy By not Posting Physical Open House signs on poles and streets.\n',
                 textAlign: TextAlign.center,
                 style: Theme.of(
                   context,
@@ -159,7 +160,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                 ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
               ),
               Text(
-                'Make your Garage or Yard Sale Event live by simply paying \$${HelperConstant.priceForEach}.00 for each sale date.\n\nYour total is \$${HelperConstant.postPrice}.00.',
+                'Make your Open House Event live by simply paying \$${HelperConstant.priceForEach}.00 for each sale date.\n\nYour total is \$${HelperConstant.postPrice}.00.',
                 textAlign: TextAlign.center,
                 style: Theme.of(
                   context,

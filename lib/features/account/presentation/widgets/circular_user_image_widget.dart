@@ -29,8 +29,8 @@ class CircularUserImageWidget extends StatelessWidget {
                   shape: BoxShape.circle,
                 )
                 : FnameLnameCircleTextWidget(
-                  firstName: firstName ?? 'Garage',
-                  lastName: lastName ?? 'Sales',
+                  firstName: firstName ?? 'Open',
+                  lastName: lastName ?? 'House',
                   fontsize: 16,
                 ),
       ),

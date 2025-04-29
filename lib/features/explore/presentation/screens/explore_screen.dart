@@ -163,8 +163,6 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Spacing.sizedBoxH_16(),
-
-            Spacing.sizedBoxH_16(),
             // state.state == ExploreConcreteState.loading
             //     ? const Expanded(child: MainViewShimmer())
             //     : state.hasData
@@ -179,18 +177,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
               ),
             ),
 
-            // : Expanded(
-            //   child: Center(
-            //     child: Text(
-            //       state.message,
-            //       textAlign: TextAlign.center,
-            //       style: const TextStyle(
-            //         fontSize: 18.0,
-            //         fontWeight: FontWeight.w600,
-            //       ),
-            //     ),
-            //   ),
-            // ),
+       
           ],
         ),
       ),

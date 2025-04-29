@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'package:oktoast/oktoast.dart';
-import 'package:open_house/observers.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'routes/app_route.dart';

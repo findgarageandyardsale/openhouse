@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:open_house/configs/app_configs.dart';
 import 'package:open_house/shared/domain/circulat_indicator_widget.dart';
 import 'package:open_house/shared/widgets/app_image.dart';
 
@@ -85,7 +84,7 @@ class CacheImageBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String imageUrl = clickUrl.isEmpty ? url : clickUrl;
-    String fullUrl = AppConfigs.url + imageUrl;
+    // String fullUrl = AppConfigs.url + imageUrl;
     return CachedNetworkImage(
       imageUrl: imageUrl,
       height: height ?? 50,

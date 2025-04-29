@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +10,6 @@ import 'package:open_house/routes/app_route.gr.dart';
 import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';
-import 'package:open_house/shared/utils/print_utils.dart';
 import 'package:open_house/shared/widgets/app_image.dart';
 import 'package:open_house/shared/widgets/custom_bottomsheet.dart';
 import 'package:open_house/shared/widgets/custom_loading.dart';
@@ -135,11 +132,12 @@ class SignupScreen extends ConsumerWidget {
                           Spacing.sizedBoxH_12(),
                           Text(
                             'Create Your Account',
-                            style: Theme.of(context).textTheme.titleLarge
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
                                 ?.copyWith(fontWeight: FontWeight.w700),
                             textAlign: TextAlign.center,
                           ),
-
                           Spacing.sizedBoxH_10(),
                           Text(
                             'Join Open House and explore properties with ease!',
@@ -157,9 +155,7 @@ class SignupScreen extends ConsumerWidget {
                               errorText: 'First Name is empty.',
                             ),
                             onChanged: (value) {
-                              if (formKey
-                                      .currentState
-                                      ?.fields['first_name']
+                              if (formKey.currentState?.fields['first_name']
                                       ?.hasError ??
                                   false) {
                                 formKey.currentState?.fields['first_name']
@@ -179,9 +175,7 @@ class SignupScreen extends ConsumerWidget {
                               errorText: 'Last Name is empty.',
                             ),
                             onChanged: (value) {
-                              if (formKey
-                                      .currentState
-                                      ?.fields['last_name']
+                              if (formKey.currentState?.fields['last_name']
                                       ?.hasError ??
                                   false) {
                                 formKey.currentState?.fields['last_name']
@@ -206,9 +200,7 @@ class SignupScreen extends ConsumerWidget {
                             ]),
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (value) {
-                              if (formKey
-                                      .currentState
-                                      ?.fields['email']
+                              if (formKey.currentState?.fields['email']
                                       ?.hasError ??
                                   false) {
                                 formKey.currentState?.fields['email']
@@ -236,9 +228,7 @@ class SignupScreen extends ConsumerWidget {
                             ]),
                             keyboardType: TextInputType.phone,
                             onChanged: (value) {
-                              if (formKey
-                                      .currentState
-                                      ?.fields['phone_number']
+                              if (formKey.currentState?.fields['phone_number']
                                       ?.hasError ??
                                   false) {
                                 formKey.currentState?.fields['phone_number']
@@ -248,15 +238,12 @@ class SignupScreen extends ConsumerWidget {
                             controller: phoneController,
                           ),
                           Spacing.sizedBoxH_16(),
-
                           AuthField(
                             name: 'password',
                             hintText: 'Password',
                             labelText: 'Password',
                             onChanged: (p0) {
-                              if (formKey
-                                      .currentState
-                                      ?.fields['password']
+                              if (formKey.currentState?.fields['password']
                                       ?.hasError ??
                                   false) {
                                 formKey.currentState?.fields['password']
@@ -288,10 +275,8 @@ class SignupScreen extends ConsumerWidget {
                             hintText: 'Confirm Password',
                             labelText: 'Confirm Password',
                             onChanged: (p0) {
-                              if (formKey
-                                      .currentState
-                                      ?.fields['confirm_password']
-                                      ?.hasError ??
+                              if (formKey.currentState
+                                      ?.fields['confirm_password']?.hasError ??
                                   false) {
                                 formKey.currentState?.fields['confirm_password']
                                     ?.validate();
@@ -328,7 +313,6 @@ class SignupScreen extends ConsumerWidget {
                             ),
                             Spacing.sizedBoxH_16(),
                           ],
-
                           AuthField(
                             name: 'office_address',
                             labelText: 'Office Address',
@@ -360,17 +344,16 @@ class SignupScreen extends ConsumerWidget {
                                     style: Theme.of(
                                       context,
                                     ).textTheme.bodyMedium?.copyWith(
-                                      color: AppColors.primary,
-                                      decoration: TextDecoration.underline,
-                                      decorationColor: AppColors.primary,
-                                      decorationStyle:
-                                          TextDecorationStyle.solid,
-                                    ),
-                                    recognizer:
-                                        TapGestureRecognizer()
-                                          ..onTap = () {
-                                            launchTermsAndConditionUrl();
-                                          },
+                                          color: AppColors.primary,
+                                          decoration: TextDecoration.underline,
+                                          decorationColor: AppColors.primary,
+                                          decorationStyle:
+                                              TextDecorationStyle.solid,
+                                        ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        launchTermsAndConditionUrl();
+                                      },
                                   ),
                                 ],
                               ),
@@ -396,9 +379,9 @@ class SignupScreen extends ConsumerWidget {
                               style: Theme.of(
                                 context,
                               ).textTheme.bodyLarge?.copyWith(
-                                color: AppColors.primary,
-                                fontWeight: FontWeight.w700,
-                              ),
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                             ),
                           ),
                         ),
@@ -491,9 +474,8 @@ class SignupScreen extends ConsumerWidget {
                   data.remove('realty_name');
                   data.remove('license_number');
                 }
-                PrintUtils.customLog(jsonEncode(data));
 
-                // ref.read(signupStateNotifierProvider.notifier).signup(data);
+                ref.read(signupStateNotifierProvider.notifier).signup(data);
               }
             } else {
               CustomToast.showToast(

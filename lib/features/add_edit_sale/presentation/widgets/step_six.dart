@@ -28,7 +28,7 @@ class StepSix extends StatelessWidget {
               ),
               TextSpan(
                 text:
-                    'Simply by paying \$2.00 per Open House Event. Your can post up to 10 events in advance\n\n',
+                    'Simply by paying \$5.00 per Open House Event. Your can post up to 10 events in advance\n\n',
               ),
               TextSpan(
                 text: 'Note: ',

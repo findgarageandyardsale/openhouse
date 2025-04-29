@@ -19,6 +19,13 @@ class CustomDateUtils {
   }
 
   /// [DateTime] into String as Septemeber 12, 2021
+  static String formatYearDate(DateTime dateTime) {
+    // Define the format pattern as 'MMM d, yyyy'
+    final DateFormat formatter = DateFormat('yyyy');
+    return formatter.format(dateTime);
+  }
+
+  /// [DateTime] into String as Septemeber 12, 2021
   static String formatDateFilter(DateTime? dateTime) {
     if (dateTime == null) {
       return '';

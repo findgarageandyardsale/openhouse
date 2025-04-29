@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
 
-import '../domain/models/open_house/open_house.dart';
-import '../theme/app_colors.dart';
 
 // class StatusChip extends StatelessWidget {
 //   const StatusChip({super.key, required this.status});

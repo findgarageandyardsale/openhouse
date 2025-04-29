@@ -135,11 +135,11 @@ class FilterState {
       if (radius != null) 'max_distance_km': ((radius ?? 0.0) * 1.60934),
       if (PrintUtils.radiusInAllChip)
         if (radius == null) 'max_distance_km': (15 * 1.60934),
-      'start_date': CustomDateUtils.formatDateFilter(
-        startDate ?? DateTime.now(),
-      ),
-      if (endDate != null)
-        'end_date': CustomDateUtils.formatDateFilter(endDate!),
+      // 'start_date': CustomDateUtils.formatDateFilter(
+      //   startDate ?? DateTime.now(),
+      // ),
+      // if (endDate != null)
+      //   'end_date': CustomDateUtils.formatDateFilter(endDate!),
       if (selectedCategories != null)
         'category': (selectedCategories ?? []).map((e) => e.id).toList(),
       if (selectedPropertyTypes != null)
@@ -189,8 +189,6 @@ extension DateFilterText on DateFilter {
         return 'This Month';
       case DateFilter.customRange:
         return 'Custom Range';
-      default:
-        return '';
     }
   }
 }

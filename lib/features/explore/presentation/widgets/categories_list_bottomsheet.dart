@@ -23,7 +23,6 @@ class _CategoriesListBottomsheetState
     extends ConsumerState<CategoriesListBottomsheet> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.microtask(() {
       ref.watch(catListProvider.notifier).state =

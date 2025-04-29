@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_house/features/explore/data/dummy_data/garage_yard_dummy_data.dart';
 import 'package:open_house/features/explore/presentation/providers/filter_state_provider.dart';
 import 'package:open_house/shared/widgets/main_shimmer.dart';
 import 'package:open_house/shared/widgets/no_data.dart';
