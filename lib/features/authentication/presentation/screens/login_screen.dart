@@ -29,9 +29,7 @@ class LoginScreen extends ConsumerWidget {
     final state = ref.watch(authStateNotifierProvider);
 
     void setFilterInitail() {
-      AutoRouter.of(context).replaceAll([const DashboardScreen()]).then((_) {
-        AutoTabsRouter.of(context).setActiveIndex(0);
-      });
+      AutoRouter.of(context).replaceAll([const DashboardScreen()]);
       ref.invalidate(currentUserProvider);
     }
 
@@ -85,15 +83,18 @@ class LoginScreen extends ConsumerWidget {
                         Spacing.sizedBoxH_20(),
                         Text(
                           'Welcome to Open House!',
-                          style: Theme.of(context).textTheme.titleLarge
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
                               ?.copyWith(fontWeight: FontWeight.w700),
                           textAlign: TextAlign.center,
                         ),
-
                         Spacing.sizedBoxH_10(),
                         Text(
                           'Find your perfect property or list your spaces with ease.',
-                          style: Theme.of(context).textTheme.bodyMedium
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
                               ?.copyWith(color: AppColors.tileColor),
                           textAlign: TextAlign.center,
                         ),
@@ -126,7 +127,6 @@ class LoginScreen extends ConsumerWidget {
                           labelText: 'Password',
                           passwordController: passwordController,
                         ),
-
                         Spacing.sizedBoxH_20(),
                         loginButton(context, ref),
                         Spacing.sizedBoxH_16(),
@@ -139,9 +139,9 @@ class LoginScreen extends ConsumerWidget {
                             style: Theme.of(
                               context,
                             ).textTheme.bodyLarge?.copyWith(
-                              color: AppColors.primary,
-                              fontWeight: FontWeight.w700,
-                            ),
+                                  color: AppColors.primary,
+                                  fontWeight: FontWeight.w700,
+                                ),
                           ),
                         ),
                         Spacing.sizedBoxH_20(),
@@ -149,7 +149,7 @@ class LoginScreen extends ConsumerWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: RichText(
                             text: TextSpan(
-                              text: 'Don’t have an account?  ',
+                              text: 'Don\'t have an account?  ',
                               style: Theme.of(context).textTheme.bodyLarge,
                               children: [
                                 WidgetSpan(
@@ -164,9 +164,9 @@ class LoginScreen extends ConsumerWidget {
                                       style: Theme.of(
                                         context,
                                       ).textTheme.bodyLarge?.copyWith(
-                                        color: AppColors.primary,
-                                        fontWeight: FontWeight.w700,
-                                      ),
+                                            color: AppColors.primary,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                     ),
                                   ),
                                 ),
@@ -174,7 +174,6 @@ class LoginScreen extends ConsumerWidget {
                             ),
                           ),
                         ),
-
                         Spacing.sizedBoxH_30(),
                       ],
                     ),
