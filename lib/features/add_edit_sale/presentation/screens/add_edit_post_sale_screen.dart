@@ -76,8 +76,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
     propertyTypeController.text =
         widget.garageayard?.openHouseProperty?.propertyType?.name ?? '';
 
-    priceController.text =
-        widget.garageayard?.openHouseProperty?.price.toString() ?? '';
+    priceController.text = HelperConstant.formatPrice(
+        widget.garageayard?.openHouseProperty?.price.toString() ?? '');
     descriptionController.text =
         widget.garageayard?.openHouseProperty?.description ?? '';
     dateController.text = CustomDateUtils.formatDateFilter(

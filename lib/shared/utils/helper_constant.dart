@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:intl/intl.dart';
+
 class HelperConstant {
   static bool isForTest = true;
 
@@ -27,4 +29,22 @@ class HelperConstant {
   static int numberOfPicCanUpload = 10;
   static String canUploadUptoMessage =
       'Your Image Limit has exceed. You can upload only ${HelperConstant.numberOfPicCanUpload} images';
+
+  static String formatPrice(String value) {
+    // if (value.isEmpty)
+    return value;
+    // final NumberFormat formatter = NumberFormat.decimalPattern('en_US');
+    // // Clean input to remove non-numeric characters except decimal point
+    // String cleaned = value.replaceAll(RegExp(r'[^\d.]'), '');
+    // double? parsed = double.tryParse(cleaned);
+    // if (parsed == null) return value; // Return original if invalid
+    // String formatted = formatter.format(parsed);
+    // if (formatted.contains('.')) {
+    //   formatted =
+    //       formatted.replaceAll(RegExp(r'0+$'), ''); // Remove trailing zeros
+    //   formatted = formatted.replaceAll(
+    //       RegExp(r'\.$'), ''); // Remove trailing decimal point
+    // }
+    // return formatted;
+  }
 }
