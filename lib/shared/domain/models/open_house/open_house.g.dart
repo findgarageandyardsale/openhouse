@@ -124,7 +124,7 @@ _$OpenHousePropertyImpl _$$OpenHousePropertyImplFromJson(
     _$OpenHousePropertyImpl(
       name: json['name'] as String?,
       description: json['description'] as String?,
-      price: (json['price'] as num?)?.toInt(),
+      price: ConvertTo.convertIntToDouble(json['price']),
       attachments: (json['images'] as List<dynamic>?)
           ?.map((e) => AttachmentModel.fromJson(e as Map<String, dynamic>))
           .toList(),

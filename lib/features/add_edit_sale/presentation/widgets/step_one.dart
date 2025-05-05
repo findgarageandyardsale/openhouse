@@ -10,6 +10,7 @@ import 'package:open_house/features/authentication/presentation/widgets/auth_fie
 import 'package:open_house/services/capitalize_word_formatter_service.dart';
 import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/domain/models/property_type_model/property_type_model.dart';
+import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:open_house/shared/widgets/custom_bottomsheet.dart';
 
 class StepOne extends ConsumerWidget {
@@ -27,9 +28,10 @@ class StepOne extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
-        const TitleHead(
+        TitleHead(
           title: 'Add Image',
-          subtitle: 'Upload up to max 10 images of your item',
+          subtitle:
+              'Upload up to max ${HelperConstant.numberOfPicCanUpload} images of your item',
         ),
         Spacing.sizedBoxH_08(),
         const ImageScreen(),
@@ -57,7 +59,8 @@ class StepOne extends ConsumerWidget {
           name: 'price',
           hintText: 'Price*',
           labelText: 'Price*',
-          keyboardType: TextInputType.numberWithOptions(decimal: false),
+          keyboardType:
+              TextInputType.numberWithOptions(decimal: true, signed: false),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(errorText: 'Price cannot be empty.'),
           ]),
@@ -67,7 +70,7 @@ class StepOne extends ConsumerWidget {
             // Update the state with the new value
             ref
                 .read(addDataNotifierProvider.notifier)
-                .setPrice(int.tryParse(value ?? ''));
+                .setPrice(double.tryParse(value ?? ''));
           },
         ),
         Spacing.sizedBoxH_16(),

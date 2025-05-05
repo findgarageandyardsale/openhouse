@@ -104,16 +104,30 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
   }
 
   void addAttachment(List<AttachmentModel>? attachments) {
-    // Since attachments is in OpenHouseProperty, we need to handle it differently
-    state = state?.copyWith(
-      openHouseProperty:
-          (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
-        attachments: [
-          ...(state?.openHouseProperty?.attachments ?? []),
-          ...(attachments ?? []),
-        ],
-      ),
-    );
+    try {
+      if (attachments == null || attachments.isEmpty) return;
+
+      // Get existing attachment IDs
+      final existingIds =
+          state?.openHouseProperty?.attachments?.map((e) => e.id).toSet() ?? {};
+
+      // Filter new attachments to exclude those with existing IDs
+      final newAttachments = attachments.where((attachment) {
+        return !existingIds.contains(attachment.id);
+      }).toList();
+
+      state = state?.copyWith(
+        openHouseProperty:
+            (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
+          attachments: [
+            ...(state?.openHouseProperty?.attachments ?? []),
+            ...newAttachments,
+          ],
+        ),
+      );
+    } catch (e) {
+      PrintUtils.customLog('Error adding attachments: $e');
+    }
   }
 
   void removeAttachment({required int? id}) {
@@ -123,8 +137,12 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
         openHouseProperty:
             (state?.openHouseProperty ?? OpenHouseProperty()).copyWith(
           attachments: state?.openHouseProperty?.attachments
-              ?.map((e) => e.id == id ? e : e)
-              .toList(),
+              ?.where((e) => e.id != id)
+              .toList()
+          // state?.openHouseProperty?.attachments
+          //     ?.map((e) => e.id == id ? e : e)
+          //     .toList()
+          ,
         ),
       );
     } catch (e) {
@@ -295,7 +313,7 @@ class AddDataNotifier extends StateNotifier<OpenHouse?> {
     );
   }
 
-  void setPrice(int? price) {
+  void setPrice(double? price) {
     // Since price is in OpenHouseProperty, we need to handle it differently
     state = state?.copyWith(
       openHouseProperty: (state?.openHouseProperty ?? OpenHouseProperty())

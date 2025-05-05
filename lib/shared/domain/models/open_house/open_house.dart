@@ -4,6 +4,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:open_house/shared/constants/convert_to.dart';
 import 'package:open_house/shared/domain/models/attachment_file/attachment_model.dart';
 import 'package:open_house/shared/domain/models/property_type_model/property_type_model.dart';
 import 'package:open_house/shared/domain/models/user/user_model.dart';
@@ -115,7 +116,7 @@ class OpenHouseProperty with _$OpenHouseProperty {
   const factory OpenHouseProperty({
     String? name,
     String? description,
-    int? price,
+    @JsonKey(fromJson: ConvertTo.convertIntToDouble) double? price,
     @JsonKey(name: 'images') List<AttachmentModel>? attachments,
     Category? category,
     @JsonKey(name: 'type') PropertyTypeModel? propertyType,

@@ -1371,7 +1371,8 @@ OpenHouseProperty _$OpenHousePropertyFromJson(Map<String, dynamic> json) {
 mixin _$OpenHouseProperty {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: ConvertTo.convertIntToDouble)
+  double? get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'images')
   List<AttachmentModel>? get attachments => throw _privateConstructorUsedError;
   Category? get category => throw _privateConstructorUsedError;
@@ -1398,7 +1399,7 @@ abstract class $OpenHousePropertyCopyWith<$Res> {
   $Res call(
       {String? name,
       String? description,
-      int? price,
+      @JsonKey(fromJson: ConvertTo.convertIntToDouble) double? price,
       @JsonKey(name: 'images') List<AttachmentModel>? attachments,
       Category? category,
       @JsonKey(name: 'type') PropertyTypeModel? propertyType,
@@ -1443,7 +1444,7 @@ class _$OpenHousePropertyCopyWithImpl<$Res, $Val extends OpenHouseProperty>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       attachments: freezed == attachments
           ? _value.attachments
           : attachments // ignore: cast_nullable_to_non_nullable
@@ -1503,7 +1504,7 @@ abstract class _$$OpenHousePropertyImplCopyWith<$Res>
   $Res call(
       {String? name,
       String? description,
-      int? price,
+      @JsonKey(fromJson: ConvertTo.convertIntToDouble) double? price,
       @JsonKey(name: 'images') List<AttachmentModel>? attachments,
       Category? category,
       @JsonKey(name: 'type') PropertyTypeModel? propertyType,
@@ -1548,7 +1549,7 @@ class __$$OpenHousePropertyImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       attachments: freezed == attachments
           ? _value._attachments
           : attachments // ignore: cast_nullable_to_non_nullable
@@ -1577,7 +1578,7 @@ class _$OpenHousePropertyImpl
   const _$OpenHousePropertyImpl(
       {this.name,
       this.description,
-      this.price,
+      @JsonKey(fromJson: ConvertTo.convertIntToDouble) this.price,
       @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
       this.category,
       @JsonKey(name: 'type') this.propertyType,
@@ -1592,7 +1593,8 @@ class _$OpenHousePropertyImpl
   @override
   final String? description;
   @override
-  final int? price;
+  @JsonKey(fromJson: ConvertTo.convertIntToDouble)
+  final double? price;
   final List<AttachmentModel>? _attachments;
   @override
   @JsonKey(name: 'images')
@@ -1682,7 +1684,7 @@ abstract class _OpenHouseProperty implements OpenHouseProperty {
   const factory _OpenHouseProperty(
       {final String? name,
       final String? description,
-      final int? price,
+      @JsonKey(fromJson: ConvertTo.convertIntToDouble) final double? price,
       @JsonKey(name: 'images') final List<AttachmentModel>? attachments,
       final Category? category,
       @JsonKey(name: 'type') final PropertyTypeModel? propertyType,
@@ -1696,7 +1698,8 @@ abstract class _OpenHouseProperty implements OpenHouseProperty {
   @override
   String? get description;
   @override
-  int? get price;
+  @JsonKey(fromJson: ConvertTo.convertIntToDouble)
+  double? get price;
   @override
   @JsonKey(name: 'images')
   List<AttachmentModel>? get attachments;

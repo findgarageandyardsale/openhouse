@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:open_house/core/ext/currency_extension.dart';
 import 'package:open_house/features/account/presentation/screens/my_profile_screen.dart';
 import 'package:open_house/features/explore/presentation/providers/explore_state_provider.dart';
 import 'package:open_house/features/sales/presentation/provider/sale_state_provider.dart';
@@ -109,7 +110,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '\$${garageayard.openHouseProperty?.price}',
+                        '${garageayard.openHouseProperty?.price?.englishFormatCurrency()}',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(

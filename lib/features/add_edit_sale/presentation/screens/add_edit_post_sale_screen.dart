@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/attachment_builder/provider/custom_attachment_provider.dart';
+import 'package:open_house/core/ext/currency_extension.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/property_type_provider.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_five.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_four.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_one.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_three.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/step_two.dart';
+import 'package:open_house/features/sales/presentation/provider/sale_state_provider.dart';
 import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/domain/models/open_house/open_house.dart';
 import 'package:open_house/shared/domain/models/response_data.dart';
@@ -160,7 +162,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                 ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
               ),
               Text(
-                'Make your Open House Event live by simply paying \$${HelperConstant.priceForEach}.00 for each sale date.\n\nYour total is \$${HelperConstant.postPrice}.00.',
+                'Make your Open House Event live by simply paying ${double.tryParse(HelperConstant.priceForEach.toString())?.englishFormatCurrency()} for each sale date.\n\nYour total is ${double.tryParse(HelperConstant.postPrice)?.englishFormatCurrency()}',
                 textAlign: TextAlign.center,
                 style: Theme.of(
                   context,
@@ -209,6 +211,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
             /// ref.read(addNotifierProvider.notifier).updateGarageSale(
             //   transactionId: transactionId!,
             // );
+            ref.invalidate(saleNotifierProvider);
+            ref.invalidate(saleNotifierProvider);
             CustomToast.showToast(
               'Post Updated Successfully',
               status: ToastStatus.success,

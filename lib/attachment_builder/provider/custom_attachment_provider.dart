@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/shared/domain/models/attachment_file/attachment_model.dart';
+import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:open_house/shared/utils/image_utils.dart';
 import 'package:open_house/shared/widgets/custom_toast.dart';
 import 'package:http_parser/http_parser.dart';
@@ -19,8 +20,8 @@ import '../state/attachment_state.dart';
 
 final customAttachmentProvider = StateNotifierProvider.autoDispose
     .family<CustomAttachmentNotifier, AttachmentState, String>(
-      (ref, id) => CustomAttachmentNotifier(ref, id),
-    );
+  (ref, id) => CustomAttachmentNotifier(ref, id),
+);
 
 class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
     with CustomFilePickerMixin {
@@ -29,13 +30,13 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
 
   final Ref _ref;
   CustomAttachmentNotifier(this._ref, this.id)
-    : super(
-        AttachmentState(
-          isLoading: false,
-          localAttachments: [],
-          serverAttachments: [],
-        ),
-      );
+      : super(
+          AttachmentState(
+            isLoading: false,
+            localAttachments: [],
+            serverAttachments: [],
+          ),
+        );
 
   /// Add the attachments from server
   /// [attachments] list of attachments from server
@@ -74,10 +75,9 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
 
     if (attachmentExists) {
       state = state.copyWith(
-        serverAttachments:
-            currentAttachments
-                .where((attachment) => attachment.id != attachmentId)
-                .toList(),
+        serverAttachments: currentAttachments
+            .where((attachment) => attachment.id != attachmentId)
+            .toList(),
       );
     }
   }
@@ -93,13 +93,12 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
       List<AttachmentModel> attachmentsList = [
         ...(state.serverAttachments ?? []),
       ];
-      final updatedList =
-          attachmentsList.map((e) {
-            if (e.id == attachmentId) {
-              return e.copyWith(isInclude: isInclude);
-            }
-            return e;
-          }).toList();
+      final updatedList = attachmentsList.map((e) {
+        if (e.id == attachmentId) {
+          return e.copyWith(isInclude: isInclude);
+        }
+        return e;
+      }).toList();
       state = state.copyWith(serverAttachments: updatedList);
     } catch (e) {
       PrintUtils.customLog('Error in Deleteing files$e');
@@ -146,16 +145,14 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
     bool allowMultiple = true,
     FileType type = FileType.any,
     required final void Function(List<AttachmentModel> attachmentList)
-    onAddAttachment,
+        onAddAttachment,
   }) async {
     List<File> pickedFiles = [];
     try {
       // Retrieve files either from camera or file picker
-      final listData =
-          isCamera
-              ? (await getCameraImageFiles() ?? [])
-              : (await getFiles(allowMultiple: allowMultiple, type: type) ??
-                  []);
+      final listData = isCamera
+          ? (await getCameraImageFiles() ?? [])
+          : (await getFiles(allowMultiple: allowMultiple, type: type) ?? []);
       if (isCamera) {
         if (listData.isEmpty) {
           return;
@@ -166,12 +163,13 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
         }
       }
 
-      if (listData.length > 4) {
+      if (listData.length > HelperConstant.numberOfPicCanUpload) {
         CustomToast.showToast(
-          'Only 4 images  will uploaded.',
+          HelperConstant.canUploadUptoMessage,
           status: ToastStatus.info,
         );
-        listData.removeRange(4, listData.length);
+        listData.removeRange(
+            HelperConstant.numberOfPicCanUpload, listData.length);
       }
 
       state = state.copyWith(isLoading: true, localAttachments: listData);
@@ -179,10 +177,9 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
       // Process the picked files ie compresses the picked files
       if (listData.isNotEmpty) {
         await processFiles(listData, pickedFiles);
-        List<AttachmentModel> attachments =
-            pickedFiles.map((e) {
-              return changeFileToAttachment(filePath: e.path);
-            }).toList();
+        List<AttachmentModel> attachments = pickedFiles.map((e) {
+          return changeFileToAttachment(filePath: e.path);
+        }).toList();
 
         final links = await uploadAttachmentsServer(attachments);
         state = state.copyWith(
@@ -276,15 +273,14 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
 
   List<AttachmentModel> convertDataToAttachmentModel(List result) {
     try {
-      List<AttachmentModel> attachments =
-          (result).map<AttachmentModel>((e) {
-            String fileName = e['name'] ?? '';
-            final extBeginIndex = fileName.lastIndexOf('.');
-            final ext = fileName.substring(extBeginIndex + 1);
-            return AttachmentModel.fromJson(
-              e as Map<String, dynamic>,
-            ).copyWith(mime: ext);
-          }).toList();
+      List<AttachmentModel> attachments = (result).map<AttachmentModel>((e) {
+        String fileName = e['name'] ?? '';
+        final extBeginIndex = fileName.lastIndexOf('.');
+        final ext = fileName.substring(extBeginIndex + 1);
+        return AttachmentModel.fromJson(
+          e as Map<String, dynamic>,
+        ).copyWith(mime: ext);
+      }).toList();
       return attachments;
     } catch (e) {
       PrintUtils.customLog('Error in converting data to attachment model $e');
@@ -313,10 +309,9 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
           await MultipartFile.fromFile(
             file.file!,
             filename: fileName,
-            contentType:
-                (mimeTypeData ?? []).isNotEmpty
-                    ? MediaType(mimeTypeData?[0] ?? '', mimeTypeData?[1] ?? '')
-                    : null,
+            contentType: (mimeTypeData ?? []).isNotEmpty
+                ? MediaType(mimeTypeData?[0] ?? '', mimeTypeData?[1] ?? '')
+                : null,
           ),
         ),
       ]);
@@ -329,8 +324,7 @@ class CustomAttachmentNotifier extends StateNotifier<AttachmentState>
   String getFileNameAttachmentModel(AttachmentModel file) {
     String fileName = file.name ?? '';
     if (fileName.length > 95) {
-      fileName =
-          fileName.substring(0, 40) +
+      fileName = fileName.substring(0, 40) +
           fileName.substring(fileName.length - 40, fileName.length);
     }
     final mimeTypeData = lookupMimeType(file.file!)?.split('/');

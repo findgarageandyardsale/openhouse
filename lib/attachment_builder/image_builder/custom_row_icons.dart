@@ -2,6 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
+import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:open_house/shared/widgets/custom_toast.dart';
 
 import '../../features/add_edit_sale/presentation/widgets/custom_icon_title.dart';
@@ -40,15 +41,15 @@ class CustomRowIcons extends ConsumerWidget {
               title: 'Camera',
               iconData: Icons.camera_alt_outlined,
               onTap: () async {
-                if ((ref
-                                .read(addDataNotifierProvider)
-                                ?.openHouseProperty
-                                ?.attachments ??
-                            [])
-                        .length >
-                    3) {
+                final attachmentList = ref
+                        .read(addDataNotifierProvider)
+                        ?.openHouseProperty
+                        ?.attachments ??
+                    [];
+                if (attachmentList.length >
+                    HelperConstant.numberOfPicCanUpload) {
                   CustomToast.showToast(
-                    'Your Image Limit has exceed. You can upload only 4 images',
+                    HelperConstant.canUploadUptoMessage,
                   );
                 } else {
                   ref
@@ -66,15 +67,15 @@ class CustomRowIcons extends ConsumerWidget {
               title: 'Library',
               iconData: Icons.image_outlined,
               onTap: () async {
-                if ((ref
-                                .read(addDataNotifierProvider)
-                                ?.openHouseProperty
-                                ?.attachments ??
-                            [])
-                        .length >
-                    3) {
+                final attachmentList = ref
+                        .read(addDataNotifierProvider)
+                        ?.openHouseProperty
+                        ?.attachments ??
+                    [];
+                if (attachmentList.length >
+                    HelperConstant.numberOfPicCanUpload) {
                   CustomToast.showToast(
-                    'Your Image Limit has exceed. You can upload only 4 images',
+                    HelperConstant.canUploadUptoMessage,
                   );
                 } else {
                   ref
