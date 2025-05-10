@@ -67,7 +67,7 @@ class _CustomIntroScreenState extends State<CustomIntroScreen> {
               return SizedBox(
                 width: double.infinity,
                 height: double.infinity,
-                child: Image.asset(_svgImages[index], fit: BoxFit.cover),
+                child: Image.asset(_svgImages[index], fit: BoxFit.fill),
               );
             },
           ),

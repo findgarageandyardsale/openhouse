@@ -53,8 +53,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-    Future.wait([ref.read(mapNotifierProvider.notifier).getUserLocation()]);
     Future.microtask(() {
+      ref.read(mapNotifierProvider.notifier).getUserLocation();
       ref.read(filterNotifierProvider.notifier).updateToInitial();
 
       // printAvailability();

@@ -75,7 +75,7 @@ class SaleTiming extends ConsumerWidget {
                 (garageayard?.propertySize?.availableTimeSlots ?? []).length <
                     (totalSlot ?? 0)))
           ActionButton(
-            label: 'Add Another Open House Event Date',
+            label: 'Add Another Event Date',
             onPressed: () {
               try {
                 final slot = (ref

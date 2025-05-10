@@ -6,7 +6,7 @@ import 'package:open_house/features/add_edit_sale/presentation/provider/property
 import 'package:open_house/features/add_edit_sale/presentation/widgets/image_screen.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/title_head.dart';
 import 'package:open_house/features/authentication/presentation/widgets/auth_field.dart';
-
+import 'package:open_house/services/price_input_formatter.dart';
 import 'package:open_house/services/capitalize_word_formatter_service.dart';
 import 'package:open_house/services/currecny_text_formatter_service.dart';
 import 'package:open_house/shared/constants/spacing.dart';
@@ -61,21 +61,24 @@ class StepOne extends ConsumerWidget {
           hintText: 'Price*',
           labelText: 'Price*',
           keyboardType:
-              TextInputType.numberWithOptions(decimal: true, signed: false),
+              TextInputType.numberWithOptions(decimal: true, signed: true),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(errorText: 'Price cannot be empty.'),
             FormBuilderValidators.numeric(errorText: 'Enter a valid number.'),
           ]),
           prefixIcon: const Icon(Icons.attach_money),
           controller: priceController,
-          // inputFormatters: [CurrencyInputFormatter()], // Add formatter
-
           onChanged: (value) {
+            // Remove commas before parsing the value
+            final cleanValue = value?.replaceAll(',', '') ?? '';
             // Update the state with the new value
             ref
                 .read(addDataNotifierProvider.notifier)
-                .setPrice(double.tryParse(value ?? ''));
+                .setPrice(double.tryParse(cleanValue));
           },
+          inputFormatters: [
+            PriceInputFormatter(),
+          ],
         ),
         Spacing.sizedBoxH_16(),
         AuthField(

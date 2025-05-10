@@ -23,6 +23,11 @@ class CurrencyInputFormatter extends TextInputFormatter {
       return oldValue; // Reject multiple decimal points
     }
 
+    // Handle decimal point at the start
+    if (cleaned.startsWith('.')) {
+      cleaned = '0$cleaned';
+    }
+
     // Limit decimal places to 7
     if (parts.length == 2 && parts[1].length > 7) {
       parts[1] = parts[1].substring(0, 7);

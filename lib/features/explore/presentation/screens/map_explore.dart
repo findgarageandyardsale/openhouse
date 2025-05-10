@@ -49,11 +49,7 @@ class _MapExploreState extends ConsumerState<MapExplore> {
   Future<void> _loadMarkerIcons() async {
     garageIcon = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(16, 26)),
-      'assets/garage.png',
-    );
-    yardIcon = await BitmapDescriptor.asset(
-      const ImageConfiguration(size: Size(16, 26)),
-      'assets/yard.png',
+      'assets/annotation.png',
     );
     setState(() {}); // Update the UI once icons are loaded
   }

@@ -43,10 +43,12 @@ class MapNotifier extends StateNotifier<LocationState> {
         error: null,
       );
     } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        error: 'Failed to get location: $e',
-      );
+      if (mounted) {
+        state = state.copyWith(
+          isLoading: false,
+          error: 'Failed to get location: $e',
+        );
+      }
     }
   }
 }

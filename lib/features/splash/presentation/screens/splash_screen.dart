@@ -24,10 +24,27 @@ class SplashScreen extends ConsumerStatefulWidget {
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   final AppRouter appRouter = AppRouter();
 
-  Future<void> _handlePermissions() async {
+  Future<void> _handleAppTrackingPermission() async {
     try {
-      await Permission.appTrackingTransparency.request();
+      await Future.delayed(
+          const Duration(seconds: 1)); // Give more time for app to initialize
+      // First check the current status
+      final currentStatus = await Permission.appTrackingTransparency.status;
 
+      if (currentStatus.isDenied) {
+        await Future.delayed(
+            const Duration(seconds: 1)); // Give more time for app to initialize
+        await Permission.appTrackingTransparency.request();
+        await Future.delayed(
+            const Duration(seconds: 2)); // Give more time for app to initialize
+      }
+    } catch (e) {
+      PrintUtils.customLog('Error in app tracking permission: $e');
+    }
+  }
+
+  Future<void> _handleLocationPermission() async {
+    try {
       bool isGranted = await PermissionUtils().isLocationPermissionGranted();
       if (!isGranted) {
         bool permissionRequested =
@@ -35,32 +52,31 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         if (!permissionRequested) {
           if (await PermissionUtils().isLocationPermissionDeniedPermanently()) {
             CustomToast.showToast(
-              "Location permission is required. Please enable it in settings.",
-              status: ToastStatus.error,
-            );
+                "Location permission is required. Please enable it in settings.",
+                status: ToastStatus.error);
           }
         }
       }
     } catch (e) {
-      PrintUtils.customLog('catch error $e');
+      PrintUtils.customLog('Error in location permission: $e');
     }
   }
 
   @override
   void initState() {
     super.initState();
-    _handlePermissions();
-    Future.microtask(() {
+    Future.microtask(() async {
       ref.read(mapNotifierProvider.notifier).getUserLocation();
+      await _handleAppTrackingPermission();
+      await _handleLocationPermission();
     });
 
     Future.delayed(const Duration(milliseconds: 900), () async {
       try {
         final isUserLoggedIn = await ref.read(userLoginCheckProvider.future);
-        final route =
-            isUserLoggedIn
-                ? const DashboardScreen()
-                : const CustomIntroScreen() as PageRouteInfo;
+        final route = isUserLoggedIn
+            ? const DashboardScreen()
+            : const CustomIntroScreen() as PageRouteInfo;
         AutoRouter.of(context).pushAndPopUntil(route, predicate: (_) => false);
       } catch (e) {
         PrintUtils.customLog('catch error $e');
