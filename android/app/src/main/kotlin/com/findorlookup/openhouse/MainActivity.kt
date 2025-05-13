@@ -1,4 +1,4 @@
-package com.example.open_house
+package com.findorlookup.openhouse
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity

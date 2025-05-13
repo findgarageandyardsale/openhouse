@@ -66,7 +66,7 @@ class MyApp extends ConsumerWidget {
 
     return OKToast(
       child: MaterialApp.router(
-        title: 'Open House',
+        title: 'Find Open House',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         themeMode: themeMode,
