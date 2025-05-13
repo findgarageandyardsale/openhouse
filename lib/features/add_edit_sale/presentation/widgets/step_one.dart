@@ -8,7 +8,6 @@ import 'package:open_house/features/add_edit_sale/presentation/widgets/title_hea
 import 'package:open_house/features/authentication/presentation/widgets/auth_field.dart';
 import 'package:open_house/services/price_input_formatter.dart';
 import 'package:open_house/services/capitalize_word_formatter_service.dart';
-import 'package:open_house/services/currecny_text_formatter_service.dart';
 import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/domain/models/property_type_model/property_type_model.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';

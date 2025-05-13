@@ -18,14 +18,14 @@ class AboutUsScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                'Open House App',
+                'Find Open House App',
                 style: Theme.of(
                   context,
                 ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               ),
               Spacing.sizedBoxH_16(),
               const Text(
-                'Open House is your user-friendly platform designed to effortlessly establish local garage and yard sales connections right in your community.',
+                'Find Open House is your user-friendly platform designed to effortlessly establish local garage and yard sales connections right in your community.',
                 textAlign: TextAlign.justify,
               ),
               Spacing.sizedBoxH_16(),
