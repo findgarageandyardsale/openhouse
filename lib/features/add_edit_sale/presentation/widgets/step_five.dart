@@ -4,6 +4,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/sale_timing.dart';
 import 'package:open_house/features/authentication/presentation/widgets/auth_field.dart';
+import 'package:open_house/services/capitalize_sentence_formatter_service.dart';
 import 'package:open_house/shared/constants/spacing.dart';
 
 class StepFive extends ConsumerWidget {
@@ -34,6 +35,9 @@ class StepFive extends ConsumerWidget {
           labelText: 'Property Description*',
           controller: descriptionController,
           maxlines: 4,
+          inputFormatters: [
+            CapitalizeSentenceInputFormatter(),
+          ],
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(
               errorText: 'Description cannot be empty.',

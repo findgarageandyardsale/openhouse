@@ -32,18 +32,8 @@ class AddNotifier extends StateNotifier<FormzState> {
 
   Future<void> addSale({String? transactionId}) async {
     try {
-      // state = const FormzState.loading();
+      state = const FormzState.loading();
 
-      // List<AvailableTimeSlot> timeSlots = [];
-      // timeSlots.addAll(postData?.availableTimeSlots ?? []);
-
-      // List<Map<String, dynamic>> availableTimeSlots =
-      //     convertAvailableTimeSlotListToJson(timeSlots);
-
-      // List<int> categories = [];
-      // for (var element in (postData!.category ?? [])) {
-      //   categories.add(element.id!);
-      // }
       final postPrice = (HelperConstant.priceForEach *
           (postData?.propertySize?.availableTimeSlots ?? []).length);
 
