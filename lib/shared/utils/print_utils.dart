@@ -7,5 +7,5 @@ class PrintUtils {
     if (kDebugMode) log(message);
   }
 
-  static bool radiusInAllChip = false;
+  static bool radiusInAllChip = true;
 }

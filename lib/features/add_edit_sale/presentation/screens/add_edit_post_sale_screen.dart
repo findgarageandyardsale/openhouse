@@ -212,7 +212,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
             //   transactionId: transactionId!,
             // );
             ref.invalidate(saleNotifierProvider);
-            ref.invalidate(saleNotifierProvider);
+
             CustomToast.showToast(
               'Post Updated Successfully',
               status: ToastStatus.success,

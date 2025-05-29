@@ -140,13 +140,13 @@ class FilterDrawerWidget extends ConsumerWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         Slider(
-          value: state.distance,
+          value: state.distance ?? 0,
           min: 0,
           max: 300,
           padding: EdgeInsets.zero,
           divisions: 3,
           inactiveColor: AppColors.primaryBorder,
-          label: '${state.distance.round()} miles',
+          label: '${(state.distance ?? 0).round()} miles',
           onChanged: (value) {
             ref.read(filterProvider.notifier).updateDistance(value);
           },
