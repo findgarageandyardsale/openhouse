@@ -63,7 +63,6 @@ class StepOne extends ConsumerWidget {
               TextInputType.numberWithOptions(decimal: true, signed: true),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(errorText: 'Price cannot be empty.'),
-            FormBuilderValidators.numeric(errorText: 'Enter a valid number.'),
           ]),
           prefixIcon: const Icon(Icons.attach_money),
           controller: priceController,

@@ -1,22 +1,22 @@
 ///enum & extension for resource create source
-enum FilterEnum { all, garage, yard, distance, date, categories }
+enum FilterEnum { all, price, distance, category, type, sortBy }
 
 extension FilterExtension on FilterEnum {
   String get source {
     switch (this) {
       case FilterEnum.all:
         return 'all';
-      case FilterEnum.garage:
-        return 'garage';
-      case FilterEnum.yard:
-        return 'yarf';
-      case FilterEnum.date:
-        return 'date';
+      case FilterEnum.price:
+        return 'price';
       case FilterEnum.distance:
         return 'distance';
-
-      case FilterEnum.categories:
+      case FilterEnum.category:
         return 'categories';
+      case FilterEnum.type:
+        return 'type';
+
+      case FilterEnum.sortBy:
+        return 'sortBy';
     }
   }
 
@@ -24,16 +24,16 @@ extension FilterExtension on FilterEnum {
     switch (this) {
       case FilterEnum.all:
         return 'All';
-      case FilterEnum.garage:
-        return 'Garage';
-      case FilterEnum.yard:
-        return 'Yard';
-      case FilterEnum.date:
-        return 'Date';
+      case FilterEnum.price:
+        return 'Price';
       case FilterEnum.distance:
         return 'Distance';
-      case FilterEnum.categories:
+      case FilterEnum.category:
         return 'Categories';
+      case FilterEnum.type:
+        return 'Type';
+      case FilterEnum.sortBy:
+        return 'Sort By';
     }
   }
 }
