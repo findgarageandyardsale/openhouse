@@ -17,6 +17,7 @@ class FilterNotifier extends StateNotifier<FilterState> {
     bool? isGarage,
     List<Category>? selectedCategories,
     List<PropertyTypeModel>? selectedPropertyTypes,
+    String? propertyType,
     double? priceMin,
     double? priceMax,
     double? distance,
@@ -35,6 +36,7 @@ class FilterNotifier extends StateNotifier<FilterState> {
       selectedCategories: selectedCategories ?? state.selectedCategories,
       selectedPropertyTypes:
           selectedPropertyTypes ?? state.selectedPropertyTypes,
+      propertyType: propertyType ?? state.propertyType,
       priceMin: priceMin ?? state.priceMin,
       priceMax: priceMax ?? state.priceMax,
       distance: distance ?? state.distance,
@@ -181,6 +183,10 @@ class FilterNotifier extends StateNotifier<FilterState> {
 
   void updateLotSize(String? lotSize) {
     state = state.copyWith(lotSize: lotSize);
+  }
+
+  void updatePropertyType(String? propertyType) {
+    state = state.copyWith(propertyType: propertyType);
   }
 
   void resetFilters() {

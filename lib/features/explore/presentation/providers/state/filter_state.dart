@@ -15,9 +15,10 @@ class FilterState {
 
   //  final List<String> selectedCategories;
   final List<PropertyTypeModel>? selectedPropertyTypes;
+  final String? propertyType;
   final double priceMin;
   final double priceMax;
-  final double distance;
+  final double? distance;
   final List<String> selectedBedrooms;
   final List<String> selectedBathrooms;
   final bool isPetFriendly;
@@ -26,24 +27,26 @@ class FilterState {
   final String? coveredArea;
   final String? lotSize;
 
-  FilterState(
-      {this.zipCode,
-      this.radius,
-      this.startDate,
-      this.endDate,
-      this.isGarage,
-      this.selectedCategories,
-      this.priceMin = 10000,
-      this.priceMax = 1000000,
-      this.distance = 0,
-      this.selectedBedrooms = const [],
-      this.selectedBathrooms = const [],
-      this.isPetFriendly = false,
-      this.sortBy = 'Newest Listings',
-      this.yearBuilt,
-      this.coveredArea,
-      this.lotSize,
-      this.selectedPropertyTypes});
+  FilterState({
+    this.zipCode,
+    this.radius,
+    this.startDate,
+    this.endDate,
+    this.isGarage,
+    this.selectedCategories,
+    this.selectedPropertyTypes,
+    this.propertyType,
+    this.priceMin = 10000,
+    this.priceMax = 1000000,
+    this.distance,
+    this.selectedBedrooms = const [],
+    this.selectedBathrooms = const [],
+    this.isPetFriendly = false,
+    this.sortBy = 'Newest Listings',
+    this.yearBuilt,
+    this.coveredArea,
+    this.lotSize,
+  });
 
   FilterState copyWith({
     String? zipCode,
@@ -53,6 +56,7 @@ class FilterState {
     DateTime? endDate,
     List<Category>? selectedCategories,
     List<PropertyTypeModel>? selectedPropertyTypes,
+    String? propertyType,
     double? priceMin,
     double? priceMax,
     double? distance,
@@ -73,6 +77,7 @@ class FilterState {
       selectedCategories: selectedCategories ?? this.selectedCategories,
       selectedPropertyTypes:
           selectedPropertyTypes ?? this.selectedPropertyTypes,
+      propertyType: propertyType ?? this.propertyType,
       priceMin: priceMin ?? this.priceMin,
       priceMax: priceMax ?? this.priceMax,
       distance: distance ?? this.distance,
@@ -134,14 +139,10 @@ class FilterState {
       if (zipCode != null) 'zip_code': zipCode,
       if (radius != null) 'max_distance_km': ((radius ?? 0.0) * 1.60934),
       if (PrintUtils.radiusInAllChip)
-        if (radius == null) 'max_distance_km': (15 * 1.60934),
-      // 'start_date': CustomDateUtils.formatDateFilter(
-      //   startDate ?? DateTime.now(),
-      // ),
-      // if (endDate != null)
-      //   'end_date': CustomDateUtils.formatDateFilter(endDate!),
-      if (selectedCategories != null)
-        'category': (selectedCategories ?? []).map((e) => e.id).toList(),
+        // if (radius == null) 'max_distance_km': (15 * 1.60934),
+
+        if (selectedCategories != null)
+          'category': (selectedCategories ?? []).map((e) => e.id).toList(),
       if (selectedPropertyTypes != null)
         'type': (selectedPropertyTypes ?? []).map((e) => e.id).toList(),
       if (selectedBedrooms.isNotEmpty) 'bedrooms': selectedBedrooms,

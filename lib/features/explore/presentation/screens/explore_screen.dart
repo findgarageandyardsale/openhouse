@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/features/explore/presentation/providers/explore_state_provider.dart';
 import 'package:open_house/features/explore/presentation/providers/state/explore_state.dart';
 import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
+import 'package:open_house/features/explore/presentation/screens/widget/filter_chip_widget.dart';
 import 'package:open_house/features/explore/presentation/widgets/filter_drawer_widget.dart';
 
 import '../../../../shared/constants/spacing.dart';
@@ -108,43 +109,39 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
       // appBar: AppBar(title: const Text('Garage/Yard Sale')),
       appBar: AppBar(
         backgroundColor: AppColors.white,
-        title:
-            listView
-                ? AuthField(
-                  name: 'search',
-                  hintText: 'Search',
-                  controller: searchController,
-                  onChanged: (val) => searchAction(),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      searchController.text.isEmpty
-                          ? Icons.search
-                          : Icons.close,
-                      color: AppColors.black,
-                    ),
-                    onPressed: () {
-                      if (searchController.text.isNotEmpty) {
-                        searchController.clear();
-                      }
-                      searchAction();
-                    },
+        title: listView
+            ? AuthField(
+                name: 'search',
+                hintText: 'Search',
+                controller: searchController,
+                onChanged: (val) => searchAction(),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    searchController.text.isEmpty ? Icons.search : Icons.close,
+                    color: AppColors.black,
                   ),
-                  borderRadius: 30.0,
-                )
-                : null,
-        actions:
-            listView
-                ? [
-                  IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).openEndDrawer();
-                    },
-                    icon: Icon(Icons.sort),
-                  ),
-                ]
-                : null,
+                  onPressed: () {
+                    if (searchController.text.isNotEmpty) {
+                      searchController.clear();
+                    }
+                    searchAction();
+                  },
+                ),
+                borderRadius: 30.0,
+              )
+            : null,
+        // actions: listView
+        //     ? [
+        //         IconButton(
+        //           onPressed: () {
+        //             Scaffold.of(context).openEndDrawer();
+        //           },
+        //           icon: Icon(Icons.sort),
+        //         ),
+        //       ]
+        //     : null,
       ),
-      endDrawer: const FilterDrawerWidget(),
+      // endDrawer: const FilterDrawerWidget(),
 
       floatingActionButton: FloatingActionButton(
         heroTag: 'Explore',
@@ -162,7 +159,10 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Spacing.sizedBoxH_16(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: const FilterChipWidget(),
+            ),
             // state.state == ExploreConcreteState.loading
             //     ? const Expanded(child: MainViewShimmer())
             //     : state.hasData
@@ -170,14 +170,11 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
             Expanded(
               child: RefreshIndicator(
                 onRefresh: _refreshPosts,
-                child:
-                    listView
-                        ? ListExplore(scrollController: scrollController)
-                        : const MapExplore(),
+                child: listView
+                    ? ListExplore(scrollController: scrollController)
+                    : const MapExplore(),
               ),
             ),
-
-       
           ],
         ),
       ),
