@@ -91,7 +91,7 @@ class LoginScreen extends ConsumerWidget {
                         ),
                         Spacing.sizedBoxH_10(),
                         Text(
-                          'Find your perfect property or list your spaces with ease.',
+                          'Find your perfect property \nOr\nList your property with ease.',
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium

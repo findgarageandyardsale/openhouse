@@ -18,25 +18,24 @@ Future primaryBottomSheet(
       backgroundColor: Colors.white,
       constraints: const BoxConstraints(maxWidth: double.infinity),
       isScrollControlled: true,
-      builder:
-          (context) => PopScope(
-            canPop: isDismissible,
-            onPopInvokedWithResult: (val, _) {
-              if (val) {
-                return;
-              }
-            },
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              child: Wrap(
-                children: [
-                  hasSpace
-                      ? Padding(
-                        padding:
-                            padding ??
+      builder: (context) => PopScope(
+        canPop: isDismissible,
+        onPopInvokedWithResult: (val, _) {
+          if (val) {
+            return;
+          }
+        },
+        child: SafeArea(
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Wrap(
+              children: [
+                hasSpace
+                    ? Padding(
+                        padding: padding ??
                             const EdgeInsets.only(
                               top: 5,
                               right: 28,
@@ -45,11 +44,12 @@ Future primaryBottomSheet(
                             ),
                         child: child,
                       )
-                      : child,
-                ],
-              ),
+                    : child,
+              ],
             ),
           ),
+        ),
+      ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(8),

@@ -99,79 +99,79 @@ class _MapExploreState extends ConsumerState<MapExplore> {
     }
 
     return locationState.isLoading
-        ? const Center(child: CircularProgressIndicator())
-        : locationState.error != null
-        ? Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Error: ${locationState.error}', maxLines: 3),
-              Spacing.sizedBoxH_16(),
-              ElevatedButton(
-                onPressed: () async {
-                  bool opened = await openAppSettings();
-                  if (!opened) {
-                    CustomToast.showToast(
-                      "Failed to open settings",
-                      status: ToastStatus.error,
-                    );
-                  }
-                },
-                child: const Text('Open App Settings'),
-              ),
-            ],
-          ),
-        )
-        : locationState.currentLatLng != null
-        ? Stack(
-          children: [
-            GoogleMap(
-              mapType: MapType.terrain,
-              myLocationButtonEnabled: true,
-              initialCameraPosition: CameraPosition(
-                target:
-                    // markers.isEmpty
-                    //     ?
-                    locationState.currentLatLng!,
-                // : markers.first.position,
+            ? const Center(child: CircularProgressIndicator())
+            : locationState.error != null
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Error: ${locationState.error}', maxLines: 3),
+                        Spacing.sizedBoxH_16(),
+                        ElevatedButton(
+                          onPressed: () async {
+                            bool opened = await openAppSettings();
+                            if (!opened) {
+                              CustomToast.showToast(
+                                "Failed to open settings",
+                                status: ToastStatus.error,
+                              );
+                            }
+                          },
+                          child: const Text('Open App Settings'),
+                        ),
+                      ],
+                    ),
+                  )
+                : locationState.currentLatLng != null
+                    ? Stack(
+                        children: [
+                          GoogleMap(
+                            mapType: MapType.terrain,
+                            myLocationButtonEnabled: true,
+                            initialCameraPosition: CameraPosition(
+                              target:
+                                  // markers.isEmpty
+                                  //     ?
+                                  locationState.currentLatLng!,
+                              // : markers.first.position,
 
-                ///set this to inital marker
-                zoom: zool,
+                              ///set this to inital marker
+                              zoom: zool,
 
-                ///zoom level
-              ),
-              onMapCreated: (GoogleMapController controller) {
-                // ref.read(mapControllerState.notifier).state =
-                //     controller;
-              },
-              markers: markers,
-            ),
-            if (onTap)
-              Positioned(
-                top: 16,
-                left: 16,
-                child: SizedBox(
-                  height: 200,
-                  width: MediaQuery.of(context).size.width - 32,
-                  child: PostSingleItem(
-                    fromMap: true,
-                    singlePost: tapModel ?? const OpenHouse(),
-                    onTap: () => markerOnTap(),
-                  ),
-                ),
-              ),
-          ],
-        )
-        : const Center(child: Text('Unable to fetch location'))
-    // GoogleMap(
-    //   mapType: MapType.normal,
-    //   myLocationButtonEnabled: false,
-    //   initialCameraPosition: const CameraPosition(
-    //     target: LatLng(37.42796133580664, -122.085749655962),
-    //     zoom: 15,
-    //   ),
-    //   onMapCreated: (GoogleMapController controller) {},
-    // )
-    ;
+                              ///zoom level
+                            ),
+                            onMapCreated: (GoogleMapController controller) {
+                              // ref.read(mapControllerState.notifier).state =
+                              //     controller;
+                            },
+                            markers: markers,
+                          ),
+                          if (onTap)
+                            Positioned(
+                              top: 16,
+                              left: 16,
+                              child: SizedBox(
+                                height: 200,
+                                width: MediaQuery.of(context).size.width - 32,
+                                child: PostSingleItem(
+                                  fromMap: true,
+                                  singlePost: tapModel ?? const OpenHouse(),
+                                  onTap: () => markerOnTap(),
+                                ),
+                              ),
+                            ),
+                        ],
+                      )
+                    : const Center(child: Text('Unable to fetch location'))
+        // GoogleMap(
+        //   mapType: MapType.normal,
+        //   myLocationButtonEnabled: false,
+        //   initialCameraPosition: const CameraPosition(
+        //     target: LatLng(37.42796133580664, -122.085749655962),
+        //     zoom: 15,
+        //   ),
+        //   onMapCreated: (GoogleMapController controller) {},
+        // )
+        ;
   }
 }

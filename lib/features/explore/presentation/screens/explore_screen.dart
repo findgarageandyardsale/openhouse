@@ -5,9 +5,6 @@ import 'package:open_house/features/explore/presentation/providers/explore_state
 import 'package:open_house/features/explore/presentation/providers/state/explore_state.dart';
 import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
 import 'package:open_house/features/explore/presentation/screens/widget/filter_chip_widget.dart';
-import 'package:open_house/features/explore/presentation/widgets/filter_drawer_widget.dart';
-
-import '../../../../shared/constants/spacing.dart';
 import '../../../../shared/core/custom_debouncer.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../authentication/presentation/widgets/auth_field.dart';
@@ -110,26 +107,54 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         title: listView
-            ? AuthField(
-                name: 'search',
-                hintText: 'Search',
-                controller: searchController,
-                onChanged: (val) => searchAction(),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    searchController.text.isEmpty ? Icons.search : Icons.close,
-                    color: AppColors.black,
+            ? Row(
+                children: [
+                  Expanded(
+                    child: AuthField(
+                      name: 'search',
+                      hintText: 'Search',
+                      controller: searchController,
+                      onChanged: (val) => searchAction(),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          searchController.text.isEmpty
+                              ? Icons.search
+                              : Icons.close,
+                          color: AppColors.black,
+                        ),
+                        onPressed: () {
+                          if (searchController.text.isNotEmpty) {
+                            searchController.clear();
+                          }
+                          searchAction();
+                        },
+                      ),
+                      borderRadius: 30.0,
+                    ),
                   ),
-                  onPressed: () {
-                    if (searchController.text.isNotEmpty) {
-                      searchController.clear();
-                    }
-                    searchAction();
-                  },
-                ),
-                borderRadius: 30.0,
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        listView = !listView;
+                      });
+                    },
+                    icon: Icon(listView ? Icons.map_outlined : Icons.list),
+                  )
+                ],
               )
-            : null,
+            : Row(
+                children: [
+                  Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        listView = !listView;
+                      });
+                    },
+                    icon: Icon(listView ? Icons.map_outlined : Icons.list),
+                  )
+                ],
+              ),
         // actions: listView
         //     ? [
         //         IconButton(
@@ -141,20 +166,19 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
         //       ]
         //     : null,
       ),
-      // endDrawer: const FilterDrawerWidget(),
 
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'Explore',
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        onPressed: () {
-          setState(() {
-            listView = !listView;
-          });
-        },
-        child: Icon(listView ? Icons.map_outlined : Icons.list),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   heroTag: 'Explore',
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(30.0),
+      //   ),
+      //   onPressed: () {
+      //     setState(() {
+      //       listView = !listView;
+      //     });
+      //   },
+      //   child: Icon(listView ? Icons.map_outlined : Icons.list),
+      // ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

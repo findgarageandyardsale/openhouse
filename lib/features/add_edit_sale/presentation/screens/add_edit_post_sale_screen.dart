@@ -162,7 +162,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                 ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
               ),
               Text(
-                'Make your Open House Event live by simply paying ${double.tryParse(HelperConstant.priceForEach.toString())?.englishFormatCurrency()} for each sale date.\n\nYour total is ${double.tryParse(HelperConstant.postPrice)?.englishFormatCurrency()}',
+                'Make your Open House Event live by simply paying ${double.tryParse(HelperConstant.priceForEach.toString())?.englishFormatCurrency()} for each OPEN HOUSE EVENT.\n\nYour total is ${double.tryParse(HelperConstant.postPrice)?.englishFormatCurrency()}',
                 textAlign: TextAlign.center,
                 style: Theme.of(
                   context,
