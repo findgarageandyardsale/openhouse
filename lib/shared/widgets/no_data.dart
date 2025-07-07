@@ -9,15 +9,14 @@ class NoData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String subtitle =
-        fromAdd
-            ? 'Try adding a new item.'
-            : 'Sorry, we couldn\'t find any listings matching your search${matchingValueText ?? ''}. Try adjusting your filters or expanding your search area.';
+    String subtitle = fromAdd
+        ? 'Try adding a new item.'
+        : 'Sorry, we couldn\'t find any listings matching your search${matchingValueText ?? ''}. Try adjusting your filters or expanding your search area.';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/no_data.png', width: 200, height: 200),
+        Image.asset('assets/no_data.jpeg', width: 250, height: 250),
         Spacing.sizedBoxH_16(),
         Text(
           fromAdd ? 'List is empty' : 'No Results Found',

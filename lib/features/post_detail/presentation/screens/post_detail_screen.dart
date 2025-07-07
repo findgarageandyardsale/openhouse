@@ -110,7 +110,11 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${garageayard.openHouseProperty?.price?.englishFormatCurrency()}',
+                        garageayard.openHouseProperty?.propertyType?.name
+                                    ?.toLowerCase() !=
+                                'sale'
+                            ? '${garageayard.openHouseProperty?.price?.englishFormatCurrency()}/month'
+                            : '${garageayard.openHouseProperty?.price?.englishFormatCurrency()}',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(

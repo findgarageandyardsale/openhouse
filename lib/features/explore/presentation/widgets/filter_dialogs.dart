@@ -11,6 +11,19 @@ import 'package:open_house/shared/widgets/action_button.dart';
 import 'package:open_house/shared/constants/filter_constants.dart';
 import 'package:open_house/shared/widgets/custom_filter_chip.dart';
 
+// Price Range Data
+class PriceRange {
+  final double min;
+  final double max;
+  final String label;
+
+  const PriceRange({
+    required this.min,
+    required this.max,
+    required this.label,
+  });
+}
+
 // Price Range Dialog
 class PriceRangeDialogContent extends ConsumerStatefulWidget {
   const PriceRangeDialogContent({super.key});
@@ -22,13 +35,29 @@ class PriceRangeDialogContent extends ConsumerStatefulWidget {
 
 class _PriceRangeDialogContentState
     extends ConsumerState<PriceRangeDialogContent> {
-  late RangeValues _values;
+  PriceRange? _selectedRange;
+
+  static const List<PriceRange> _priceRanges = [
+    PriceRange(min: 100000, max: 500000, label: '\$100,000 - \$500,000'),
+    PriceRange(min: 500000, max: 1000000, label: '\$500,000 - \$1,000,000'),
+    PriceRange(min: 1000000, max: 2000000, label: '\$1,000,000 - \$2,000,000'),
+    PriceRange(min: 2000000, max: 5000000, label: '\$2,000,000 - \$5,000,000'),
+    PriceRange(min: 5000000, max: 10000000, label: '\$2,000,000 - \$5,000,000'),
+  ];
 
   @override
   void initState() {
     super.initState();
     final filterState = ref.read(filterNotifierProvider);
-    _values = RangeValues(filterState.priceMin, filterState.priceMax);
+
+    // Find the matching price range if one exists
+    for (final range in _priceRanges) {
+      if (filterState.priceMin == range.min &&
+          filterState.priceMax == range.max) {
+        _selectedRange = range;
+        break;
+      }
+    }
   }
 
   @override
@@ -39,12 +68,11 @@ class _PriceRangeDialogContentState
       children: [
         TitleHead(
           title: 'Price Range',
-          clearWidget: _values.start == 10000 && _values.end == 1000000
-              ? null
-              : TextIconButtonWidget(
+          clearWidget: _selectedRange != null
+              ? TextIconButtonWidget(
                   onPressed: () {
                     setState(() {
-                      _values = const RangeValues(10000, 1000000);
+                      _selectedRange = null;
                     });
                     ref.read(filterNotifierProvider.notifier).updateState(
                           priceMin: 10000,
@@ -52,30 +80,30 @@ class _PriceRangeDialogContentState
                         );
                     Navigator.pop(context);
                   },
-                ),
+                )
+              : null,
         ),
         Spacing.sizedBoxH_16(),
-        RangeSlider(
-          values: _values,
-          min: 10000,
-          max: 1000000,
-          divisions: 99,
-          labels: RangeLabels(
-            '\$${(_values.start / 1000).round()}K',
-            '\$${(_values.end / 1000).round()}K',
-          ),
-          onChanged: (RangeValues values) {
-            setState(() {
-              _values = values;
-            });
+        ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: _priceRanges.length,
+          itemBuilder: (context, index) {
+            final priceRange = _priceRanges[index];
+            return RadioListTile<PriceRange>(
+              title: Text(
+                priceRange.label,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              value: priceRange,
+              groupValue: _selectedRange,
+              onChanged: (value) {
+                setState(() {
+                  _selectedRange = value;
+                });
+              },
+            );
           },
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('\$${(_values.start / 1000).round()}K'),
-            Text('\$${(_values.end / 1000).round()}K'),
-          ],
         ),
         Spacing.sizedBoxH_16(),
         Row(
@@ -95,10 +123,12 @@ class _PriceRangeDialogContentState
                 height: 36,
                 label: 'Apply',
                 onPressed: () {
-                  ref.read(filterNotifierProvider.notifier).updateState(
-                        priceMin: _values.start,
-                        priceMax: _values.end,
-                      );
+                  if (_selectedRange != null) {
+                    ref.read(filterNotifierProvider.notifier).updateState(
+                          priceMin: _selectedRange!.min,
+                          priceMax: _selectedRange!.max,
+                        );
+                  }
                   Navigator.pop(context);
                 },
               ),

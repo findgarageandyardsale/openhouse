@@ -60,7 +60,11 @@ class PostSingleItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${singlePost?.openHouseProperty?.price?.englishFormatCurrency()}',
+                  singlePost?.openHouseProperty?.propertyType?.name
+                              ?.toLowerCase() !=
+                          'sale'
+                      ? '${singlePost?.openHouseProperty?.price?.englishFormatCurrency()}/month'
+                      : '${singlePost?.openHouseProperty?.price?.englishFormatCurrency()}',
                   style: AppTextStyles.titleLarge.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
