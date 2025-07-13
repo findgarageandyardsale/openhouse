@@ -9,11 +9,13 @@ class AmenitiesLine extends StatelessWidget {
     required this.bathroom,
     required this.lotSize,
     required this.size,
+    this.isSale = false,
   });
   final String? bedroom;
   final String? bathroom;
   final String? size;
   final String? lotSize;
+  final bool? isSale;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +35,8 @@ class AmenitiesLine extends StatelessWidget {
               ),
             ),
             WidgetSpan(child: Spacing.sizedBoxW_14()),
-
             TextSpan(text: bathroom),
             WidgetSpan(child: Spacing.sizedBoxW_06()),
-
             WidgetSpan(
               child: Icon(
                 Icons.bathtub_outlined,
@@ -45,10 +45,8 @@ class AmenitiesLine extends StatelessWidget {
               ),
             ),
             WidgetSpan(child: Spacing.sizedBoxW_14()),
-
             TextSpan(text: size),
             WidgetSpan(child: Spacing.sizedBoxW_06()),
-
             WidgetSpan(
               child: Icon(
                 Icons.square_outlined,
@@ -61,7 +59,7 @@ class AmenitiesLine extends StatelessWidget {
             WidgetSpan(child: Spacing.sizedBoxW_06()),
             WidgetSpan(
               child: Icon(
-                Icons.format_size,
+                isSale == true ? Icons.format_size : Icons.car_rental,
                 size: 16,
                 color: AppColors.tileColor,
               ),

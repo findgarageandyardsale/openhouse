@@ -26,6 +26,9 @@ class StepOne extends ConsumerWidget {
   final TextEditingController titleController;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final propertyType = ref.watch(addDataNotifierProvider
+        .select((value) => value?.openHouseProperty?.propertyType));
+
     return Column(
       children: [
         TitleHead(
@@ -56,30 +59,6 @@ class StepOne extends ConsumerWidget {
         ),
         Spacing.sizedBoxH_16(),
         AuthField(
-          name: 'price',
-          hintText: 'Price*',
-          labelText: 'Price*',
-          keyboardType:
-              TextInputType.numberWithOptions(decimal: true, signed: true),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(errorText: 'Price cannot be empty.'),
-          ]),
-          prefixIcon: const Icon(Icons.attach_money),
-          controller: priceController,
-          onChanged: (value) {
-            // Remove commas before parsing the value
-            final cleanValue = value?.replaceAll(',', '') ?? '';
-            // Update the state with the new value
-            ref
-                .read(addDataNotifierProvider.notifier)
-                .setPrice(double.tryParse(cleanValue));
-          },
-          inputFormatters: [
-            PriceInputFormatter(),
-          ],
-        ),
-        Spacing.sizedBoxH_16(),
-        AuthField(
           name: 'property_type',
           hintText: 'Property Type',
           labelText: 'Property Type',
@@ -100,6 +79,38 @@ class StepOne extends ConsumerWidget {
             );
           },
         ),
+        Spacing.sizedBoxH_16(),
+        AuthField(
+          name: 'price',
+          hintText: 'Price*',
+          labelText: 'Price*',
+          keyboardType:
+              TextInputType.numberWithOptions(decimal: true, signed: true),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(errorText: 'Price cannot be empty.'),
+          ]),
+          prefixIcon: const Icon(Icons.attach_money),
+          suffixIcon: (propertyType?.name?.toLowerCase() != 'sale' &&
+                  propertyType?.name?.isNotEmpty == true)
+              ? Align(
+                  alignment: Alignment.centerRight,
+                  child: const Text('Per Month'),
+                )
+              : null,
+          controller: priceController,
+          onChanged: (value) {
+            // Remove commas before parsing the value
+            final cleanValue = value?.replaceAll(',', '') ?? '';
+            // Update the state with the new value
+            ref
+                .read(addDataNotifierProvider.notifier)
+                .setPrice(double.tryParse(cleanValue));
+          },
+          inputFormatters: [
+            PriceInputFormatter(),
+          ],
+        ),
+        Spacing.sizedBoxH_16(),
       ],
     );
   }
