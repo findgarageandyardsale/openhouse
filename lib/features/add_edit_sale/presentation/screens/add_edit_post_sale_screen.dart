@@ -219,6 +219,72 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
             );
           } else {
             showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      insetPadding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 24),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Post added Successfully',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                    color: AppColors.tertiary,
+                                    height: 1.43,
+                                    fontWeight: FontWeight.w700),
+                            textAlign: TextAlign.center,
+                          ),
+                          Spacing.sizedBoxH_12(),
+                          Text(
+                            '* Your Open house event is now live!',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
+                          Spacing.sizedBoxH_08(),
+                          Text(
+                            '* Reach your potential customers Easily and Conveniently',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
+                          Spacing.sizedBoxH_08(),
+                          Text(
+                            '* You can manage or update your listing anytime to change date or time. Once event is posted and paid, upon cancellation of any posted event, there will be no refund or fee paid.',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
+                          Spacing.sizedBoxH_20(),
+                          ActionButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            label: 'Continue',
+                          )
+                        ],
+                      ),
+                    ));
+
+            /* showDialog(
               context: context,
               builder: (context) => AlertDialog(
                 shape: RoundedRectangleBorder(
@@ -255,6 +321,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                 ),
               ),
             );
+         
+         */
           }
         } else {
           try {
