@@ -92,19 +92,24 @@ class StepOne extends ConsumerWidget {
           prefixIcon: const Icon(Icons.attach_money),
           suffixIcon: (propertyType?.name?.toLowerCase() != 'sale' &&
                   propertyType?.name?.isNotEmpty == true)
-              ? Align(
-                  alignment: Alignment.centerRight,
-                  child: const Text('Per Month'),
+              ? SizedBox(
+                  width: 80,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: const Text('Per Month'),
+                  ),
                 )
               : null,
           controller: priceController,
           onChanged: (value) {
-            // Remove commas before parsing the value
-            final cleanValue = value?.replaceAll(',', '') ?? '';
-            // Update the state with the new value
-            ref
-                .read(addDataNotifierProvider.notifier)
-                .setPrice(double.tryParse(cleanValue));
+            Future.microtask(() {
+              // Remove commas before parsing the value
+              final cleanValue = value?.replaceAll(',', '') ?? '';
+              // Update the state with the new value
+              ref
+                  .read(addDataNotifierProvider.notifier)
+                  .setPrice(double.tryParse(cleanValue));
+            });
           },
           inputFormatters: [
             PriceInputFormatter(),

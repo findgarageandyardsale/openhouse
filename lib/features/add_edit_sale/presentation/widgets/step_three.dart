@@ -29,8 +29,10 @@ class StepThree extends HookConsumerWidget {
         .select((value) => value?.openHouseProperty?.propertyType));
 
     useEffect(() {
-      lotSizeController.text = '';
-      ref.read(addDataNotifierProvider.notifier).setLotSize(0);
+      Future.microtask(() {
+        lotSizeController.text = '';
+        ref.read(addDataNotifierProvider.notifier).setLotSize(0);
+      });
       return null;
     }, [propertyType]);
     return Column(
