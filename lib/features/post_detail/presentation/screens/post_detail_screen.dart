@@ -149,8 +149,16 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                                 '0',
                         size:
                             '${garageayard.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
-                        lotSize:
-                            '${garageayard.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sq.ft',
+                        lotSize: garageayard
+                                    .openHouseProperty?.propertyType?.name
+                                    ?.toLowerCase() !=
+                                'sale'
+                            ? '${garageayard.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} Space Available'
+                            : '${garageayard.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sq.ft',
+                        isSale: garageayard
+                                .openHouseProperty?.propertyType?.name
+                                ?.toLowerCase() ==
+                            'sale',
                       ),
                       DescriptionChip(
                           text: garageayard.openHouseProperty?.category?.name ??

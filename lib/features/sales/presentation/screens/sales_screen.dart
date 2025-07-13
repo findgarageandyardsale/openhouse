@@ -4,7 +4,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_house/routes/app_route.gr.dart';
+import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/theme/app_colors.dart';
+import 'package:open_house/shared/theme/test_styles.dart';
 
 import '../provider/sale_state_provider.dart';
 
@@ -55,22 +57,54 @@ class SalesScreen extends ConsumerWidget {
           }
         });
         return Scaffold(
-          floatingActionButton: FloatingActionButton(
-            heroTag: 'Sales',
-            onPressed: () {
-              context.router.push(AddEditPostSaleScreen()).then((value) {
-                if (value != null && value == true) {
-                  ref.read(saleNotifierProvider.notifier)
-                    ..resetState()
-                    ..fetchExplorePosts();
-                }
-              });
-            },
-            backgroundColor: AppColors.primary,
-            child: const Icon(Icons.add, color: AppColors.white),
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   heroTag: 'Sales',
+          //   onPressed: () {
+          //     context.router.push(AddEditPostSaleScreen()).then((value) {
+          //       if (value != null && value == true) {
+          //         ref.read(saleNotifierProvider.notifier)
+          //           ..resetState()
+          //           ..fetchExplorePosts();
+          //       }
+          //     });
+          //   },
+          //   backgroundColor: AppColors.primary,
+          //   child: const Icon(Icons.add, color: AppColors.white),
+          // ),
           appBar: AppBar(
-            title: const Text('My Property'),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('My Property'),
+                InkWell(
+                  onTap: () {
+                    context.router.push(AddEditPostSaleScreen()).then((value) {
+                      if (value != null && value == true) {
+                        ref.read(saleNotifierProvider.notifier)
+                          ..resetState()
+                          ..fetchExplorePosts();
+                      }
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.add, color: AppColors.primary),
+                        Spacing.sizedBoxW_06(),
+                        Text('Add Property',
+                            style: AppTextStyles.bodyMedium
+                                .copyWith(color: AppColors.primary)),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
             bottom: TabBar(
               dividerHeight: 1,
               onTap: (index) {

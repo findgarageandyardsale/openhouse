@@ -83,8 +83,14 @@ class PostSingleItem extends StatelessWidget {
                       singlePost?.propertySize?.bathrooms?.toString() ?? '0',
                   size:
                       '${singlePost?.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
-                  lotSize:
-                      '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sq.ft',
+                  lotSize: singlePost?.openHouseProperty?.propertyType?.name
+                              ?.toLowerCase() !=
+                          'sale'
+                      ? '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} Space Available'
+                      : '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sq.ft',
+                  isSale: singlePost?.openHouseProperty?.propertyType?.name
+                          ?.toLowerCase() ==
+                      'sale',
                 ),
                 Divider(color: AppColors.extraLightGrey),
                 TimerText(

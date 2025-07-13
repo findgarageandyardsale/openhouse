@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
 import 'package:open_house/features/add_edit_sale/presentation/widgets/title_head.dart';
 import 'package:open_house/features/authentication/presentation/widgets/auth_field.dart';
@@ -9,7 +10,7 @@ import 'package:open_house/features/explore/presentation/constants/filter_consta
 import 'package:open_house/shared/constants/spacing.dart';
 import 'package:open_house/shared/widgets/custom_bottomsheet.dart';
 
-class StepThree extends ConsumerWidget {
+class StepThree extends HookConsumerWidget {
   const StepThree({
     super.key,
     required this.coveredAreaController,
@@ -24,6 +25,14 @@ class StepThree extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final propertyType = ref.watch(addDataNotifierProvider
+        .select((value) => value?.openHouseProperty?.propertyType));
+
+    useEffect(() {
+      lotSizeController.text = '';
+      ref.read(addDataNotifierProvider.notifier).setLotSize(0);
+      return null;
+    }, [propertyType]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -67,27 +76,72 @@ class StepThree extends ConsumerWidget {
             Expanded(
               child: AuthField(
                 name: 'lot_size',
-                hintText: 'Lot Size*',
-                labelText: 'Lot Size*',
-                suffixIcon: SizedBox(
-                  width: 50,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: const Text('sq. ft ', textAlign: TextAlign.center),
-                  ),
-                ),
+                hintText: propertyType?.name?.toLowerCase() != 'sale' &&
+                        propertyType?.name?.isNotEmpty == true
+                    ? 'Parking Space'
+                    : 'Lot Size*',
+                labelText: propertyType?.name?.toLowerCase() != 'sale' &&
+                        propertyType?.name?.isNotEmpty == true
+                    ? 'Parking Space'
+                    : 'Lot Size*',
+                suffixIcon: propertyType?.name?.toLowerCase() != 'sale' &&
+                        propertyType?.name?.isNotEmpty == true
+                    ? null
+                    : SizedBox(
+                        width: 50,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: const Text('sq. ft ',
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                readOnly: propertyType?.name?.toLowerCase() != 'sale' &&
+                    propertyType?.name?.isNotEmpty == true,
+                onTap: propertyType?.name?.toLowerCase() != 'sale' &&
+                        propertyType?.name?.isNotEmpty == true
+                    ? () {
+                        primaryBottomSheet(
+                          context,
+                          child: ListBottomSheet(
+                            onTap: (value) {
+                              lotSizeController.text = value;
+                              if (value == 'Street Parking') {
+                                ref
+                                    .read(addDataNotifierProvider.notifier)
+                                    .setLotSize(0);
+                              } else {
+                                ref
+                                    .read(addDataNotifierProvider.notifier)
+                                    .setLotSize(int.parse(value));
+                              }
+                            },
+                            items: [
+                              'Street Parking',
+                              '1',
+                              '2',
+                              '3',
+                            ],
+                            title: 'Parking Space',
+                          ),
+                        );
+                      }
+                    : null,
                 textInputAction: TextInputAction.next,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(
                     errorText: 'Lot Size cannot be empty.',
                   ),
                 ]),
-                keyboardType: TextInputType.numberWithOptions(decimal: false),
-                onChanged: (value) {
-                  ref
-                      .read(addDataNotifierProvider.notifier)
-                      .setLotSize(int.tryParse(value ?? ''));
-                },
+                keyboardType: propertyType?.name?.toLowerCase() == 'rent'
+                    ? TextInputType.text
+                    : TextInputType.numberWithOptions(decimal: false),
+                onChanged: propertyType?.name?.toLowerCase() == 'rent'
+                    ? (value) {}
+                    : (value) {
+                        ref
+                            .read(addDataNotifierProvider.notifier)
+                            .setLotSize(int.tryParse(value ?? ''));
+                      },
                 controller: lotSizeController,
               ),
             ),
