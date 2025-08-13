@@ -464,11 +464,13 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
               child: Column(
                 spacing: 16,
                 children: [
+                  //Title, Price, Property Type
                   StepOne(
                     priceController: priceController,
                     titleController: titleController,
                     propertyTypeController: propertyTypeController,
                   ),
+                  //Address
                   StepTwo(
                     zipController: zipCodeController,
                     cityController: cityController,
@@ -476,13 +478,16 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                     streetController: streetNumberController,
                     suiteController: suiteController,
                   ),
+                  //Property Details
                   StepThree(
                     coveredAreaController: coveredAreaController,
                     lotSizeController: lotSizeController,
                     bedroomsController: bedroomsController,
                     bathroomsController: bathroomsController,
                   ),
+                  //Description, Date
                   StepFour(),
+                  //Images
                   StepFive(
                     descriptionController: descriptionController,
                     dateController: dateController,

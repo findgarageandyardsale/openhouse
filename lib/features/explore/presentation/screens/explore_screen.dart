@@ -5,6 +5,7 @@ import 'package:open_house/features/explore/presentation/providers/explore_state
 import 'package:open_house/features/explore/presentation/providers/state/explore_state.dart';
 import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
 import 'package:open_house/features/explore/presentation/screens/widget/filter_chip_widget.dart';
+import 'package:open_house/shared/widgets/main_shimmer.dart';
 import '../../../../shared/core/custom_debouncer.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../authentication/presentation/widgets/auth_field.dart';
@@ -71,7 +72,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(exploreNotifierProvider);
+    final exploreState = ref.watch(exploreNotifierProvider);
 
     ref.watch(filterNotifierProvider);
     final debouncer = CustomDebouncer(milliseconds: 900);
@@ -194,9 +195,11 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
             Expanded(
               child: RefreshIndicator(
                 onRefresh: _refreshPosts,
-                child: listView
-                    ? ListExplore(scrollController: scrollController)
-                    : const MapExplore(),
+                child: exploreState.isLoading
+                    ? const MainViewShimmer()
+                    : listView
+                        ? ListExplore(scrollController: scrollController)
+                        : const MapExplore(),
               ),
             ),
           ],
