@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:open_house/features/add_edit_sale/presentation/provider/add_data_provider.dart';
@@ -28,13 +27,13 @@ class StepThree extends HookConsumerWidget {
     final propertyType = ref.watch(addDataNotifierProvider
         .select((value) => value?.openHouseProperty?.propertyType));
 
-    useEffect(() {
-      Future.microtask(() {
-        lotSizeController.text = '';
-        ref.read(addDataNotifierProvider.notifier).setLotSize(0);
-      });
-      return null;
-    }, [propertyType]);
+    // useEffect(() {
+    //   Future.microtask(() {
+    //     lotSizeController.text = '';
+    //     ref.read(addDataNotifierProvider.notifier).setLotSize(0);
+    //   });
+    //   return null;
+    // }, [propertyType]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

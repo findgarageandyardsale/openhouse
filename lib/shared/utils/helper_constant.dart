@@ -15,13 +15,15 @@ class HelperConstant {
   static String merchantIdentifier =
       isForTest ? 'acct_1QDJvOFxHDVNWRhz' : 'acct_1QDJvOFxHDVNWRhz';
   static String playStoreAppStoreID = Platform.isAndroid
-      ? 'https://play.google.com/store/apps/details?id=com.sale.garageyard&hl=en_US&gl=US'
-      : 'https://apps.apple.com/us/app/garageyard/6737464722';
+      ? 'https://play.google.com/store/apps/details?id=com.findorlookup.openhouse&hl=en_US&gl=US'
+      : 'https://apps.apple.com/us/app/find-open-house/id6745729064';
 
   static String termsAndConditions =
-      'https://findgarageandyardsale.com/#/terms-and-conditions';
+      'https://docs.google.com/document/d/1HlWAa8n9T_rIJEp48tAz36C9BmbpQlY7cavZHUu8RrI/edit?tab=t.0';
+  // 'https://findgarageandyardsale.com/#/terms-and-conditions';
   static String privacyPolicy =
       'https://findgarageandyardsale.com/#/privacy-policy';
+  // 'https://docs.google.com/document/d/1HlWAa8n9T_rIJEp48tAz36C9BmbpQlY7cavZHUu8RrI/edit?tab=t.0'
   static String postPrice = '15';
 
   static int priceForEach = 15;
