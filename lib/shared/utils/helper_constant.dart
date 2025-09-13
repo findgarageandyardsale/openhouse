@@ -32,6 +32,8 @@ class HelperConstant {
   static String canUploadUptoMessage =
       'Your Image Limit has exceed. You can upload only ${HelperConstant.numberOfPicCanUpload} images';
 
+  static bool needPayment = false;
+
   static String formatPrice(String value) {
     // if (value.isEmpty)
     return value;

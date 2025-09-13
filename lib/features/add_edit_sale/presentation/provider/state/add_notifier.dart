@@ -8,6 +8,7 @@ import 'package:open_house/shared/presentation/formz_state.dart';
 import 'package:open_house/shared/utils/helper_constant.dart';
 import 'package:open_house/shared/utils/print_utils.dart';
 import 'package:open_house/shared/widgets/custom_toast.dart';
+import 'package:uuid/uuid.dart';
 import '../../../../../shared/utils/cusotm_date_utils.dart';
 import '../../../data/repositories/add_repository.dart';
 
@@ -42,7 +43,11 @@ class AddNotifier extends StateNotifier<FormzState> {
               : postPrice)
           .toString();
       final value = postData?.copyWith(
-        transactionId: (transactionId != null) ? transactionId : null,
+        transactionId: (transactionId != null)
+            ? transactionId
+            : HelperConstant.needPayment
+                ? null
+                : const Uuid().v4(),
       );
       final data = ref.read(addDataNotifierProvider.notifier).toAddJson(value!);
 
@@ -100,7 +105,11 @@ class AddNotifier extends StateNotifier<FormzState> {
         //     postData?.openHouseProperty?.attachments?.map((e) => e.id).toList();
 
         final value = postData?.copyWith(
-          transactionId: (transactionId != null) ? transactionId : null,
+          transactionId: (transactionId != null)
+              ? transactionId
+              : HelperConstant.needPayment
+                  ? null
+                  : const Uuid().v4(),
           status: StatusEnum.active,
         );
         final data =

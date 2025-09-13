@@ -6,6 +6,7 @@ import 'package:open_house/features/explore/presentation/providers/state/explore
 import 'package:open_house/features/explore/presentation/providers/state/filter_state.dart';
 import 'package:open_house/features/explore/presentation/screens/widget/filter_chip_widget.dart';
 import 'package:open_house/shared/widgets/main_shimmer.dart';
+import 'package:open_house/shared/widgets/free_posts_banner.dart';
 import '../../../../shared/core/custom_debouncer.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../authentication/presentation/widgets/auth_field.dart';
@@ -184,6 +185,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const FreePostsBanner(),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: const FilterChipWidget(),

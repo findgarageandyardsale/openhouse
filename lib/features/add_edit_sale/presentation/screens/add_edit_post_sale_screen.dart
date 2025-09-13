@@ -264,7 +264,8 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                           ),
                           Spacing.sizedBoxH_08(),
                           Text(
-                            '* You can manage or update your listing anytime to change date or time. Once event is posted and paid, upon cancellation of any posted event, there will be no refund or fee paid.',
+                            '* You can manage or update your listing anytime to change date or time. Once event is posted, you can cancel it anytime.',
+                            // '* You can manage or update your listing anytime to change date or time. Once event is posted and paid, upon cancellation of any posted event, there will be no refund or fee paid.',
                             textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
@@ -330,7 +331,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
             //     .read(addDataNotifierProvider.notifier)
             //     .manageWholeData(currentData);
 
-            paymentprocess();
+            if (HelperConstant.needPayment) paymentprocess();
           } catch (_) {}
         }
       }
@@ -429,71 +430,73 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
       }
     }
 
-    return CustomLoadingOverlay(
-      isLoading: addState is Loading,
-      child: context.doublePos(
-        isActive: null,
-        statusText: '$title Property',
-        onPosPressed: imageLoadingState
-            ? null
-            : () async {
-                addFunction();
+    return SafeArea(
+      child: CustomLoadingOverlay(
+        isLoading: addState is Loading,
+        child: context.doublePos(
+          isActive: null,
+          statusText: '$title Property',
+          onPosPressed: imageLoadingState
+              ? null
+              : () async {
+                  addFunction();
+                },
+          appbar: AppBar(
+            backgroundColor: AppColors.white,
+            title: Text(
+              '$title Property',
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+            ),
+            leading: BackButton(
+              onPressed: () {
+                ref.invalidate(addDataNotifierProvider);
+                ref.invalidate(catNotifierProvider);
+                Navigator.of(context).pop();
               },
-        appbar: AppBar(
-          backgroundColor: AppColors.white,
-          title: Text(
-            '$title Property',
-            style: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+            ),
           ),
-          leading: BackButton(
-            onPressed: () {
-              ref.invalidate(addDataNotifierProvider);
-              ref.invalidate(catNotifierProvider);
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
-        content: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: FormBuilder(
-              key: formKey,
-              child: Column(
-                spacing: 16,
-                children: [
-                  //Title, Price, Property Type
-                  StepOne(
-                    priceController: priceController,
-                    titleController: titleController,
-                    propertyTypeController: propertyTypeController,
-                  ),
-                  //Address
-                  StepTwo(
-                    zipController: zipCodeController,
-                    cityController: cityController,
-                    stateController: stateController,
-                    streetController: streetNumberController,
-                    suiteController: suiteController,
-                  ),
-                  //Property Details
-                  StepThree(
-                    coveredAreaController: coveredAreaController,
-                    lotSizeController: lotSizeController,
-                    bedroomsController: bedroomsController,
-                    bathroomsController: bathroomsController,
-                  ),
-                  //Description, Date
-                  StepFour(),
-                  //Images
-                  StepFive(
-                    descriptionController: descriptionController,
-                    dateController: dateController,
-                  ),
-                  // StepSix(),
-                ],
+          content: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormBuilder(
+                key: formKey,
+                child: Column(
+                  spacing: 16,
+                  children: [
+                    //Title, Price, Property Type
+                    StepOne(
+                      priceController: priceController,
+                      titleController: titleController,
+                      propertyTypeController: propertyTypeController,
+                    ),
+                    //Address
+                    StepTwo(
+                      zipController: zipCodeController,
+                      cityController: cityController,
+                      stateController: stateController,
+                      streetController: streetNumberController,
+                      suiteController: suiteController,
+                    ),
+                    //Property Details
+                    StepThree(
+                      coveredAreaController: coveredAreaController,
+                      lotSizeController: lotSizeController,
+                      bedroomsController: bedroomsController,
+                      bathroomsController: bathroomsController,
+                    ),
+                    //Description, Date
+                    StepFour(),
+                    //Images
+                    StepFive(
+                      descriptionController: descriptionController,
+                      dateController: dateController,
+                    ),
+                    // StepSix(),
+                  ],
+                ),
               ),
             ),
           ),
