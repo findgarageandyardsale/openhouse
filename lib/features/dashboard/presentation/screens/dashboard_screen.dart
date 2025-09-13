@@ -70,12 +70,11 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
       // list of your tab routes
       // routes used here must be declared as children
       routes: const [ExploreScreen(), SalesScreen(), AccountScreen()],
-      transitionBuilder:
-          (context, child, animation) => FadeTransition(
-            opacity: animation,
-            // the passed child is technically our animated selected-tab page
-            child: child,
-          ),
+      transitionBuilder: (context, child, animation) => FadeTransition(
+        opacity: animation,
+        // the passed child is technically our animated selected-tab page
+        child: child,
+      ),
       builder: (context, child) {
         // obtain the scoped TabsRouter controller using context
         final tabsRouter = AutoTabsRouter.of(context);
@@ -86,7 +85,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         return Scaffold(
           body: child,
           endDrawer: const FilterDrawerWidget(),
-
           bottomNavigationBar: NavigationBarTheme(
             data: NavigationBarThemeData(
               indicatorColor: Colors.blue.withOpacity(0.2),

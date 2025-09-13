@@ -68,7 +68,7 @@ class MyApp extends ConsumerWidget {
       child: MaterialApp.router(
         title: 'Find Open House',
         theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
+        darkTheme: AppTheme.lightTheme,
         themeMode: themeMode,
         routeInformationParser: appRouter.defaultRouteParser(),
         routerDelegate: appRouter.delegate(),
