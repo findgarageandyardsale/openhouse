@@ -8,8 +8,8 @@ class FreePostsBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.all(16.0),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: AppColors.primaryContainer,
         borderRadius: BorderRadius.circular(8.0),
@@ -18,25 +18,13 @@ class FreePostsBanner extends StatelessWidget {
           width: 1.0,
         ),
       ),
-      child: Row(
-        children: [
-          Icon(
-            Icons.info_outline,
-            color: AppColors.primary,
-            size: 20.0,
-          ),
-          const SizedBox(width: 8.0),
-          Expanded(
-            child: Text(
-              'All garage and yard sale posts are completely free!',
-              style: TextStyle(
-                color: AppColors.primary,
-                fontWeight: FontWeight.w600,
-                fontSize: 14.0,
-              ),
-            ),
-          ),
-        ],
+      child: Text(
+        'We are launching our app, and for promotional purposes, event posting is free of cost for a limited time.',
+        style: TextStyle(
+          color: AppColors.primary,
+          fontWeight: FontWeight.w600,
+          fontSize: 14.0,
+        ),
       ),
     );
   }
