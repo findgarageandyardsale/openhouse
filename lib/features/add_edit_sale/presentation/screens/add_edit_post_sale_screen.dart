@@ -22,6 +22,7 @@ import 'package:open_house/shared/widgets/action_button.dart';
 import 'package:open_house/shared/widgets/custom_loading.dart';
 import 'package:open_house/shared/widgets/custom_toast.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:open_house/shared/widgets/free_posts_banner.dart';
 import '../../../../services/stripe_service.dart';
 import '../../../../shared/presentation/formz_state.dart';
 import '../../../../shared/theme/app_colors.dart';
@@ -431,6 +432,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
     }
 
     return SafeArea(
+      top: false,
       child: CustomLoadingOverlay(
         isLoading: addState is Loading,
         child: context.doublePos(
@@ -466,6 +468,7 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                 child: Column(
                   spacing: 16,
                   children: [
+                    FreePostsBanner(),
                     //Title, Price, Property Type
                     StepOne(
                       priceController: priceController,

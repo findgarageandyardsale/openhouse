@@ -185,7 +185,6 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const FreePostsBanner(),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: const FilterChipWidget(),
