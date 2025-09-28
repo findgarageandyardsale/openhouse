@@ -38,6 +38,8 @@ class SignupScreen extends ConsumerWidget {
   final TextEditingController zipCodeController = TextEditingController();
   final TextEditingController realityController = TextEditingController();
   final TextEditingController liscenceController = TextEditingController();
+  final TextEditingController promocodeController = TextEditingController();
+
   final TextEditingController officeAddressController = TextEditingController();
   final TextEditingController confirmpasswordController =
       TextEditingController();
@@ -325,6 +327,24 @@ class SignupScreen extends ConsumerWidget {
                             ),
                             onTap: () => showOfficeAddressDrawer(context),
                           ),
+                          Spacing.sizedBoxH_08(),
+                          AuthField(
+                            name: 'promo_code',
+                            hintText: 'Promo Code',
+                            labelText: 'Promo Code',
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              if (formKey.currentState?.fields['promo_code']
+                                      ?.hasError ??
+                                  false) {
+                                formKey.currentState?.fields['promo_code']
+                                    ?.validate();
+                              }
+                            },
+                            controller: promocodeController,
+                          ),
+                          Spacing.sizedBoxH_08(),
                           CheckboxListTile(
                             value: termsState,
                             visualDensity: VisualDensity.compact,
