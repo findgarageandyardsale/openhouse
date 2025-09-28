@@ -252,30 +252,40 @@ class _AddPostSaleScreenState extends ConsumerState<AddEditPostSaleScreen> {
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
-                          Spacing.sizedBoxH_08(),
+                          Spacing.sizedBoxH_12(),
                           Text(
-                            '* Reach your potential customers Easily and Conveniently',
+                            'We are launching our app, and for promotional purposes, event posting is free of cost for a limited time.',
                             textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
-                                ?.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
+                                ?.copyWith(fontWeight: FontWeight.w700),
                           ),
-                          Spacing.sizedBoxH_08(),
-                          Text(
-                            '* You can manage or update your listing anytime to change date or time. Once event is posted, you can cancel it anytime.',
-                            // '* You can manage or update your listing anytime to change date or time. Once event is posted and paid, upon cancellation of any posted event, there will be no refund or fee paid.',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
-                          ),
-                          Spacing.sizedBoxH_20(),
+                          // Spacing.sizedBoxH_08(),
+                          // Text(
+                          //   '* Reach your potential customers Easily and Conveniently',
+                          //   textAlign: TextAlign.center,
+                          //   style: Theme.of(context)
+                          //       .textTheme
+                          //       .titleMedium
+                          //       ?.copyWith(
+                          //         fontWeight: FontWeight.w700,
+                          //       ),
+                          // ),
+                          // Spacing.sizedBoxH_08(),
+                          // Text(
+                          //   '* You can manage or update your listing anytime to change date or time. Once event is posted, you can cancel it anytime.',
+                          //   // '* You can manage or update your listing anytime to change date or time. Once event is posted and paid, upon cancellation of any posted event, there will be no refund or fee paid.',
+                          //   textAlign: TextAlign.center,
+                          //   style: Theme.of(context)
+                          //       .textTheme
+                          //       .titleMedium
+                          //       ?.copyWith(
+                          //         fontWeight: FontWeight.w700,
+                          //       ),
+                          // ),
+                          // Spacing.sizedBoxH_20(),
+
                           ActionButton(
                             onPressed: () {
                               Navigator.pop(context);
