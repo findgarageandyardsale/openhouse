@@ -1,19 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:open_house/core/ext/currency_extension.dart';
-import 'package:open_house/features/post_detail/presentation/widgets/custom_carousel.dart';
 import 'package:open_house/routes/app_route.gr.dart';
 import 'package:open_house/shared/domain/models/open_house/open_house.dart';
+import 'package:open_house/shared/theme/app_colors.dart';
 import 'package:open_house/shared/theme/test_styles.dart';
 import 'package:open_house/shared/utils/app_utils.dart';
 import 'package:open_house/shared/utils/cusotm_date_utils.dart';
-import 'package:open_house/shared/widgets/action_button.dart';
-import 'package:open_house/shared/widgets/amenities_line.dart';
-import 'package:open_house/shared/widgets/custom_toast.dart';
-import 'package:open_house/shared/widgets/location_text.dart';
-import '../constants/spacing.dart';
-import '../theme/app_colors.dart';
-import 'timer_text.dart';
+import 'package:open_house/shared/widgets/file_image_builder.dart';
 
 class PostSingleItem extends StatelessWidget {
   const PostSingleItem({
@@ -23,155 +17,287 @@ class PostSingleItem extends StatelessWidget {
     this.onTap,
     this.fromMap,
   });
+
   final bool? isActive;
   final OpenHouse? singlePost;
   final Function()? onTap;
   final bool? fromMap;
 
+  static const double _imageSize = 120;
+
   @override
   Widget build(BuildContext context) {
-    Widget locationWidget() {
-      return LocationText(
-        fromDetail: false,
-        location: AppUtils.formatLocationAsAddress(
-          singlePost?.location ?? const LocationModel(),
-        ),
-      );
+    final attachments = singlePost?.openHouseProperty?.attachments ?? const [];
+    final firstImageUrl = attachments.isNotEmpty ? (attachments.first.file ?? '') : '';
+    final propertyType = singlePost?.openHouseProperty?.propertyType?.name;
+    final isSale = propertyType?.toLowerCase() == 'sale';
+    final priceText = singlePost?.openHouseProperty?.price?.englishFormatCurrency() ?? '';
+    final priceLabel = isSale ? priceText : '$priceText/mo';
+
+    final propertyName = singlePost?.openHouseProperty?.name ?? '';
+    final locationText = AppUtils.formatLocationAsAddress(
+      singlePost?.location ?? const LocationModel(),
+    );
+
+    final beds = singlePost?.propertySize?.bedrooms?.toString() ?? '0';
+    final baths = singlePost?.propertySize?.bathrooms?.toString() ?? '0';
+    final coveredArea = singlePost?.propertySize?.coveredArea;
+    final sqftText = coveredArea != null && coveredArea > 0
+        ? '${coveredArea.toStringAsFixed(0)} sqft'
+        : null;
+    final metaParts = <String>[
+      '$beds bd',
+      '$baths ba',
+      if (sqftText != null) sqftText,
+    ];
+    final metaLine = metaParts.join(' · ');
+
+    final slots = singlePost?.propertySize?.availableTimeSlots ?? const [];
+    String? slotLine;
+    int extraDays = 0;
+    if (slots.isNotEmpty) {
+      final first = slots.first;
+      final date = CustomDateUtils.formatDate(first.date ?? DateTime.now());
+      final start = CustomDateUtils.convertTo12HourFormat(first.startTime);
+      final end = CustomDateUtils.convertTo12HourFormat(first.endTime);
+      slotLine = '$date · $start – $end';
+      extraDays = slots.length - 1;
     }
 
     return GestureDetector(
-      onTap: () {
-        context.router.push(
-          PostDetailScreen(garageayard: singlePost!, isActive: isActive),
-        );
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomCarousel(
-            attachments: singlePost?.openHouseProperty?.attachments ?? [],
-            radius: 12,
-          ),
-          Spacing.sizedBoxW_16(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              spacing: 4,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  singlePost?.openHouseProperty?.propertyType?.name
-                              ?.toLowerCase() !=
-                          'sale'
-                      ? '${singlePost?.openHouseProperty?.price?.englishFormatCurrency()}/month'
-                      : '${singlePost?.openHouseProperty?.price?.englishFormatCurrency()}',
-                  style: AppTextStyles.titleLarge.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Text(
-                  singlePost?.openHouseProperty?.name ?? '',
-                  style: AppTextStyles.bodyLarge.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                locationWidget(),
-                AmenitiesLine(
-                  bedroom:
-                      singlePost?.propertySize?.bedrooms?.toString() ?? '0',
-                  bathroom:
-                      singlePost?.propertySize?.bathrooms?.toString() ?? '0',
-                  size:
-                      '${singlePost?.propertySize?.coveredArea?.toStringAsFixed(0) ?? '0'} sq.ft',
-                  lotSize: singlePost?.openHouseProperty?.propertyType?.name
-                              ?.toLowerCase() !=
-                          'sale'
-                      ? '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} Space Available'
-                      : '${singlePost?.propertySize?.lotSize?.toStringAsFixed(0) ?? '0'} sq.ft',
-                  isSale: singlePost?.openHouseProperty?.propertyType?.name
-                          ?.toLowerCase() ==
-                      'sale',
-                ),
-                Divider(color: AppColors.extraLightGrey),
-                TimerText(
-                  fromDetail: false,
-                  date: CustomDateUtils.formatDate(
-                    singlePost?.propertySize?.availableTimeSlots?[0].date ??
-                        DateTime.now(),
-                  ),
-                  time:
-                      '${CustomDateUtils.convertTo12HourFormat(singlePost?.propertySize?.availableTimeSlots?[0].startTime)} - ${CustomDateUtils.convertTo12HourFormat(singlePost?.propertySize?.availableTimeSlots?[0].endTime)}',
-                  days: ((singlePost?.propertySize?.availableTimeSlots ?? [])
-                              .length -
-                          1)
-                      .toString(),
-                ),
-                Spacing.sizedBoxH_08(),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ActionButton(
-                        height: 36,
-                        buttonColor: Colors.white,
-                        borderColor: AppColors.primary,
-                        onPressed: () {
-                          context.router.push(
-                            PostDetailScreen(
-                                garageayard: singlePost!, isActive: isActive),
-                          );
-                        },
-                        label: 'View Detail',
-                        textStyle: Theme.of(
-                          context,
-                        ).textTheme.labelSmall?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.black,
-                            ),
-                      ),
-                    ),
-                    Spacing.sizedBoxW_10(),
-                    Expanded(
-                      child: ActionButton(
-                        onPressed: () {
-                          if (isActive != null) {
-                            context.router.push(
-                              AddEditPostSaleScreen(
-                                garageayard: singlePost!,
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap ??
+          () {
+            if (singlePost == null) return;
+            context.router.push(
+              PostDetailScreen(garageayard: singlePost!, isActive: isActive),
+            );
+          },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppColors.extraLightGrey),
+        ),
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _buildImage(firstImageUrl, attachments.length),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // Price + optional status pill
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              priceLabel,
+                              style: AppTextStyles.titleMedium.copyWith(
+                                fontWeight: FontWeight.w600,
                               ),
-                            );
-                          } else {
-                            if (singlePost?.location?.latitude == null ||
-                                singlePost?.location?.longitude == null) {
-                              CustomToast.showToast('Location not available',
-                                  status: ToastStatus.error);
-                              return;
-                            }
-                            AppUtils.openAppDirections(
-                                singlePost?.location?.latitude ?? 0.0,
-                                singlePost?.location?.longitude ?? 0.0);
-                          }
-                        },
-                        label: isActive == null
-                            ? 'Get Directions'
-                            : isActive == true
-                                ? 'Edit Sale'
-                                : 'Extend Expiry',
-                        height: 36,
-                        textStyle: Theme.of(
-                          context,
-                        ).textTheme.labelSmall?.copyWith(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                              fontWeight: FontWeight.w700,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
+                          ),
+                          _StatusPill(isActive: isActive),
+                        ],
                       ),
-                    ),
-                  ],
+                      if (propertyName.isNotEmpty) ...[
+                        const SizedBox(height: 2),
+                        Text(
+                          propertyName,
+                          style: AppTextStyles.bodyMedium.copyWith(
+                            color: AppColors.black,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                      if (locationText.isNotEmpty) ...[
+                        const SizedBox(height: 2),
+                        Text(
+                          locationText,
+                          style: AppTextStyles.bodySmall.copyWith(
+                            color: AppColors.lightGrey,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                      const SizedBox(height: 6),
+                      Text(
+                        metaLine,
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: AppColors.black,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      if (slotLine != null) ...[
+                        const SizedBox(height: 6),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.calendar_today_outlined,
+                              size: 13,
+                              color: AppColors.primary,
+                            ),
+                            const SizedBox(width: 4),
+                            Expanded(
+                              child: Text(
+                                slotLine,
+                                style: AppTextStyles.bodySmall,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            if (extraDays > 0) ...[
+                              const SizedBox(width: 4),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 1,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Text(
+                                  '+$extraDays',
+                                  style: AppTextStyles.bodySmall.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.1,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ],
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Divider(color: AppColors.extraLightGrey, height: 20, thickness: 20),
-        ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImage(String url, int totalImages) {
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(12),
+        bottomLeft: Radius.circular(12),
+      ),
+      child: SizedBox(
+        width: _imageSize,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            if (url.isNotEmpty)
+              FileImageBuilder(
+                url: url,
+                clickUrl: url,
+                width: _imageSize,
+                height: _imageSize,
+                fit: BoxFit.cover,
+                radius: 0,
+              )
+            else
+              Container(
+                color: AppColors.extraLightGrey,
+                child: const Icon(
+                  Icons.image_outlined,
+                  color: AppColors.lightGrey,
+                  size: 32,
+                ),
+              ),
+            if (totalImages > 1)
+              Positioned(
+                right: 6,
+                bottom: 6,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(
+                        Icons.photo_library_outlined,
+                        color: Colors.white,
+                        size: 11,
+                      ),
+                      const SizedBox(width: 3),
+                      Text(
+                        '$totalImages',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          height: 1.1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _StatusPill extends StatelessWidget {
+  const _StatusPill({required this.isActive});
+
+  final bool? isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    if (isActive == null) return const SizedBox.shrink();
+
+    final active = isActive!;
+    final bg = active
+        ? const Color(0xffE7F7EC)
+        : const Color(0xffFDECEC);
+    final fg = active
+        ? const Color(0xff1E8E3E)
+        : const Color(0xffC5221F);
+    final label = active ? 'Active' : 'Expired';
+
+    return Container(
+      margin: const EdgeInsets.only(left: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          color: fg,
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          height: 1.2,
+        ),
       ),
     );
   }
