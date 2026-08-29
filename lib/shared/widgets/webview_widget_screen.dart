@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:open_house/shared/domain/circulat_indicator_widget.dart';
 import 'package:open_house/shared/widgets/custom_percent_indicator.dart';
-import 'package:open_house/shared/widgets/pdf_viewer_widget.dart';
 
 @RoutePage()
 class WebviewWidgetScreen extends StatefulWidget {
@@ -26,6 +25,15 @@ class _WebviewWidgetScreenState extends State<WebviewWidgetScreen> {
   bool _isloading = false;
   final GlobalKey webViewKey = GlobalKey();
 
+  // Android WebView doesn't natively render PDFs; wrap in Google Docs viewer.
+  // iOS WKWebView renders PDFs natively.
+  String _effectiveUrl(String url) {
+    if (url.contains('.pdf') && Platform.isAndroid) {
+      return 'https://docs.google.com/gview?embedded=true&url=${Uri.encodeComponent(url)}';
+    }
+    return url;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +47,6 @@ class _WebviewWidgetScreenState extends State<WebviewWidgetScreen> {
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                 )
-                : widget.data.contains('.pdf')
-                ? PDFViewer(url: widget.data)
                 : widget.data.contains('.xlsx')
                 ? const Center(child: Text('Cannot Preview this file'))
                 : Stack(
@@ -59,7 +65,7 @@ class _WebviewWidgetScreenState extends State<WebviewWidgetScreen> {
                       },
                       initialSettings: InAppWebViewSettings(),
                       initialUrlRequest: URLRequest(
-                        url: WebUri.uri(Uri.parse(widget.data)),
+                        url: WebUri.uri(Uri.parse(_effectiveUrl(widget.data))),
                       ),
                     ),
                     // Circular loading indicator

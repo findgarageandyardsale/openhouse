@@ -19,7 +19,10 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace = "com.findorlookup.openhouse"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // NDK r28.2 is 16 KB page-size aligned by default (Play Store requires
+    // this for updates from Nov 2026). Overrides Flutter's default which is
+    // an older NDK that produces 4 KB-aligned .so files.
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
