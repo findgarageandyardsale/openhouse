@@ -33,6 +33,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Xcode SwiftPM workspace state (per-developer, regenerated)
+**/xcshareddata/swiftpm/
+
 # Symbolication related
 app.*.symbols
 
