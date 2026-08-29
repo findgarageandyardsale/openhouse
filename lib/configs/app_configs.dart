@@ -1,5 +1,5 @@
 class AppConfigs {
-  static String url = 'http://54.209.76.200:8000';
+  static String url = 'https://api.findopenhouses.org';
   static String baseUrl = '$url/api/v1';
 
   static String loginEndpoint = '/home/user/login/';
