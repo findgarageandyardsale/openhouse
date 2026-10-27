@@ -408,7 +408,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                               }
                               return FileImageBuilder(
                                 clickUrl: '',
-                                url: (success?.first.file ?? ''),
+                                url: success?.first.thumbnail ??
+                                    success?.first.file ??
+                                    '',
                                 fit: BoxFit.fill,
                                 shape: BoxShape.circle,
                               );

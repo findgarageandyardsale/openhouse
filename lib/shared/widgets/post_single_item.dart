@@ -28,7 +28,9 @@ class PostSingleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final attachments = singlePost?.openHouseProperty?.attachments ?? const [];
-    final firstImageUrl = attachments.isNotEmpty ? (attachments.first.file ?? '') : '';
+    final firstImageUrl = attachments.isNotEmpty
+        ? (attachments.first.thumbnail ?? attachments.first.file ?? '')
+        : '';
     final propertyType = singlePost?.openHouseProperty?.propertyType?.name;
     final isSale = propertyType?.toLowerCase() == 'sale';
     final priceText = singlePost?.openHouseProperty?.price?.englishFormatCurrency() ?? '';
